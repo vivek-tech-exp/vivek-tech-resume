@@ -14,7 +14,7 @@ Project docs:
 ## Scope
 
 - landing page
-- project pages sourced from Notion
+- Notion-backed project content on the landing page
 - GitHub repo link or selected repository links
 - LinkedIn link
 - resume PDF download
@@ -65,4 +65,4 @@ Use [.env.example](/Users/vivekmankonda/Documents/GitHub/vivek-tech-resume/.env.
 
 ## Notes
 
-The resume PDF currently lives at `public/resume/vivek-mankonda-resume.pdf`.
+The resume PDF currently lives at `public/vivek-mankonda-resume.pdf`.

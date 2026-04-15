@@ -8,8 +8,8 @@ This is not a product site. It is a clear, fast, well-built web version of a res
 
 ## Scope
 
-- short landing page with profile, selected work, and links
-- project detail pages sourced from Notion
+- single landing page with profile, selected work, and links
+- Notion-backed project content rendered on the landing page
 - GitHub link or selected repository links
 - LinkedIn link
 - resume PDF download
@@ -17,16 +17,12 @@ This is not a product site. It is a clear, fast, well-built web version of a res
 ## Routes
 
 - `/`
-- `/work/[slug]`
-- `/resume`
-
-`/resume` can redirect to the PDF asset or render a minimal page with the download link.
 
 ## Data Sources
 
 ### Notion
 
-Use Notion for project content.
+Use Notion for project content shown on the landing page.
 
 Rules:
 
@@ -59,7 +55,7 @@ Rules:
 
 Store the PDF as a static asset, for example:
 
-- `public/resume/vivek-mankonda-resume.pdf`
+- `public/vivek-mankonda-resume.pdf`
 
 Use a normal link for download, not a JavaScript-triggered button.
 
@@ -122,7 +118,7 @@ Minimum expectations:
 1. Scaffold the Next.js app and baseline tooling.
 2. Set up layout, typography, tokens, and accessibility baseline.
 3. Build the Notion and GitHub integration layer.
-4. Build the landing page, work pages, and resume download flow.
+4. Build the landing page and resume download flow.
 5. Run accessibility, responsive, and performance checks.
 
 ## Public Repo Constraints

@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { pageStyles } from "@/lib/page-styles";
 import { getResumeMeta } from "@/lib/resume";
 import { resumeData } from "@/lib/resume-data";
@@ -96,9 +94,6 @@ export const HomePage = () => {
                   </span>
                 ) : null}
               </a>
-              <Link className={pageStyles.actionSecondary} href="/resume">
-                PDF details
-              </Link>
             </div>
           </div>
 

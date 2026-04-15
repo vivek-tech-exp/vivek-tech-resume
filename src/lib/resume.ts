@@ -2,7 +2,7 @@ import { statSync } from "node:fs";
 import { join } from "node:path";
 
 const RESUME_FILE_NAME = "vivek-mankonda-resume.pdf";
-const RESUME_PUBLIC_PATH = `/resume/${RESUME_FILE_NAME}`;
+const RESUME_PUBLIC_PATH = `/${RESUME_FILE_NAME}`;
 
 const formatFileSize = (bytes: number): string => {
   if (bytes < 1024) {
@@ -22,7 +22,7 @@ export const getResumeMeta = (): {
   fileSizeLabel?: string;
 } => {
   try {
-    const filePath = join(process.cwd(), "public", "resume", RESUME_FILE_NAME);
+    const filePath = join(process.cwd(), "public", RESUME_FILE_NAME);
     const fileSize = statSync(filePath).size;
 
     return {
