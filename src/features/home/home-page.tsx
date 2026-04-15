@@ -46,9 +46,6 @@ export const HomePage = () => {
       </a>
       <header className={pageStyles.chrome}>
         <div className={pageStyles.topBar}>
-          <p className={pageStyles.topBarNote}>
-            Backend · Distributed Systems · Platform
-          </p>
           <nav aria-label="Section navigation" className={pageStyles.topBarNav}>
             <a className={pageStyles.topBarLink} href="#impact">
               Impact

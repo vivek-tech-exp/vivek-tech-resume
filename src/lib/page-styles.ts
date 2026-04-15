@@ -3,10 +3,8 @@ export const pageStyles = {
     "sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:border focus:border-zinc-50 focus:bg-zinc-50 focus:px-4 focus:py-3 focus:font-mono focus:text-[0.72rem] focus:uppercase focus:tracking-[0.22em] focus:text-zinc-950",
   chrome: "mx-auto w-full max-w-7xl px-4 pt-3 sm:px-6 sm:pt-4 lg:px-8",
   topBar:
-    "flex flex-col gap-3 border border-zinc-800 bg-zinc-950/90 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-5 sm:py-4",
-  topBarNote:
-    "font-mono text-[0.7rem] uppercase tracking-[0.24em] text-zinc-500",
-  topBarNav: "hidden flex-wrap gap-x-5 gap-y-2 sm:flex",
+    "hidden border border-zinc-800 bg-zinc-950/90 px-5 py-4 sm:flex sm:items-center sm:justify-end",
+  topBarNav: "flex flex-wrap gap-x-5 gap-y-2",
   topBarLink:
     "font-mono text-[0.72rem] uppercase tracking-[0.2em] text-zinc-400 no-underline transition-colors duration-200 hover:text-zinc-50",
   pageShell:
