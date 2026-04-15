@@ -72,7 +72,7 @@ export const HomePage = () => {
             <p className={pageStyles.eyebrow}>{resumeData.basics.title}</p>
             <h1 className={pageStyles.heroTitle}>{resumeData.basics.name}</h1>
             <p className={pageStyles.heroSpecialization}>
-              Java • Distributed Systems • Workflow Automation • Cloud
+              Distributed Systems • Workflow Automation • Reliability • Cloud
               Infrastructure
             </p>
             <p className={pageStyles.heroSummary}>{resumeData.positioningLine}</p>
@@ -97,8 +97,8 @@ export const HomePage = () => {
               </li>
             </ul>
             <p className={pageStyles.heroNote}>
-              Java, TypeScript, and Python across backend services, workflow
-              engines, integrations, and production infrastructure.
+              Backend systems, workflow engines, integrations, and production
+              infrastructure under real operational pressure.
             </p>
           </aside>
         </section>
