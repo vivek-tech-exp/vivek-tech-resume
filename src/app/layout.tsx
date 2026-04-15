@@ -27,8 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className="scroll-smooth bg-zinc-950">
+      <body className="min-h-screen bg-zinc-950 font-sans text-zinc-50 antialiased">
+        {children}
+      </body>
     </html>
   );
 }

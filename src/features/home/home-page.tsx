@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { pageStyles } from "@/lib/page-styles";
 import { getResumeMeta } from "@/lib/resume";
 import { resumeData } from "@/lib/resume-data";
 import { siteConfig } from "@/lib/site-config";
@@ -44,76 +45,103 @@ export const HomePage = () => {
 
   return (
     <>
-      <a className="skip-link" href="#main-content">
+      <a className={pageStyles.skipLink} href="#main-content">
         Skip to content
       </a>
-      <header className="site-chrome">
-        <div className="topbar">
-          <p className="topbar-note">Backend · Distributed Systems · Platform</p>
-          <nav aria-label="Section navigation" className="topbar-nav">
-            <a href="#impact">Impact</a>
-            <a href="#experience">Experience</a>
-            <a href="#stack">Stack</a>
-            <a href="#systems">Systems</a>
-            <a href="#links">Links</a>
+      <header className={pageStyles.chrome}>
+        <div className={pageStyles.topBar}>
+          <p className={pageStyles.topBarNote}>
+            Backend · Distributed Systems · Platform
+          </p>
+          <nav aria-label="Section navigation" className={pageStyles.topBarNav}>
+            <a className={pageStyles.topBarLink} href="#impact">
+              Impact
+            </a>
+            <a className={pageStyles.topBarLink} href="#experience">
+              Experience
+            </a>
+            <a className={pageStyles.topBarLink} href="#stack">
+              Stack
+            </a>
+            <a className={pageStyles.topBarLink} href="#systems">
+              Systems
+            </a>
+            <a className={pageStyles.topBarLink} href="#links">
+              Links
+            </a>
           </nav>
         </div>
       </header>
 
-      <main className="page-shell" id="main-content">
-        <section className="hero-panel">
-          <div className="hero-copy">
-            <p className="eyebrow">{resumeData.basics.title}</p>
-            <h1 className="hero-title">{resumeData.basics.name}</h1>
-            <p className="hero-specialization">
+      <main className={pageStyles.pageShell} id="main-content">
+        <section className={pageStyles.heroPanel}>
+          <div className={pageStyles.heroCopy}>
+            <p className={pageStyles.eyebrow}>{resumeData.basics.title}</p>
+            <h1 className={pageStyles.heroTitle}>{resumeData.basics.name}</h1>
+            <p className={pageStyles.heroSpecialization}>
               Java • Distributed Systems • Workflow Automation • Cloud
               Infrastructure
             </p>
-            <p className="hero-summary">{resumeData.positioningLine}</p>
-            <div className="hero-actions" aria-label="Primary actions">
+            <p className={pageStyles.heroSummary}>{resumeData.positioningLine}</p>
+            <div className={pageStyles.heroActions} aria-label="Primary actions">
               <a
-                className="action action-primary"
+                className={pageStyles.actionPrimary}
                 href={resume.href}
                 download={resume.downloadName}
               >
                 Download resume
                 {resume.fileSizeLabel ? (
-                  <span className="action-meta">PDF, {resume.fileSizeLabel}</span>
+                  <span className={pageStyles.actionMeta}>
+                    PDF, {resume.fileSizeLabel}
+                  </span>
                 ) : null}
               </a>
-              <Link className="action" href="/resume">
+              <Link className={pageStyles.actionSecondary} href="/resume">
                 PDF details
               </Link>
             </div>
           </div>
 
-          <aside className="hero-aside" aria-label="Profile details">
-            <ul className="meta-list">
-              <li>
-                <span className="meta-label">Base</span>
-                <span>{resumeData.basics.locations.join(" · ")}</span>
+          <aside className={pageStyles.heroAside} aria-label="Profile details">
+            <ul className={pageStyles.metaList}>
+              <li className={pageStyles.metaItem}>
+                <span className={pageStyles.metaLabel}>Base</span>
+                <span className={pageStyles.metaValue}>
+                  {resumeData.basics.locations.join(" · ")}
+                </span>
               </li>
-              <li>
-                <span className="meta-label">Email</span>
-                <a href={`mailto:${resumeData.basics.email}`}>
+              <li className={pageStyles.metaItem}>
+                <span className={pageStyles.metaLabel}>Email</span>
+                <a
+                  className={pageStyles.metaValue}
+                  href={`mailto:${resumeData.basics.email}`}
+                >
                   {resumeData.basics.email}
                 </a>
               </li>
-              <li>
-                <span className="meta-label">Phone</span>
-                <a href={resumeData.basics.phoneHref}>
+              <li className={pageStyles.metaItem}>
+                <span className={pageStyles.metaLabel}>Phone</span>
+                <a
+                  className={pageStyles.metaValue}
+                  href={resumeData.basics.phoneHref}
+                >
                   {resumeData.basics.phoneDisplay}
                 </a>
               </li>
             </ul>
-            <p className="hero-note">
+            <p className={pageStyles.heroNote}>
               Java, TypeScript, and Python across backend services, workflow
               engines, integrations, and production infrastructure.
             </p>
-            <ul className="profile-links" aria-label="External profiles">
+            <ul className={pageStyles.profileLinks} aria-label="External profiles">
               {externalLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} rel="noreferrer" target="_blank">
+                  <a
+                    className={pageStyles.profileLink}
+                    href={link.href}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
                     {link.label}
                   </a>
                 </li>
@@ -123,47 +151,48 @@ export const HomePage = () => {
         </section>
 
         <section
-          className="section-block"
+          className={pageStyles.section}
           id="impact"
           aria-labelledby="impact-heading"
         >
-          <div className="section-heading">
-            <p className="section-kicker">Selected Impact</p>
-            <h2 id="impact-heading">Concrete outcomes, not broad claims.</h2>
+          <div className={pageStyles.sectionHeading}>
+            <p className={pageStyles.sectionKicker}>Selected Impact</p>
+            <h2 className={pageStyles.sectionTitle} id="impact-heading">
+              Concrete outcomes, not broad claims.
+            </h2>
           </div>
-          <ul className="proof-list" aria-label="Selected proof points">
+          <ul className={pageStyles.proofList} aria-label="Selected proof points">
             {resumeData.proofPoints.map((item) => (
-              <li className="proof-chip" key={item.statement}>
-                <p>{item.statement}</p>
+              <li className={pageStyles.proofChip} key={item.statement}>
+                <p className={pageStyles.proofText}>{item.statement}</p>
               </li>
             ))}
           </ul>
         </section>
 
         <section
-          className="section-block"
+          className={pageStyles.section}
           id="experience"
           aria-labelledby="experience-heading"
         >
-          <div className="section-heading">
-            <p className="section-kicker">Experience Snapshot</p>
-            <h2 id="experience-heading">
+          <div className={pageStyles.sectionHeading}>
+            <p className={pageStyles.sectionKicker}>Experience Snapshot</p>
+            <h2 className={pageStyles.sectionTitle} id="experience-heading">
               Seven years across backend, platform, and delivery.
             </h2>
           </div>
-          <ol className="snapshot-list">
+          <ol className={pageStyles.snapshotList}>
             {resumeData.experience.map((item) => (
-              <li
-                className="snapshot-item"
-                key={`${item.company}-${item.period}`}
-              >
-                <article className="snapshot-card">
-                  <p className="snapshot-period">{item.period}</p>
-                  <h3>{item.role}</h3>
-                  <p className="snapshot-company">
-                    {item.company} · {item.location}
-                  </p>
-                  <p className="snapshot-summary">{item.summary}</p>
+              <li key={`${item.company}-${item.period}`}>
+                <article className={pageStyles.snapshotCard}>
+                  <p className={pageStyles.snapshotPeriod}>{item.period}</p>
+                  <div className={pageStyles.snapshotBody}>
+                    <h3 className={pageStyles.snapshotTitle}>{item.role}</h3>
+                    <p className={pageStyles.snapshotCompany}>
+                      {item.company} · {item.location}
+                    </p>
+                    <p className={pageStyles.snapshotSummary}>{item.summary}</p>
+                  </div>
                 </article>
               </li>
             ))}
@@ -171,75 +200,81 @@ export const HomePage = () => {
         </section>
 
         <section
-          className="section-block"
+          className={pageStyles.section}
           id="stack"
           aria-labelledby="stack-heading"
         >
-          <div className="section-heading">
-            <p className="section-kicker">Core Stack</p>
-            <h2 id="stack-heading">
+          <div className={pageStyles.sectionHeading}>
+            <p className={pageStyles.sectionKicker}>Core Stack</p>
+            <h2 className={pageStyles.sectionTitle} id="stack-heading">
               Core runtime, workflow, and platform tools.
             </h2>
           </div>
-          <div className="capability-grid">
+          <div className={pageStyles.capabilityGrid}>
             {resumeData.coreStack.map((group) => (
-              <section className="capability-item" key={group.label}>
-                <h3>{group.label}</h3>
-                <p>{group.items.join(", ")}</p>
+              <section className={pageStyles.capabilityItem} key={group.label}>
+                <h3 className={pageStyles.capabilityLabel}>{group.label}</h3>
+                <p className={pageStyles.capabilityText}>
+                  {group.items.join(", ")}
+                </p>
               </section>
             ))}
           </div>
         </section>
 
         <section
-          className="section-block"
+          className={pageStyles.section}
           id="systems"
           aria-labelledby="systems-heading"
         >
-          <div className="section-heading">
-            <p className="section-kicker">Selected Systems</p>
-            <h2 id="systems-heading">
+          <div className={pageStyles.sectionHeading}>
+            <p className={pageStyles.sectionKicker}>Selected Systems</p>
+            <h2 className={pageStyles.sectionTitle} id="systems-heading">
               A few systems where the engineering work is concrete.
             </h2>
           </div>
-          <div className="systems-grid">
+          <div className={pageStyles.systemsGrid}>
             {resumeData.caseStudies.map((study) => (
-              <article className="system-card" key={study.title}>
-                <p className="system-context">{study.context}</p>
-                <h3>{study.title}</h3>
-                <p>{study.focus}</p>
-                <p className="system-outcome">{study.outcome}</p>
+              <article className={pageStyles.systemCard} key={study.title}>
+                <p className={pageStyles.systemContext}>{study.context}</p>
+                <div className={pageStyles.systemBody}>
+                  <h3 className={pageStyles.systemTitle}>{study.title}</h3>
+                  <p className={pageStyles.systemText}>{study.focus}</p>
+                </div>
+                <p className={pageStyles.systemOutcome}>{study.outcome}</p>
               </article>
             ))}
           </div>
         </section>
 
         <section
-          className="section-block"
+          className={pageStyles.section}
           id="links"
           aria-labelledby="links-heading"
         >
-          <div className="section-heading">
-            <p className="section-kicker">Links</p>
-            <h2 id="links-heading">
+          <div className={pageStyles.sectionHeading}>
+            <p className={pageStyles.sectionKicker}>Links</p>
+            <h2 className={pageStyles.sectionTitle} id="links-heading">
               Resume PDF, LinkedIn, GitHub, and direct contact.
             </h2>
           </div>
-          <div className="links-panel">
-            <div className="links-actions">
+          <div className={pageStyles.linksPanel}>
+            <div className={pageStyles.linksActions}>
               <a
-                className="action action-primary"
+                className={pageStyles.actionPrimary}
                 href={resume.href}
                 download={resume.downloadName}
               >
                 Download resume
                 {resume.fileSizeLabel ? (
-                  <span className="action-meta">PDF, {resume.fileSizeLabel}</span>
+                  <span className={pageStyles.actionMeta}>
+                    PDF, {resume.fileSizeLabel}
+                  </span>
                 ) : null}
               </a>
               {externalLinks.map((link) => (
                 <a
-                  className="action"
+                  className={pageStyles.actionSecondary}
                   href={link.href}
                   key={link.label}
                   rel="noreferrer"
@@ -249,30 +284,36 @@ export const HomePage = () => {
                 </a>
               ))}
             </div>
-            <div className="links-meta">
-              <p>
-                <span className="meta-label">Email</span>
-                <a href={`mailto:${resumeData.basics.email}`}>
+            <div className={pageStyles.linksMeta}>
+              <p className={pageStyles.linksMetaItem}>
+                <span className={pageStyles.metaLabel}>Email</span>
+                <a
+                  className={pageStyles.metaValue}
+                  href={`mailto:${resumeData.basics.email}`}
+                >
                   {resumeData.basics.email}
                 </a>
               </p>
-              <p>
-                <span className="meta-label">Phone</span>
-                <a href={resumeData.basics.phoneHref}>
+              <p className={pageStyles.linksMetaItem}>
+                <span className={pageStyles.metaLabel}>Phone</span>
+                <a
+                  className={pageStyles.metaValue}
+                  href={resumeData.basics.phoneHref}
+                >
                   {resumeData.basics.phoneDisplay}
                 </a>
               </p>
-              <p>
-                <span className="meta-label">Education</span>
-                <span>
+              <p className={pageStyles.linksMetaItem}>
+                <span className={pageStyles.metaLabel}>Education</span>
+                <span className={pageStyles.metaValue}>
                   {resumeData.education.degree}, {resumeData.education.institution}
                 </span>
               </p>
+              <p className={pageStyles.linksNote}>
+                The site and code stay public. Clear writing and clean
+                implementation both matter.
+              </p>
             </div>
-            <p className="links-note">
-              The site and code stay public. Clear writing and clean
-              implementation both matter.
-            </p>
           </div>
         </section>
       </main>
