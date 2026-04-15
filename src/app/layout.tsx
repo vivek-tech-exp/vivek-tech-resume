@@ -5,7 +5,7 @@ import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 
 const description =
-  "Personal resume website for Vivek Mankonda, built with Next.js and focused on clear presentation, accessibility, and fast delivery.";
+  "Resume website for Vivek Mankonda. Backend systems, distributed architecture, and a public codebase built with care.";
 
 export const metadata: Metadata = {
   title: {
@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   },
   description,
   metadataBase: siteConfig.siteUrl ? new URL(siteConfig.siteUrl) : undefined,
+  openGraph: {
+    title: siteConfig.name,
+    description,
+    type: "website",
+  },
 };
 
 export default function RootLayout({

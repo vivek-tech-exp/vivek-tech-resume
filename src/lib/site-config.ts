@@ -1,3 +1,5 @@
+import { resumeData } from "@/lib/resume-data";
+
 const trimEnv = (value: string | undefined): string | undefined => {
   if (!value) {
     return undefined;
@@ -8,12 +10,14 @@ const trimEnv = (value: string | undefined): string | undefined => {
 };
 
 export const siteConfig = {
-  name: "Vivek Mankonda",
-  role: "Software Engineer",
-  summary:
-    "A resume website built to show the work clearly and keep the implementation equally sharp.",
+  name: resumeData.basics.name,
+  role: resumeData.basics.title,
+  summary: resumeData.positioningLine,
   siteUrl: trimEnv(process.env.NEXT_PUBLIC_SITE_URL),
-  githubUrl: trimEnv(process.env.NEXT_PUBLIC_GITHUB_URL),
-  linkedinUrl: trimEnv(process.env.NEXT_PUBLIC_LINKEDIN_URL),
+  githubUrl:
+    trimEnv(process.env.NEXT_PUBLIC_GITHUB_URL) ?? resumeData.links.github.href,
+  linkedinUrl:
+    trimEnv(process.env.NEXT_PUBLIC_LINKEDIN_URL) ??
+    resumeData.links.linkedin.href,
   resumePath: "/resume/vivek-mankonda-resume.pdf",
 } as const;
