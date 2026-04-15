@@ -133,20 +133,6 @@ export const HomePage = () => {
               Java, TypeScript, and Python across backend services, workflow
               engines, integrations, and production infrastructure.
             </p>
-            <ul className={pageStyles.profileLinks} aria-label="External profiles">
-              {externalLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    className={pageStyles.profileLink}
-                    href={link.href}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
           </aside>
         </section>
 

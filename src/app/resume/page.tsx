@@ -8,88 +8,94 @@ export default function ResumePage() {
   const resume = getResumeMeta();
 
   return (
-    <main className={pageStyles.pageShell}>
-      <section className={pageStyles.heroPanelCompact}>
-        <div className={pageStyles.heroCopy}>
-          <p className={pageStyles.eyebrow}>Resume</p>
-          <h1 className={pageStyles.heroTitleCompact}>
-            A concise view before the PDF.
-          </h1>
-          <div className={pageStyles.resumeSummaryList}>
-            {resumeData.resumePageSummary.map((line) => (
-              <p className={pageStyles.resumeSummaryText} key={line}>
-                {line}
-              </p>
-            ))}
+    <>
+      <a className={pageStyles.skipLink} href="#main-content">
+        Skip to content
+      </a>
+      <main className={pageStyles.pageShell} id="main-content">
+        <section className={pageStyles.heroPanelCompact}>
+          <div className={pageStyles.heroCopy}>
+            <p className={pageStyles.eyebrow}>Resume</p>
+            <h1 className={pageStyles.heroTitleCompact}>
+              A concise view before the PDF.
+            </h1>
+            <div className={pageStyles.resumeSummaryList}>
+              {resumeData.resumePageSummary.map((line) => (
+                <p className={pageStyles.resumeSummaryText} key={line}>
+                  {line}
+                </p>
+              ))}
+            </div>
+            <div className={pageStyles.heroActions}>
+              <a
+                className={pageStyles.actionPrimary}
+                href={resume.href}
+                download={resume.downloadName}
+              >
+                Download resume
+                {resume.fileSizeLabel ? (
+                  <span className={pageStyles.actionMeta}>
+                    PDF, {resume.fileSizeLabel}
+                  </span>
+                ) : null}
+              </a>
+              <Link className={pageStyles.actionSecondary} href="/">
+                Back home
+              </Link>
+            </div>
           </div>
-          <div className={pageStyles.heroActions}>
-            <a
-              className={pageStyles.actionPrimary}
-              href={resume.href}
-              download={resume.downloadName}
-            >
-              Download resume
-              {resume.fileSizeLabel ? (
-                <span className={pageStyles.actionMeta}>
-                  PDF, {resume.fileSizeLabel}
-                </span>
-              ) : null}
-            </a>
-            <Link className={pageStyles.actionSecondary} href="/">
-              Back home
-            </Link>
-          </div>
-        </div>
 
-        <aside className={pageStyles.heroAside}>
-          <ul className={pageStyles.metaList}>
-            <li className={pageStyles.metaItem}>
-              <span className={pageStyles.metaLabel}>Email</span>
-              <a
-                className={pageStyles.metaValue}
-                href={`mailto:${resumeData.basics.email}`}
-              >
-                {resumeData.basics.email}
-              </a>
-            </li>
-            <li className={pageStyles.metaItem}>
-              <span className={pageStyles.metaLabel}>Phone</span>
-              <a
-                className={pageStyles.metaValue}
-                href={resumeData.basics.phoneHref}
-              >
-                {resumeData.basics.phoneDisplay}
-              </a>
-            </li>
-            <li className={pageStyles.metaItem}>
-              <span className={pageStyles.metaLabel}>Source</span>
-              <span className={pageStyles.metaValue}>{resumeData.source}</span>
-            </li>
-          </ul>
-          <ul className={pageStyles.profileLinks} aria-label="External profiles">
-            <li>
-              <a
-                className={pageStyles.profileLink}
-                href={resumeData.links.linkedin.href}
-                rel="noreferrer"
-                target="_blank"
-              >
-                {resumeData.links.linkedin.label}
-              </a>
-            </li>
-            <li>
-              <a
-                className={pageStyles.profileLink}
-                href={resumeData.links.github.href}
-                rel="noreferrer"
-                target="_blank"
-              >
-                {resumeData.links.github.label}
-              </a>
-            </li>
-          </ul>
-        </aside>
-      </section>
+          <aside className={pageStyles.heroAside}>
+            <ul className={pageStyles.metaList}>
+              <li className={pageStyles.metaItem}>
+                <span className={pageStyles.metaLabel}>Email</span>
+                <a
+                  className={pageStyles.metaValue}
+                  href={`mailto:${resumeData.basics.email}`}
+                >
+                  {resumeData.basics.email}
+                </a>
+              </li>
+              <li className={pageStyles.metaItem}>
+                <span className={pageStyles.metaLabel}>Phone</span>
+                <a
+                  className={pageStyles.metaValue}
+                  href={resumeData.basics.phoneHref}
+                >
+                  {resumeData.basics.phoneDisplay}
+                </a>
+              </li>
+              <li className={pageStyles.metaItem}>
+                <span className={pageStyles.metaLabel}>Base</span>
+                <span className={pageStyles.compactMetaValue}>
+                  {resumeData.basics.locations.join(" · ")}
+                </span>
+              </li>
+            </ul>
+            <ul className={pageStyles.profileLinks} aria-label="External profiles">
+              <li>
+                <a
+                  className={pageStyles.profileLink}
+                  href={resumeData.links.linkedin.href}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {resumeData.links.linkedin.label}
+                </a>
+              </li>
+              <li>
+                <a
+                  className={pageStyles.profileLink}
+                  href={resumeData.links.github.href}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {resumeData.links.github.label}
+                </a>
+              </li>
+            </ul>
+          </aside>
+        </section>
 
       <section
         className={pageStyles.section}
@@ -191,6 +197,7 @@ export default function ResumePage() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
