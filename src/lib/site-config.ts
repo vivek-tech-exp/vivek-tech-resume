@@ -19,5 +19,4 @@ export const siteConfig = {
   linkedinUrl:
     trimEnv(process.env.NEXT_PUBLIC_LINKEDIN_URL) ??
     resumeData.links.linkedin.href,
-  resumePath: "/vivek-mankonda-resume.pdf",
 } as const;

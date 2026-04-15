@@ -24,12 +24,11 @@ export type ResumeStackGroup = {
 export type ResumeCaseStudy = {
   title: string;
   context: string;
-  focus: string;
-  outcome: string;
+  description: string;
+  href: string;
 };
 
 export const resumeData = {
-  source: "docs/vivek_mankonda_resume.pdf",
   positioningLine:
     "Senior backend engineer with 7 years across distributed systems, workflow automation, and cloud infrastructure.",
   basics: {
@@ -37,14 +36,7 @@ export const resumeData = {
     title: "Senior Backend Engineer",
     locations: ["Hyderabad", "Bengaluru", "Pune", "India (Remote)"],
     email: "vivekmankonda.work@gmail.com",
-    phoneDisplay: "+91 6361855058",
-    phoneHref: "tel:+916361855058",
   },
-  resumePageSummary: [
-    "Senior backend engineer with 7 years across distributed systems, workflow automation, and cloud infrastructure.",
-    "Strongest areas are correctness, reliability, observability, and cloud infrastructure under real operational pressure.",
-    "Seven years across product engineering, platform work, and systems where state, scale, and uptime matter.",
-  ],
   summary: [
     "Software Engineer with 7 years of experience creating high-performance backend systems and distributed architectures.",
     "Skilled in solving customer-centric challenges, scaling complex platforms, and streamlining cloud operations. Proven success driving products from inception to launch, collaborating remotely, and delivering clear documentation.",
@@ -188,28 +180,39 @@ export const resumeData = {
   ] satisfies readonly ResumeStackGroup[],
   caseStudies: [
     {
-      title: "Customer Onboarding Automation",
+      title: "Cloud Onboarding & Provisioning Automation",
       context: "New Relic",
-      focus: "Replaced manual provisioning with Terraform-driven onboarding and tighter infrastructure integration.",
-      outcome: "Shorter customer setup time and less operational drag on engineering teams.",
+      description:
+        "Terraform-based onboarding and provisioning workflows for cloud-backed systems.",
+      href: "https://www.notion.so/Cloud-Onboarding-Provisioning-Automation-33dc3c09806980b9870ec3404a0813db?source=copy_link",
     },
     {
-      title: "Healthcare Workflow Platform",
+      title: "Healthcare Workflow Automation Platform",
       context: "Acko",
-      focus: "Built workflow-heavy microservices with Camunda, BPMN, and DMN for automated healthcare operations.",
-      outcome: "Medical checkup turnaround dropped from 17 days to 3.",
+      description:
+        "Workflow-driven backend architecture using Camunda, BPMN, and DMN for structured operational flows.",
+      href: "https://www.notion.so/Healthcare-Workflow-Automation-Platform-33dc3c09806980339d41c979d47d9232?source=copy_link",
     },
     {
-      title: "High-Traffic Platform Efficiency",
+      title: "Automated Medical Checkup Scheduling System",
+      context: "Acko",
+      description:
+        "Operational automation system that reduced turnaround from 17 days to 3.",
+      href: "https://www.notion.so/Automated-Medical-Checkup-Scheduling-System-33dc3c0980698050b21dc4a07d059e61?source=copy_link",
+    },
+    {
+      title: "High-Traffic Backend Cost Optimization",
       context: "Gameskraft Technologies",
-      focus: "Reworked architecture and delivery flows for traffic-heavy systems under real operational pressure.",
-      outcome: "AWS costs dropped by 38% and deployment reliability improved through CI/CD automation.",
+      description:
+        "Architecture and infra work focused on reducing AWS costs while supporting high traffic.",
+      href: "https://www.notion.so/High-Traffic-Backend-Cost-Optimization-33dc3c09806980a28242c1cf60ed8b40?source=copy_link",
     },
     {
-      title: "Fintech Trading Backend",
+      title: "Fintech Backend Platform with FIX Protocol Integration",
       context: "Needle Innovision",
-      focus: "Built backend systems for FinchMoney and integrated FIX 2.0 trading protocols.",
-      outcome: "Delivered a production backend for a workflow- and integration-heavy fintech product.",
+      description:
+        "Backend work for fintech systems involving FIX 2.0 integrations and trading-oriented workflows.",
+      href: "https://www.notion.so/Fintech-Backend-Platform-with-FIX-Protocol-Integration-33dc3c098069809697a5de26144c0272?source=copy_link",
     },
   ] satisfies readonly ResumeCaseStudy[],
   education: {

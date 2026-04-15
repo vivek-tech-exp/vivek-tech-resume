@@ -1,5 +1,4 @@
 import { pageStyles } from "@/lib/page-styles";
-import { getResumeMeta } from "@/lib/resume";
 import { resumeData } from "@/lib/resume-data";
 import { siteConfig } from "@/lib/site-config";
 
@@ -38,7 +37,6 @@ const buildExternalLinks = (): ExternalLink[] => {
 };
 
 export const HomePage = () => {
-  const resume = getResumeMeta();
   const externalLinks = buildExternalLinks();
 
   return (
@@ -81,20 +79,6 @@ export const HomePage = () => {
               Infrastructure
             </p>
             <p className={pageStyles.heroSummary}>{resumeData.positioningLine}</p>
-            <div className={pageStyles.heroActions} aria-label="Primary actions">
-              <a
-                className={pageStyles.actionPrimary}
-                href={resume.href}
-                download={resume.downloadName}
-              >
-                Download resume
-                {resume.fileSizeLabel ? (
-                  <span className={pageStyles.actionMeta}>
-                    PDF, {resume.fileSizeLabel}
-                  </span>
-                ) : null}
-              </a>
-            </div>
           </div>
 
           <aside className={pageStyles.heroAside} aria-label="Profile details">
@@ -112,15 +96,6 @@ export const HomePage = () => {
                   href={`mailto:${resumeData.basics.email}`}
                 >
                   {resumeData.basics.email}
-                </a>
-              </li>
-              <li className={pageStyles.metaItem}>
-                <span className={pageStyles.metaLabel}>Phone</span>
-                <a
-                  className={pageStyles.metaValue}
-                  href={resumeData.basics.phoneHref}
-                >
-                  {resumeData.basics.phoneDisplay}
                 </a>
               </li>
             </ul>
@@ -220,9 +195,16 @@ export const HomePage = () => {
                 <p className={pageStyles.systemContext}>{study.context}</p>
                 <div className={pageStyles.systemBody}>
                   <h3 className={pageStyles.systemTitle}>{study.title}</h3>
-                  <p className={pageStyles.systemText}>{study.focus}</p>
+                  <p className={pageStyles.systemText}>{study.description}</p>
                 </div>
-                <p className={pageStyles.systemOutcome}>{study.outcome}</p>
+                <a
+                  className={pageStyles.systemLink}
+                  href={study.href}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Read full doc
+                </a>
               </article>
             ))}
           </div>
@@ -236,23 +218,11 @@ export const HomePage = () => {
           <div className={pageStyles.sectionHeading}>
             <p className={pageStyles.sectionKicker}>Links</p>
             <h2 className={pageStyles.sectionTitle} id="links-heading">
-              Resume PDF, LinkedIn, GitHub, and direct contact.
+              LinkedIn, GitHub, and direct contact.
             </h2>
           </div>
           <div className={pageStyles.linksPanel}>
             <div className={pageStyles.linksActions}>
-              <a
-                className={pageStyles.actionPrimary}
-                href={resume.href}
-                download={resume.downloadName}
-              >
-                Download resume
-                {resume.fileSizeLabel ? (
-                  <span className={pageStyles.actionMeta}>
-                    PDF, {resume.fileSizeLabel}
-                  </span>
-                ) : null}
-              </a>
               {externalLinks.map((link) => (
                 <a
                   className={pageStyles.actionSecondary}
@@ -273,15 +243,6 @@ export const HomePage = () => {
                   href={`mailto:${resumeData.basics.email}`}
                 >
                   {resumeData.basics.email}
-                </a>
-              </p>
-              <p className={pageStyles.linksMetaItem}>
-                <span className={pageStyles.metaLabel}>Phone</span>
-                <a
-                  className={pageStyles.metaValue}
-                  href={resumeData.basics.phoneHref}
-                >
-                  {resumeData.basics.phoneDisplay}
                 </a>
               </p>
               <p className={pageStyles.linksMetaItem}>

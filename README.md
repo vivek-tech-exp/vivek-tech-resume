@@ -17,7 +17,6 @@ Project docs:
 - Notion-backed project content on the landing page
 - GitHub repo link or selected repository links
 - LinkedIn link
-- resume PDF download
 - responsive layout
 - WCAG 2.1 AA accessibility
 - strong performance with minimal client-side JavaScript
@@ -65,4 +64,4 @@ Use [.env.example](/Users/vivekmankonda/Documents/GitHub/vivek-tech-resume/.env.
 
 ## Notes
 
-The resume PDF currently lives at `public/vivek-mankonda-resume.pdf`.
+- only add a public resume PDF if it has been redacted for public release

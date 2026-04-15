@@ -12,7 +12,6 @@ This is not a product site. It is a clear, fast, well-built web version of a res
 - Notion-backed project content rendered on the landing page
 - GitHub link or selected repository links
 - LinkedIn link
-- resume PDF download
 
 ## Routes
 
@@ -51,13 +50,13 @@ Rules:
 - fetch server-side only
 - do not build a noisy activity feed
 
-### Resume PDF
+### Public Resume PDF
 
-Store the PDF as a static asset, for example:
+Only add a downloadable PDF if it is redacted for public release.
+
+If used, store it as a static asset, for example:
 
 - `public/vivek-mankonda-resume.pdf`
-
-Use a normal link for download, not a JavaScript-triggered button.
 
 ## Design Direction
 
@@ -118,7 +117,7 @@ Minimum expectations:
 1. Scaffold the Next.js app and baseline tooling.
 2. Set up layout, typography, tokens, and accessibility baseline.
 3. Build the Notion and GitHub integration layer.
-4. Build the landing page and resume download flow.
+4. Build the landing page and any public-safe download flow.
 5. Run accessibility, responsive, and performance checks.
 
 ## Public Repo Constraints

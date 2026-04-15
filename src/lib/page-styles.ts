@@ -83,7 +83,8 @@ export const pageStyles = {
   systemBody: "space-y-3",
   systemTitle: "text-xl font-medium tracking-tight text-zinc-50",
   systemText: "text-sm leading-7 text-zinc-300",
-  systemOutcome: "border-t border-zinc-800 pt-4 text-sm leading-7 text-zinc-100",
+  systemLink:
+    "w-fit border-t border-zinc-800 pt-4 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-zinc-300 no-underline transition-colors duration-200 hover:text-zinc-50",
   linksPanel:
     "grid gap-6 border border-zinc-800 bg-zinc-950 p-5 sm:p-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-10",
   linksActions: "flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap",
