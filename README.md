@@ -2,14 +2,9 @@
 
 Public Next.js codebase for a personal resume website.
 
-The goal is simple:
-
-- replace a static PDF-style resume with a fast, accessible website
-- keep the repository public so the implementation quality is visible
-
 ## Status
 
-Planning phase.
+Foundation scaffold in place.
 
 Project docs:
 
@@ -34,6 +29,33 @@ Project docs:
 - Server Components by default
 - static-first rendering with controlled revalidation for external content
 
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`.
+
+## Scripts
+
+- `npm run dev`
+- `npm run build`
+- `npm run start`
+- `npm run lint`
+- `npm run typecheck`
+
+## Environment
+
+Use [.env.example](/Users/vivekmankonda/Documents/GitHub/vivek-tech-resume/.env.example) as the reference.
+
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_GITHUB_URL`
+- `NEXT_PUBLIC_LINKEDIN_URL`
+- `NOTION_TOKEN`
+- `NOTION_PROJECTS_DATABASE_ID`
+
 ## Public Repo Rules
 
 - never commit secrets
@@ -43,4 +65,4 @@ Project docs:
 
 ## Notes
 
-This repo is meant to show both the resume content and the quality of the code behind it.
+The resume PDF currently lives at `public/resume/vivek-mankonda-resume.pdf`.
