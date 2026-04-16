@@ -135,14 +135,14 @@ export const HomePage = () => {
         </section>
         
         <section
-          className={`${pageStyles.section} opacity-0 animate-reveal border-b-0 py-10 sm:py-12 lg:py-14`}
+          className={`${pageStyles.specializationSection} opacity-0 animate-reveal`}
           style={{ animationDelay: "225ms" }}
         >
           <div className={pageStyles.sectionHeading}>
-             <p className={pageStyles.sectionKicker}>Specialization</p>
+            <p className={pageStyles.sectionKicker}>Specialization</p>
           </div>
           <div className="max-w-3xl">
-            <p className="text-xl font-medium leading-relaxed text-[var(--text)] sm:text-2xl italic opacity-90">
+            <p className={pageStyles.specializationText}>
               {resumeData.specializationSummary}
             </p>
           </div>

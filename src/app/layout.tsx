@@ -13,11 +13,11 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
-  description,
+  description: siteConfig.summary,
   metadataBase: siteConfig.siteUrl ? new URL(siteConfig.siteUrl) : undefined,
   openGraph: {
     title: siteConfig.name,
-    description,
+    description: siteConfig.summary,
     type: "website",
   },
 };

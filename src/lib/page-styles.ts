@@ -81,12 +81,12 @@ export const pageStyles = {
   linksMetaItem: "grid gap-1",
   linksNote:
     "border-t border-[var(--border)] pt-4 text-sm leading-7 text-[var(--text-soft)]",
-  themeControl: "flex items-center gap-3",
-  themeLabel:
-    "hidden font-mono text-[0.68rem] uppercase tracking-[0.18em] text-[var(--text-subtle)] sm:block",
+  themeControl: "flex items-center gap-2",
   themeOptions:
-    "inline-grid grid-cols-3 gap-1 border border-[var(--border)] bg-[var(--surface)] p-1",
+    "inline-flex items-center gap-0.5 rounded-full border border-[var(--border)] bg-[var(--surface-raised)] p-0.5 shadow-sm backdrop-blur-sm",
   themeButton:
-    "min-h-9 px-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-[var(--text-soft)] transition-colors duration-200 hover:bg-[var(--surface-hover)] hover:text-[var(--text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--page)]",
-  themeButtonActive: "bg-[var(--inverse-surface)] text-[var(--inverse-text)]",
+    "flex h-7 w-7 items-center justify-center rounded-full text-[var(--text-soft)] transition-all duration-300 hover:text-[var(--text)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--focus)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--page)]",
+  themeButtonActive: "bg-[var(--surface-hover)] text-[var(--text)] shadow-sm",
+  specializationSection: "grid gap-8 border-t border-[var(--border)] py-10 sm:py-12 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-12 lg:py-14",
+  specializationText: "text-xl font-medium leading-relaxed text-[var(--text)] sm:text-2xl italic opacity-90 max-w-3xl",
 } as const;
