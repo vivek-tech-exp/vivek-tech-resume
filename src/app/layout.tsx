@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { siteConfig } from "@/lib/site-config";
+import { getThemeScript } from "@/lib/theme";
 
 const description =
   "Resume website for Vivek Mankonda. Backend systems, distributed architecture, and a public codebase built with care.";
@@ -27,8 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth bg-zinc-950">
-      <body className="min-h-screen bg-zinc-950 font-sans text-zinc-50 antialiased">
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <body className="min-h-screen bg-[var(--page)] font-sans text-[var(--text)] antialiased">
+        <script dangerouslySetInnerHTML={{ __html: getThemeScript() }} />
         {children}
       </body>
     </html>

@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { pageStyles } from "@/lib/page-styles";
 import { resumeData } from "@/lib/resume-data";
 import { siteConfig } from "@/lib/site-config";
@@ -63,6 +64,7 @@ export const HomePage = () => {
               Links
             </a>
           </nav>
+          <ThemeToggle />
         </div>
       </header>
 
