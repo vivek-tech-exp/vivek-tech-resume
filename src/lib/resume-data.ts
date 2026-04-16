@@ -25,12 +25,15 @@ export type ResumeCaseStudy = {
   title: string;
   context: string;
   description: string;
+  outcome: string;
   href: string;
 };
 
 export const resumeData = {
   positioningLine:
-    "Senior backend engineer with 7 years across distributed systems, workflow automation, and cloud infrastructure.",
+    "I build backend systems where delays, incorrectness, and operational drag are expensive.",
+  specializationSummary:
+    "Best in workflow-heavy backend systems, integrations, and production reliability under pressure.",
   basics: {
     name: "Vivek Mankonda",
     title: "Senior Backend Engineer",
@@ -65,7 +68,7 @@ export const resumeData = {
     },
     github: {
       href: "https://github.com/vivek-tech-exp/vivek-tech-resume",
-      label: "GitHub Repo",
+      label: "GitHub",
     },
   } satisfies Record<string, ResumeLink>,
   experience: [
@@ -184,6 +187,7 @@ export const resumeData = {
       context: "New Relic",
       description:
         "Terraform-based onboarding and provisioning workflows for cloud-backed systems.",
+      outcome: "Improved provisioning speed and repeatability",
       href: "https://www.notion.so/Cloud-Onboarding-Provisioning-Automation-33dc3c09806980b9870ec3404a0813db?source=copy_link",
     },
     {
@@ -191,6 +195,7 @@ export const resumeData = {
       context: "Acko",
       description:
         "Workflow-driven backend architecture using Camunda, BPMN, and DMN for structured operational flows.",
+      outcome: "Reduced ops overhead through workflow automation",
       href: "https://www.notion.so/Healthcare-Workflow-Automation-Platform-33dc3c09806980339d41c979d47d9232?source=copy_link",
     },
     {
@@ -198,6 +203,7 @@ export const resumeData = {
       context: "Acko",
       description:
         "Operational automation system that reduced turnaround from 17 days to 3.",
+      outcome: "Cut delivery latency by 82% through automation",
       href: "https://www.notion.so/Automated-Medical-Checkup-Scheduling-System-33dc3c0980698050b21dc4a07d059e61?source=copy_link",
     },
     {
@@ -205,6 +211,7 @@ export const resumeData = {
       context: "Gameskraft Technologies",
       description:
         "Architecture and infra work focused on reducing AWS costs while supporting high traffic.",
+      outcome: "Lowered cloud cost under high traffic",
       href: "https://www.notion.so/High-Traffic-Backend-Cost-Optimization-33dc3c09806980a28242c1cf60ed8b40?source=copy_link",
     },
     {
@@ -212,6 +219,7 @@ export const resumeData = {
       context: "Needle Innovision",
       description:
         "Backend work for fintech systems involving FIX 2.0 integrations and trading-oriented workflows.",
+      outcome: "Standardized high-frequency trading integrations",
       href: "https://www.notion.so/Fintech-Backend-Platform-with-FIX-Protocol-Integration-33dc3c098069809697a5de26144c0272?source=copy_link",
     },
   ] satisfies readonly ResumeCaseStudy[],

@@ -37,6 +37,14 @@ const buildExternalLinks = (): ExternalLink[] => {
   return links;
 };
 
+const formatYearOnly = (period: string) => {
+  const years = period.match(/\b\d{4}\b/g);
+  if (!years) return period;
+  if (years.length === 1) return years[0];
+  if (years[0] === years[1]) return years[0];
+  return `${years[0]} – ${years[1]}`;
+};
+
 export const HomePage = () => {
   const externalLinks = buildExternalLinks();
 
@@ -57,11 +65,11 @@ export const HomePage = () => {
             <a className={pageStyles.topBarLink} href="#stack">
               Stack
             </a>
-            <a className={pageStyles.topBarLink} href="#systems">
-              Systems
+            <a className={pageStyles.topBarLink} href="#case-studies">
+              Case Studies
             </a>
-            <a className={pageStyles.topBarLink} href="#links">
-              Links
+            <a className={pageStyles.topBarLink} href="#contact">
+              Contact
             </a>
           </nav>
           <ThemeToggle />
@@ -106,8 +114,9 @@ export const HomePage = () => {
         </section>
 
         <section
-          className={pageStyles.section}
+          className={`${pageStyles.section} opacity-0 animate-reveal`}
           id="impact"
+          style={{ animationDelay: "150ms" }}
           aria-labelledby="impact-heading"
         >
           <div className={pageStyles.sectionHeading}>
@@ -124,10 +133,25 @@ export const HomePage = () => {
             ))}
           </ul>
         </section>
+        
+        <section
+          className={`${pageStyles.section} opacity-0 animate-reveal border-b-0 py-10 sm:py-12 lg:py-14`}
+          style={{ animationDelay: "225ms" }}
+        >
+          <div className={pageStyles.sectionHeading}>
+             <p className={pageStyles.sectionKicker}>Specialization</p>
+          </div>
+          <div className="max-w-3xl">
+            <p className="text-xl font-medium leading-relaxed text-[var(--text)] sm:text-2xl italic opacity-90">
+              {resumeData.specializationSummary}
+            </p>
+          </div>
+        </section>
 
         <section
-          className={pageStyles.section}
+          className={`${pageStyles.section} opacity-0 animate-reveal`}
           id="experience"
+          style={{ animationDelay: "300ms" }}
           aria-labelledby="experience-heading"
         >
           <div className={pageStyles.sectionHeading}>
@@ -140,7 +164,9 @@ export const HomePage = () => {
             {resumeData.experience.map((item) => (
               <li key={`${item.company}-${item.period}`}>
                 <article className={pageStyles.snapshotCard}>
-                  <p className={pageStyles.snapshotPeriod}>{item.period}</p>
+                  <p className={pageStyles.snapshotPeriod}>
+                    {formatYearOnly(item.period)}
+                  </p>
                   <div className={pageStyles.snapshotBody}>
                     <h3 className={pageStyles.snapshotTitle}>{item.role}</h3>
                     <p className={pageStyles.snapshotCompany}>
@@ -155,8 +181,9 @@ export const HomePage = () => {
         </section>
 
         <section
-          className={pageStyles.section}
+          className={`${pageStyles.section} opacity-0 animate-reveal`}
           id="stack"
+          style={{ animationDelay: "450ms" }}
           aria-labelledby="stack-heading"
         >
           <div className={pageStyles.sectionHeading}>
@@ -178,14 +205,15 @@ export const HomePage = () => {
         </section>
 
         <section
-          className={pageStyles.section}
-          id="systems"
+          className={`${pageStyles.section} opacity-0 animate-reveal`}
+          id="case-studies"
+          style={{ animationDelay: "600ms" }}
           aria-labelledby="systems-heading"
         >
           <div className={pageStyles.sectionHeading}>
-            <p className={pageStyles.sectionKicker}>Selected Systems</p>
+            <p className={pageStyles.sectionKicker}>Selected Case Studies</p>
             <h2 className={pageStyles.sectionTitle} id="systems-heading">
-              A few systems where the engineering work is concrete.
+              A few case studies where the engineering work is concrete.
             </h2>
           </div>
           <div className={pageStyles.systemsGrid}>
@@ -193,8 +221,23 @@ export const HomePage = () => {
               <article className={pageStyles.systemCard} key={study.title}>
                 <p className={pageStyles.systemContext}>{study.context}</p>
                 <div className={pageStyles.systemBody}>
-                  <h3 className={pageStyles.systemTitle}>{study.title}</h3>
+                  <h3 className={pageStyles.systemTitle}>
+                    <a
+                      href={study.href}
+                      rel="noreferrer"
+                      target="_blank"
+                      className="hover:text-[var(--text)] flex items-baseline justify-between w-full"
+                    >
+                      <span>{study.title}</span>
+                      <span className="text-xl opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                        ↗
+                      </span>
+                    </a>
+                  </h3>
                   <p className={pageStyles.systemText}>{study.description}</p>
+                  <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-[var(--accent)] font-semibold">
+                    {study.outcome}
+                  </p>
                 </div>
                 <a
                   className={pageStyles.systemLink}
@@ -202,7 +245,7 @@ export const HomePage = () => {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  Read full doc
+                  View engineering case study
                 </a>
               </article>
             ))}
@@ -210,12 +253,13 @@ export const HomePage = () => {
         </section>
 
         <section
-          className={pageStyles.section}
-          id="links"
+          className={`${pageStyles.section} opacity-0 animate-reveal`}
+          id="contact"
+          style={{ animationDelay: "750ms" }}
           aria-labelledby="links-heading"
         >
           <div className={pageStyles.sectionHeading}>
-            <p className={pageStyles.sectionKicker}>Links</p>
+            <p className={pageStyles.sectionKicker}>Resume & Contact</p>
             <h2 className={pageStyles.sectionTitle} id="links-heading">
               LinkedIn, GitHub, and direct contact.
             </h2>
@@ -245,8 +289,10 @@ export const HomePage = () => {
                 </a>
               </p>
               <p className={pageStyles.linksMetaItem}>
-                <span className={pageStyles.metaLabel}>Education</span>
-                <span className={pageStyles.metaValue}>
+                <span className="font-mono text-[0.55rem] uppercase tracking-[0.3em] text-[var(--text-subtle)]">
+                  Education
+                </span>
+                <span className="text-sm leading-relaxed text-[var(--text-soft)] italic">
                   {resumeData.education.degree}, {resumeData.education.institution}
                 </span>
               </p>
