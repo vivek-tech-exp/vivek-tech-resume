@@ -49,9 +49,6 @@ export const resumeData = {
       statement: "Automated customer onboarding with Terraform.",
     },
     {
-      statement: "Reduced MTTR by 37% in a firefighting environment.",
-    },
-    {
       statement: "Cut medical checkup wait time from 17 days to 3.",
     },
     {
