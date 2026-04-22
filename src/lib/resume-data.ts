@@ -186,41 +186,33 @@ export const resumeData = {
       title: "Cloud Onboarding & Provisioning Automation",
       context: "New Relic",
       description:
-        "Terraform-based onboarding and provisioning workflows for cloud-backed systems.",
-      outcome: "Improved provisioning speed and repeatability",
+        "Implemented version-controlled Infrastructure-as-Code modules using Terraform to automate the onboarding of thousands of enterprise AWS accounts, replacing manual UI configurations with auditable, high-scale telemetry pipelines.",
+      outcome: "Standardized enterprise cloud provisioning at scale",
       href: "https://www.notion.so/Cloud-Onboarding-Provisioning-Automation-33dc3c09806980b9870ec3404a0813db?source=copy_link",
     },
     {
-      title: "Healthcare Workflow Automation Platform",
+      title: "Health Insurance Workflow Automation Platform",
       context: "Acko",
       description:
-        "Workflow-driven backend architecture using Camunda, BPMN, and DMN for structured operational flows.",
-      outcome: "Reduced ops overhead through workflow automation",
-      href: "https://www.notion.so/Healthcare-Workflow-Automation-Platform-33dc3c09806980339d41c979d47d9232?source=copy_link",
-    },
-    {
-      title: "Automated Medical Checkup Scheduling System",
-      context: "Acko",
-      description:
-        "Operational automation system that reduced turnaround from 17 days to 3.",
-      outcome: "Cut delivery latency by 82% through automation",
-      href: "https://www.notion.so/Automated-Medical-Checkup-Scheduling-System-33dc3c0980698050b21dc4a07d059e61?source=copy_link",
+        "Architected a workflow-first backend using Camunda, BPMN, and DMN to orchestrate complex insurance operations, explicitly modeling long-running business processes and automating critical state transitions.",
+      outcome: "Reduced medical checkup turnaround from 17 days to 3",
+      href: "https://www.notion.so/Health-Insurance-Workflow-Automation-Platform-33dc3c09806980339d41c979d47d9232?source=copy_link",
     },
     {
       title: "High-Traffic Backend Cost Optimization",
       context: "Gameskraft Technologies",
       description:
-        "Architecture and infra work focused on reducing AWS costs while supporting high traffic.",
-      outcome: "Lowered cloud cost under high traffic",
+        "Re-engineered backend resource allocation and infrastructure strategy on AWS for high-traffic gaming systems, while modernizing deployment reliability through enterprise-grade automated CI/CD pipelines.",
+      outcome: "38% reduction in annual AWS infrastructure costs",
       href: "https://www.notion.so/High-Traffic-Backend-Cost-Optimization-33dc3c09806980a28242c1cf60ed8b40?source=copy_link",
     },
     {
-      title: "Fintech Backend Platform with FIX Protocol Integration",
+      title: "FinchMoney: Automated Consumer Investing Platform",
       context: "Needle Innovision",
       description:
-        "Backend work for fintech systems involving FIX 2.0 integrations and trading-oriented workflows.",
-      outcome: "Standardized high-frequency trading integrations",
-      href: "https://www.notion.so/Fintech-Backend-Platform-with-FIX-Protocol-Integration-33dc3c098069809697a5de26144c0272?source=copy_link",
+        "Engineered a pooled brokerage architecture and fractional share accounting system to reconcile real-time consumer spending with asynchronous market settlements, integrating complex liquidity management and FIX-based trading protocols.",
+      outcome: "Aligned user spending power with real-market settlements",
+      href: "https://www.notion.so/FinchMoney-Building-the-Backend-for-an-Automated-Consumer-Investing-Platform-33dc3c098069809697a5de26144c0272?source=copy_link",
     },
   ] satisfies readonly ResumeCaseStudy[],
   education: {
