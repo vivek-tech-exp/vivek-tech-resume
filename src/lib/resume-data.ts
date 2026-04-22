@@ -199,14 +199,6 @@ export const resumeData = {
       href: "https://www.notion.so/Health-Insurance-Workflow-Automation-Platform-33dc3c09806980339d41c979d47d9232?source=copy_link",
     },
     {
-      title: "High-Traffic Backend Cost Optimization",
-      context: "Gameskraft Technologies",
-      description:
-        "Re-engineered backend resource allocation and infrastructure strategy on AWS for high-traffic gaming systems, while modernizing deployment reliability through enterprise-grade automated CI/CD pipelines.",
-      outcome: "38% reduction in annual AWS infrastructure costs",
-      href: "https://www.notion.so/High-Traffic-Backend-Cost-Optimization-33dc3c09806980a28242c1cf60ed8b40?source=copy_link",
-    },
-    {
       title: "FinchMoney: Automated Consumer Investing Platform",
       context: "Needle Innovision",
       description:
