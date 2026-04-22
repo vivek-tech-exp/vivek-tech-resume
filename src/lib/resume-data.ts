@@ -55,9 +55,6 @@ export const resumeData = {
       statement: "Cut medical checkup wait time from 17 days to 3.",
     },
     {
-      statement: "Reduced AWS costs by 38% on high-traffic systems.",
-    },
-    {
       statement: "Built a fintech backend with FIX 2.0 integrations.",
     },
   ] satisfies readonly ResumeProofPoint[],
