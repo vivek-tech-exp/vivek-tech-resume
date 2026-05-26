@@ -11,7 +11,7 @@ export const pageStyles = {
   nav: "hidden items-center gap-5 sm:flex",
   navLink:
     "text-sm text-[var(--text-soft)] no-underline hover:text-[var(--text)]",
-  hero: "relative space-y-6 border-b border-[var(--border)] pb-12 sm:pb-16",
+  hero: "space-y-6 border-b border-[var(--border)] pb-12 sm:pb-16",
   siteLabel: "text-sm text-[var(--text-subtle)]",
   heroTitle:
     "text-balance text-[clamp(2.5rem,2rem+2.5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-[var(--text)]",

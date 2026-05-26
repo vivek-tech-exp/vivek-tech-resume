@@ -66,20 +66,8 @@ Structure:
 Only small client islands are used:
 
 - theme toggle in the header
-- optional hero atmosphere on desktop (`three` + HTML-in-Canvas when supported)
 
 Everything else is server-rendered HTML.
-
-## Experimental hero atmosphere
-
-The hero can load a deferred Three.js scene on desktop browsers that allow motion.
-
-- **Three.js** renders a subtle floating panel behind the hero.
-- **HTML-in-Canvas** (`HTMLTexture` in Three.js r184) maps real DOM text onto the panel when the browser supports it.
-- The readable hero remains normal HTML for SEO, accessibility, and fast first read.
-- The effect is skipped for reduced motion, coarse pointers, save-data mode, and small screens.
-
-HTML-in-Canvas is still experimental in Chrome ([origin trial](https://developer.chrome.com/blog/html-in-canvas-origin-trial)). When unsupported, the scene falls back to a simple shaded plane.
 
 ## Quality bar
 
