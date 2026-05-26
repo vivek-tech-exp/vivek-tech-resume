@@ -6,93 +6,74 @@ Build a personal resume website in Next.js.
 
 This is not a product site. It is a clear, fast, well-built web version of a resume, with the code kept public to show implementation quality.
 
-## Scope
+## Current scope
 
-- single landing page with profile, selected work, and links
-- Notion-backed project content rendered on the landing page
-- GitHub link or selected repository links
-- LinkedIn link
+- single landing page with profile, selected work, experience, and contact links
+- resume content stored in `src/lib/resume-data.ts`
+- external links to GitHub, LinkedIn, live apps, repos, and Notion case studies
+- SEO and discoverability via metadata, sitemap, robots.txt, JSON-LD, and `/llms.txt`
 
 ## Routes
 
 - `/`
+- `/robots.txt`
+- `/sitemap.xml`
+- `/llms.txt`
 
-## Data Sources
+## Data model
 
-### Notion
+All public resume content is typed and stored in `src/lib/resume-data.ts`:
 
-Use Notion for project content shown on the landing page.
+- profile basics
+- proof points
+- experience highlights
+- side projects
+- case studies
+- core stack
+- UI copy
 
-Rules:
+External content is linked, not fetched at runtime.
 
-- fetch server-side only
-- map raw Notion data into internal types before rendering
-- keep a stable slug for each project
-
-Suggested fields:
-
-- `name`
-- `slug`
-- `summary`
-- `role`
-- `period`
-- `featured`
-- `github_url`
-- `external_url`
-
-### GitHub
-
-Use GitHub as a simple proof surface.
-
-Rules:
-
-- show only selected repositories or a direct profile link
-- fetch server-side only
-- do not build a noisy activity feed
-
-### Public Resume PDF
-
-Only add a downloadable PDF if it is redacted for public release.
-
-If used, store it as a static asset, for example:
-
-- `public/vivek-mankonda-resume.pdf`
-
-## Design Direction
+## Design direction
 
 The site should feel understated, minimal, and precise.
 
 Rules:
 
 - no generic portfolio UI
-- no skill bars
-- no testimonial carousels
-- no loud hero section
+- no skill bars or decorative dashboards
 - no unnecessary animation
+- plain language and one idea per section
 - let typography, spacing, and content do most of the work
 
-## Technical Direction
+## Technical direction
 
 - Next.js App Router
 - TypeScript strict mode
 - Server Components by default
-- static-first rendering
-- controlled revalidation for external content
+- static generation for the landing page
 - minimal client-side JavaScript
 
-Recommended structure:
+Structure:
 
-- `src/app`
-- `src/features`
-- `src/components`
-- `src/lib/integrations`
-- `public`
+- `src/app` — routes, layouts, SEO endpoints
+- `src/features/home` — landing page UI
+- `src/components` — shared UI such as theme toggle
+- `src/lib` — resume data, site config, theme, SEO helpers
 
-## Quality Bar
+## Client JavaScript
+
+Only small client islands are used:
+
+- theme toggle in the header
+
+Everything else is server-rendered HTML.
+
+## Quality bar
 
 ### Accessibility
 
-WCAG 2.1 AA is required.
+WCAG 2.1 AA is the target.
 
 Minimum expectations:
 
@@ -101,26 +82,26 @@ Minimum expectations:
 - visible focus states
 - sufficient contrast
 - reduced-motion support
-- meaningful labels and alt text
+- meaningful labels
 
 ### Performance
 
 Minimum expectations:
 
 - small client bundle
-- optimized images
-- intentional font loading
-- no heavy UI libraries unless clearly justified
+- no decorative runtime widgets
+- static HTML for primary content
+- deferred rendering only where it helps below-the-fold sections
 
-## Build Order
+## Build order
 
 1. Scaffold the Next.js app and baseline tooling.
 2. Set up layout, typography, tokens, and accessibility baseline.
-3. Build the Notion and GitHub integration layer.
-4. Build the landing page and any public-safe download flow.
+3. Build the landing page from typed resume data.
+4. Add SEO endpoints and structured metadata.
 5. Run accessibility, responsive, and performance checks.
 
-## Public Repo Constraints
+## Public repo constraints
 
 - no secrets in the repo
 - no private IDs in docs

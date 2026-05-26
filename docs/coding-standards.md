@@ -6,48 +6,58 @@ This repository is public to show the code quality behind a resume website.
 
 The standard is simple: clear code, strong fundamentals, minimal overhead.
 
-## Core Rules
+## Core rules
 
 - prefer simple, explicit code over clever abstractions
 - optimize for readability and maintainability
 - keep route files thin
-- keep external integrations isolated from UI code
+- keep content data separate from presentation
 - avoid unnecessary dependencies
 
 ## TypeScript
 
 - use strict mode
 - do not use `any`
-- use `unknown` at boundaries and narrow deliberately
-- validate external data before using it
-- keep domain types explicit
+- keep domain types explicit in `src/lib/resume-data.ts`
+- keep UI copy centralized in `resumeData.uiStrings`
 
-## Next.js And React
+## Next.js and React
 
 - use Server Components by default
 - add `"use client"` only when required
-- fetch primary content on the server
-- do not pass raw Notion or GitHub payloads into UI components
 - keep components small and focused
+- prefer static rendering for the landing page
+
+Current client components:
+
+- theme toggle
 
 ## Architecture
 
 - `src/app` for routes and layouts
 - `src/features` for feature-owned UI
 - `src/components` for shared building blocks
-- `src/lib/integrations` for Notion and GitHub access
-- `public` for static assets such as the resume PDF
+- `src/lib` for resume data, site config, theme, and SEO helpers
+
+## Content updates
+
+When changing public resume content:
+
+1. update `src/lib/resume-data.ts`
+2. keep copy concise and factual
+3. prefer one-line teasers and highlights over long blocks
+4. verify the landing page still reads clearly on mobile
 
 ## Styling
 
 - use a restrained custom design, not template UI
-- use design tokens for spacing, color, type, and motion
+- use CSS variables in `globals.css` for color and theme
 - keep motion subtle and purposeful
 - avoid decorative patterns that add visual noise
 
 ## Accessibility
 
-WCAG 2.1 AA is required.
+WCAG 2.1 AA is the target.
 
 Minimum rules:
 
@@ -55,41 +65,41 @@ Minimum rules:
 - keyboard access for all interactive elements
 - visible focus styles
 - sufficient color contrast
-- correct labels and alt text
+- correct labels and link text
 - reduced-motion support
 
 ## Performance
 
 - keep client-side JavaScript minimal
-- prefer static rendering and server rendering
-- optimize images and fonts
-- avoid large component or animation libraries unless justified
-- do not ship code that is not needed for the initial experience
+- prefer server rendering and static generation
+- do not ship decorative widgets that do not help the reader
+- use progressive disclosure for secondary content
 
-## Content And Data
+## SEO
 
-- keep copy concise
-- prefer facts, decisions, and outcomes over hype
-- keep slugs stable
-- normalize Notion and GitHub data before rendering
+Keep these in sync when content or routes change:
+
+- `src/app/layout.tsx` metadata
+- `src/lib/structured-data.ts`
+- `src/lib/llms-content.ts`
+- `src/app/sitemap.ts`
 
 ## Testing
 
-At minimum, cover:
+At minimum, before merging:
 
-- data mapping and utility logic
-- main route rendering
-- resume download link behavior
-- accessibility checks for key pages
+- `npm run lint`
+- `npm run build`
+- manual check of hero clarity, links, and mobile layout
 
-## Public Repo Rules
+## Public repo rules
 
 - never commit secrets
 - never commit private tokens or IDs
 - do not put private content in docs
 - document environment variable names only
 
-## Definition Of Done
+## Definition of done
 
 Work is complete when:
 
