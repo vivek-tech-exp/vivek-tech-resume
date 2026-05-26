@@ -5,48 +5,24 @@ import { useEffect, useState } from "react";
 import { pageStyles } from "@/lib/page-styles";
 import {
   applyResolvedTheme,
+  readThemePreference,
   resolveTheme,
-  sanitizeThemePreference,
   THEME_STORAGE_KEY,
-  themeOptions,
+  toggleThemePreference,
   type ThemePreference,
 } from "@/lib/theme";
 
-const readPreference = (): ThemePreference => {
-  if (typeof window === "undefined") {
-    return "system";
-  }
-
-  try {
-    return sanitizeThemePreference(
-      window.localStorage.getItem(THEME_STORAGE_KEY),
-    );
-  } catch {
-    return "system";
-  }
-};
-
-const applyTheme = (preference: ThemePreference) => {
-  const resolved = resolveTheme(
-    preference,
-    window.matchMedia("(prefers-color-scheme: dark)").matches,
-  );
-  const root = document.documentElement;
-
-  root.dataset.themePreference = preference;
-  applyResolvedTheme(root, resolved);
-};
-
 const SunIcon = () => (
   <svg
+    aria-hidden="true"
     fill="none"
-    height="13"
+    height="15"
     stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2.5"
     viewBox="0 0 24 24"
-    width="13"
+    width="15"
     xmlns="http://www.w3.org/2000/svg"
   >
     <circle cx="12" cy="12" r="4" />
@@ -63,30 +39,32 @@ const SunIcon = () => (
 
 const MoonIcon = () => (
   <svg
+    aria-hidden="true"
     fill="none"
-    height="13"
+    height="15"
     stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2.5"
     viewBox="0 0 24 24"
-    width="13"
+    width="15"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
   </svg>
 );
 
-const MonitorIcon = () => (
+const AutoIcon = () => (
   <svg
+    aria-hidden="true"
     fill="none"
-    height="13"
+    height="15"
     stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2.5"
     viewBox="0 0 24 24"
-    width="13"
+    width="15"
     xmlns="http://www.w3.org/2000/svg"
   >
     <rect height="14" rx="2" width="20" x="2" y="3" />
@@ -95,41 +73,43 @@ const MonitorIcon = () => (
   </svg>
 );
 
-const themeIcons: Record<ThemePreference, React.ReactNode> = {
-  system: <MonitorIcon />,
-  light: <SunIcon />,
-  dark: <MoonIcon />,
+const applyTheme = (preference: ThemePreference) => {
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const resolved = resolveTheme(preference, prefersDark);
+
+  applyResolvedTheme(document.documentElement, preference, resolved);
 };
 
 export const ThemeToggle = () => {
   const [preference, setPreference] = useState<ThemePreference>("system");
+  const [resolved, setResolved] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const syncFromStorage = () => {
-      const nextPreference = readPreference();
+    const syncTheme = () => {
+      const nextPreference = readThemePreference();
+      const nextResolved = resolveTheme(nextPreference, media.matches);
 
-      applyTheme(nextPreference);
+      applyResolvedTheme(document.documentElement, nextPreference, nextResolved);
       setPreference(nextPreference);
+      setResolved(nextResolved);
     };
 
     const handleSystemChange = () => {
-      if (readPreference() === "system") {
-        applyTheme("system");
-        setPreference("system");
+      if (readThemePreference() === "system") {
+        syncTheme();
       }
     };
 
     const handleStorage = (event: StorageEvent) => {
       if (event.key === THEME_STORAGE_KEY) {
-        syncFromStorage();
+        syncTheme();
       }
     };
 
-    syncFromStorage();
+    syncTheme();
     window.addEventListener("storage", handleStorage);
-
     media.addEventListener("change", handleSystemChange);
 
     return () => {
@@ -138,7 +118,10 @@ export const ThemeToggle = () => {
     };
   }, []);
 
-  const updateTheme = (nextPreference: ThemePreference) => {
+  const handleToggle = () => {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const nextPreference = toggleThemePreference(preference, prefersDark);
+
     try {
       window.localStorage.setItem(THEME_STORAGE_KEY, nextPreference);
     } catch {
@@ -147,27 +130,29 @@ export const ThemeToggle = () => {
 
     applyTheme(nextPreference);
     setPreference(nextPreference);
+    setResolved(resolveTheme(nextPreference, prefersDark));
   };
+
+  const isSystem = preference === "system";
+  const label = isSystem
+    ? `Color theme follows system (${resolved} mode). Switch to pinned ${resolved === "dark" ? "light" : "dark"} mode.`
+    : `Color theme pinned to ${preference} mode. Switch back to system preference.`;
 
   return (
     <div className={pageStyles.themeControl}>
-      <div aria-label="Theme" className={pageStyles.themeOptions} role="group">
-        {themeOptions.map((option) => (
-          <button
-            aria-label={option.label}
-            aria-pressed={preference === option.value}
-            className={`${pageStyles.themeButton} ${
-              preference === option.value ? pageStyles.themeButtonActive : ""
-            }`}
-            key={option.value}
-            onClick={() => updateTheme(option.value)}
-            title={option.label}
-            type="button"
-          >
-            {themeIcons[option.value]}
-          </button>
-        ))}
-      </div>
+      <button
+        aria-label={label}
+        aria-pressed={!isSystem}
+        className={pageStyles.themeToggleButton}
+        onClick={handleToggle}
+        title={label}
+        type="button"
+      >
+        {isSystem ? <AutoIcon /> : resolved === "dark" ? <MoonIcon /> : <SunIcon />}
+        <span className={pageStyles.themeToggleLabel}>
+          {isSystem ? "Auto" : resolved === "dark" ? "Dark" : "Light"}
+        </span>
+      </button>
     </div>
   );
 };

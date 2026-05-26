@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useRef, useState, type KeyboardEvent } from "react";
 import { InteractiveCanvas } from "@/components/interactive-canvas";
 import { TelemetryDashboard } from "@/components/telemetry-dashboard";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
@@ -65,6 +65,8 @@ const getCaseStudyTags = (title: string): string[] => {
 };
 
 const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
+  const { uiStrings } = resumeData;
+
   return (
     <article className="grid gap-6 glassmorphic-card p-6 border border-[var(--border)] transition-all duration-400 hover:shadow-2xl sm:p-8 lg:p-10 relative overflow-hidden group">
       {/* Visual Accent Layer */}
@@ -79,11 +81,11 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
             </h3>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 font-mono text-[0.58rem] tracking-wider uppercase font-semibold select-none">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              {"Active Dev"}
+              {uiStrings.activeDevBadge}
             </span>
           </div>
           <p className="font-mono text-xs text-[var(--accent-violet)] uppercase tracking-widest font-semibold">
-            {project.period} {"— Flagship Project"}
+            {project.period} {`— ${uiStrings.flagshipLabel}`}
           </p>
         </div>
 
@@ -94,7 +96,8 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
               key={link.href}
               href={link.href}
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
+            aria-label={`${link.label} (${resumeData.uiStrings.externalLinkSuffix})`}
               className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-[var(--text-soft)] hover:text-[var(--accent-cyan)] transition-colors duration-300 flex items-center gap-1 font-bold"
             >
               {link.label} <span>{"↗"}</span>
@@ -109,7 +112,7 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
         <div className="lg:col-span-5 space-y-6">
           <div className="space-y-2">
             <h4 className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-cyan)] font-bold">
-              {"✦ The Spark (Why)"}
+              {`✦ ${uiStrings.sparkLabel}`}
             </h4>
             <p className="text-xs leading-relaxed text-[var(--text-muted)] font-medium whitespace-pre-line sm:text-sm">
               {project.why}
@@ -118,7 +121,7 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
 
           <div className="space-y-2">
             <h4 className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-cyan)] font-bold">
-              {"✦ Product Value (What it does)"}
+              {`✦ ${uiStrings.productValueLabel}`}
             </h4>
             <p className="text-xs leading-relaxed text-[var(--text-muted)] font-medium whitespace-pre-line sm:text-sm">
               {project.whatItDoes}
@@ -131,7 +134,7 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
           <div className="space-y-4">
             <div className="space-y-2">
               <h4 className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-cyan)] font-bold">
-                {"✦ Platform Architecture (How it is done)"}
+                {`✦ ${uiStrings.architectureLabel}`}
               </h4>
               <p className="text-xs leading-relaxed text-[var(--text-muted)] font-medium whitespace-pre-line sm:text-sm">
                 {project.howItIsDone}
@@ -155,7 +158,7 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
           <div className="border border-[var(--accent-violet)]/20 bg-[var(--accent-violet)]/5 p-5 relative overflow-hidden group/challenge mt-4 shadow-inner">
             <div className="absolute top-0 right-0 w-[120px] h-[120px] bg-[var(--glow-violet)] rounded-full blur-[40px] pointer-events-none opacity-40" />
             <span className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-violet)] font-bold block mb-2">
-              {"⚡ Hardest Technical Challenge"}
+              {`⚡ ${uiStrings.challengeLabel}`}
             </span>
             <p className="text-xs leading-relaxed text-[var(--text-soft)] font-medium">
               {project.challenge}
@@ -167,11 +170,47 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
   );
 };
 
+const projectTabs = ["why", "what", "how"] as const;
+type ProjectTab = (typeof projectTabs)[number];
+
 const SubordinateProjectCard = ({ project }: { project: PersonalProject }) => {
-  const [activeTab, setActiveTab] = useState<"why" | "what" | "how">("why");
+  const [activeTab, setActiveTab] = useState<ProjectTab>("why");
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const { uiStrings } = resumeData;
+
+  const tabLabels: Record<ProjectTab, string> = {
+    why: uiStrings.tabWhy,
+    what: uiStrings.tabWhat,
+    how: uiStrings.tabHow,
+  };
+
+  const focusTab = useCallback((index: number) => {
+    const tab = projectTabs[index];
+    if (!tab) return;
+    setActiveTab(tab);
+    tabRefs.current[index]?.focus();
+  }, []);
+
+  const handleTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      focusTab((index + 1) % projectTabs.length);
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      focusTab((index - 1 + projectTabs.length) % projectTabs.length);
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      focusTab(0);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      focusTab(projectTabs.length - 1);
+    }
+  };
+
+  const panelId = `panel-${project.title.replace(/\s+/g, "-").toLowerCase()}`;
 
   return (
-    <article className="grid gap-4 glassmorphic-card p-6 border border-[var(--border)] glow-card-container flex flex-col justify-between h-full relative group">
+    <article className="defer-card grid gap-4 glassmorphic-card p-6 border border-[var(--border)] glow-card-container flex flex-col justify-between h-full relative group">
       <div>
         <div className="flex justify-between items-start mb-3 pb-2 border-b border-[var(--border)]/60">
           <h3 className="text-lg font-bold tracking-tight text-[var(--text)] group-hover:text-[var(--accent-cyan)] transition-colors duration-300">
@@ -194,27 +233,41 @@ const SubordinateProjectCard = ({ project }: { project: PersonalProject }) => {
           ))}
         </div>
 
-        {/* Compact Tabs Selector */}
-        <div className="flex border-b border-[var(--border)]/60 mb-4" role="tablist" aria-label={`Project details for ${project.title}`}>
-          {(["why", "what", "how"] as const).map((tab) => (
+        <div
+          className="flex border-b border-[var(--border)]/60 mb-4"
+          role="tablist"
+          aria-label={`Project details for ${project.title}`}
+        >
+          {projectTabs.map((tab, index) => (
             <button
               key={tab}
+              ref={(node) => {
+                tabRefs.current[index] = node;
+              }}
               role="tab"
+              id={`${panelId}-tab-${tab}`}
               aria-selected={activeTab === tab}
+              aria-controls={`${panelId}-${tab}`}
+              tabIndex={activeTab === tab ? 0 : -1}
               onClick={() => setActiveTab(tab)}
-              className={`flex-1 pb-1.5 font-mono text-[0.62rem] uppercase tracking-wider text-center border-b-2 transition-all duration-200 cursor-pointer ${
+              onKeyDown={(event) => handleTabKeyDown(event, index)}
+              className={`flex-1 pb-1.5 font-mono text-[0.62rem] uppercase tracking-wider text-center border-b-2 transition-all duration-200 cursor-pointer min-h-11 ${
                 activeTab === tab
                   ? "border-[var(--accent-cyan)] text-[var(--accent-cyan)] font-bold"
                   : "border-transparent text-[var(--text-subtle)] hover:text-[var(--text)]"
               }`}
             >
-              {tab === "how" ? "How & Challenge" : tab}
+              {tabLabels[tab]}
             </button>
           ))}
         </div>
 
-        {/* Tab Panel */}
-        <div className="min-h-[160px] text-xs leading-relaxed text-[var(--text-muted)] font-medium">
+        <div
+          className="min-h-[160px] text-xs leading-relaxed text-[var(--text-muted)] font-medium"
+          role="tabpanel"
+          id={`${panelId}-${activeTab}`}
+          aria-labelledby={`${panelId}-tab-${activeTab}`}
+        >
           {activeTab === "why" && (
             <p className="whitespace-pre-line">{project.why}</p>
           )}
@@ -226,7 +279,7 @@ const SubordinateProjectCard = ({ project }: { project: PersonalProject }) => {
               <p className="whitespace-pre-line">{project.howItIsDone}</p>
               <div className="border-l-2 border-amber-500/50 bg-amber-500/5 pl-3 py-1.5 pr-2">
                 <span className="font-mono text-[0.55rem] uppercase tracking-widest text-amber-500 font-bold block mb-1">
-                  {"⚠ Hardest Challenge"}
+                  {`⚠ ${uiStrings.challengeShortLabel}`}
                 </span>
                 <p className="text-[0.68rem] leading-normal text-[var(--text-soft)]">
                   {project.challenge}
@@ -244,7 +297,8 @@ const SubordinateProjectCard = ({ project }: { project: PersonalProject }) => {
             key={link.href}
             href={link.href}
             target="_blank"
-            rel="noreferrer"
+            rel="noreferrer noopener"
+            aria-label={`${link.label} (${resumeData.uiStrings.externalLinkSuffix})`}
             className="font-mono text-[0.62rem] uppercase tracking-[0.15em] text-[var(--text-soft)] hover:text-[var(--accent-cyan)] transition-colors duration-300 flex items-center gap-1 font-semibold"
           >
             {link.label} <span>{"↗"}</span>
@@ -257,15 +311,15 @@ const SubordinateProjectCard = ({ project }: { project: PersonalProject }) => {
 
 export const HomePage = () => {
   const externalLinks = buildExternalLinks();
-  const [showAllProjects, setShowAllProjects] = useState(false);
+  const { uiStrings } = resumeData;
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
-      {/* Background Interactive Nodes Network */}
-      <InteractiveCanvas />
-      
-      {/* Tech Grid Backdrop Accent */}
-      <div className="fixed inset-0 cyber-grid pointer-events-none z-0 opacity-15" />
+    <div className="relative min-h-dvh overflow-x-hidden">
+      <div aria-hidden="true" className="absolute inset-0 z-0">
+        <InteractiveCanvas />
+      </div>
+
+      <div aria-hidden="true" className="fixed inset-0 cyber-grid pointer-events-none z-0 opacity-15" />
 
       <a className={pageStyles.skipLink} href="#main-content">
         {resumeData.uiStrings.skipToContent}
@@ -294,28 +348,23 @@ export const HomePage = () => {
         </div>
       </header>
 
-      <main className={pageStyles.pageShell} id="main-content">
-        {/* HERO SECTION */}
+      <main className={pageStyles.pageShell} id="main-content" tabIndex={-1}>
         <section className={pageStyles.heroPanel}>
           <div className={pageStyles.heroCopy}>
             <p className={pageStyles.eyebrow}>{resumeData.basics.title}</p>
             <h1 className={pageStyles.heroTitle}>{resumeData.basics.name}</h1>
-            <p className={pageStyles.heroSpecialization}>
-              {"Distributed Systems • Backend Infrastructure • Modern Web & Mobile • High-Scale Reliability"}
-            </p>
+            <p className={pageStyles.heroSpecialization}>{uiStrings.heroSpecialization}</p>
             <p className={pageStyles.heroSummary}>{resumeData.positioningLine}</p>
           </div>
 
-          <aside className={pageStyles.heroAside} aria-label="Systems Dashboard">
+          <aside className={pageStyles.heroAside} aria-label={uiStrings.telemetryLabel}>
             <TelemetryDashboard />
           </aside>
         </section>
 
-        {/* PERSONAL PROJECTS */}
         <section
-          className={`${pageStyles.section}`}
+          className={pageStyles.section}
           id="projects"
-          style={{ animationDelay: "150ms" }}
           aria-labelledby="projects-heading"
         >
           <div className={pageStyles.sectionHeading}>
@@ -327,8 +376,8 @@ export const HomePage = () => {
 
           <div className="space-y-12">
             {/* Overview paragraph */}
-            <p className="text-sm leading-relaxed text-[var(--text-muted)] font-medium italic border-l-2 border-[var(--accent-cyan)] pl-3">
-              {resumeData.uiStrings.projectsSubtitle}
+            <p className="prose-width text-pretty text-sm leading-relaxed text-[var(--text-muted)] font-medium italic border-s-2 border-[var(--accent-cyan)] ps-3">
+              {uiStrings.projectsSubtitle}
             </p>
 
             {/* Flagship Project Showcase */}
@@ -338,40 +387,31 @@ export const HomePage = () => {
                 <FootstepsShowcase key={project.title} project={project} />
               ))}
 
-            {/* Expandable Secondary Projects */}
-            <div className="space-y-8">
-              <div className="flex justify-center pt-2">
-                <button
-                  onClick={() => setShowAllProjects(!showAllProjects)}
-                  className="group flex items-center gap-2.5 px-6 py-3 border border-[var(--border)] bg-black/10 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-[var(--text-soft)] hover:text-[var(--accent-cyan)] hover:border-[var(--accent-cyan)] hover:bg-[var(--accent-cyan)]/5 transition-all duration-300 shadow-md cursor-pointer hover:shadow-[0_0_15px_-5px_var(--glow-cyan)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)] select-none font-bold"
-                >
-                  <span>{showAllProjects ? "Show Fewer Personal Builds ↑" : "Explore 4 More Recent Builds ↓"}</span>
-                </button>
-              </div>
+            <details className="details-expand space-y-8">
+              <summary className={`${pageStyles.detailsSummary} mx-auto w-fit list-none`}>
+                <span>{uiStrings.expandProjectsShow}</span>
+                <span aria-hidden="true" className="details-chevron transition-transform duration-300">
+                  ↓
+                </span>
+              </summary>
 
-              {showAllProjects && (
-                <div className="space-y-6 animate-reveal">
-                  <h3 className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--text-subtle)] font-bold pb-2 border-b border-[var(--border)]">
-                    {resumeData.uiStrings.otherBuilds}
-                  </h3>
-                  <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
-                    {resumeData.personalProjects
-                      .filter((p) => !p.featured)
-                      .map((project) => (
-                        <SubordinateProjectCard key={project.title} project={project} />
-                      ))}
-                  </div>
+              <div className="space-y-6 animate-reveal">
+                <h3 className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--text-subtle)] font-bold pb-2 border-b border-[var(--border)]">
+                  {uiStrings.otherBuilds}
+                </h3>
+                <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
+                  {resumeData.personalProjects
+                    .filter((p) => !p.featured)
+                    .map((project) => (
+                      <SubordinateProjectCard key={project.title} project={project} />
+                    ))}
                 </div>
-              )}
-            </div>
+              </div>
+            </details>
           </div>
         </section>
 
-        {/* SPECIALIZATION */}
-        <section
-          className={`${pageStyles.specializationSection}`}
-          style={{ animationDelay: "300ms" }}
-        >
+        <section className={pageStyles.specializationSection}>
           <div className={pageStyles.sectionHeading}>
             <p className={pageStyles.sectionKicker}>{resumeData.uiStrings.specializationKicker}</p>
           </div>
@@ -382,11 +422,9 @@ export const HomePage = () => {
           </div>
         </section>
 
-        {/* EXPERIENCE TIMELINE */}
         <section
-          className={`${pageStyles.section}`}
+          className={pageStyles.section}
           id="experience"
-          style={{ animationDelay: "375ms" }}
           aria-labelledby="experience-heading"
         >
           <div className={pageStyles.sectionHeading}>
@@ -446,11 +484,9 @@ export const HomePage = () => {
           </div>
         </section>
 
-        {/* CORE STACK */}
         <section
-          className={`${pageStyles.section}`}
+          className={pageStyles.section}
           id="stack"
-          style={{ animationDelay: "450ms" }}
           aria-labelledby="stack-heading"
         >
           <div className={pageStyles.sectionHeading}>
@@ -478,11 +514,9 @@ export const HomePage = () => {
           </div>
         </section>
 
-        {/* SELECTED CASE STUDIES */}
         <section
-          className={`${pageStyles.section}`}
+          className={pageStyles.section}
           id="case-studies"
-          style={{ animationDelay: "600ms" }}
           aria-labelledby="systems-heading"
         >
           <div className={pageStyles.sectionHeading}>
@@ -510,7 +544,8 @@ export const HomePage = () => {
                     <h3 className={pageStyles.systemTitle}>
                       <a
                         href={study.href}
-                        rel="noreferrer"
+                        rel="noreferrer noopener"
+                        aria-label={`${study.title} (${uiStrings.externalLinkSuffix})`}
                         target="_blank"
                         className="hover:text-[var(--accent-cyan)] flex items-baseline justify-between w-full"
                       >
@@ -541,7 +576,8 @@ export const HomePage = () => {
                   <a
                     className={pageStyles.systemLink}
                     href={study.href}
-                    rel="noreferrer"
+                    rel="noreferrer noopener"
+                    aria-label={`${uiStrings.viewCaseStudy}: ${study.title} (${uiStrings.externalLinkSuffix})`}
                     target="_blank"
                   >
                     {resumeData.uiStrings.viewCaseStudy}
@@ -552,11 +588,9 @@ export const HomePage = () => {
           </div>
         </section>
 
-        {/* RESUME & CONTACT */}
         <section
-          className={`${pageStyles.section}`}
+          className={pageStyles.section}
           id="contact"
-          style={{ animationDelay: "750ms" }}
           aria-labelledby="links-heading"
         >
           <div className={pageStyles.sectionHeading}>
@@ -572,7 +606,8 @@ export const HomePage = () => {
                   className={pageStyles.actionSecondary}
                   href={link.href}
                   key={link.label}
-                  rel="noreferrer"
+                  rel="noreferrer noopener"
+                  aria-label={`${link.label} (${uiStrings.externalLinkSuffix})`}
                   target="_blank"
                 >
                   {link.label}

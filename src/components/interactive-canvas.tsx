@@ -13,6 +13,7 @@ type Node = {
   pulseTimer: number;
 };
 
+
 export const InteractiveCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -23,14 +24,14 @@ export const InteractiveCanvas = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationId: number;
+    let animationId = 0;
     let nodes: Node[] = [];
-    const maxNodes = 65;
+    const maxNodes = 55;
     const minDistance = 110;
     const mouse = { x: -1000, y: -1000, radius: 150 };
 
-    // Check media query for accessibility
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const motionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let prefersReducedMotion = motionMedia.matches;
 
     const resizeCanvas = () => {
       const parent = canvas.parentElement;
@@ -43,8 +44,11 @@ export const InteractiveCanvas = () => {
 
     const initNodes = () => {
       nodes = [];
-      const nodeCount = Math.min(maxNodes, Math.floor((canvas.width * canvas.height) / 22000));
-      
+      const nodeCount = Math.min(
+        maxNodes,
+        Math.floor((canvas.width * canvas.height) / 24000),
+      );
+
       for (let i = 0; i < nodeCount; i++) {
         const radius = Math.random() * 1.5 + 1;
         nodes.push({
@@ -60,52 +64,89 @@ export const InteractiveCanvas = () => {
       }
     };
 
-    const draw = () => {
+    const drawStatic = () => {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Fetch dynamic color tokens from root styles
       const isDark = document.documentElement.dataset.theme === "dark";
-      const lineColor = isDark ? "rgba(6, 182, 212, " : "rgba(14, 165, 233, ";
-      const dotColor = isDark ? "rgba(139, 92, 246, " : "rgba(99, 102, 241, ";
+      const dotColor = isDark ? "rgba(139, 92, 246, 0.4)" : "rgba(99, 102, 241, 0.35)";
+      const lineColor = isDark ? "rgba(6, 182, 212," : "rgba(14, 165, 233,";
 
-      // Move and update nodes
+      for (const node of nodes) {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.baseRadius, 0, Math.PI * 2);
+        ctx.fillStyle = dotColor;
+        ctx.fill();
+      }
+
+      for (let i = 0; i < nodes.length; i++) {
+        const n1 = nodes[i];
+        if (!n1) continue;
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const n2 = nodes[j];
+          if (!n2) continue;
+
+          const dx = n1.x - n2.x;
+          const dy = n1.y - n2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < minDistance) {
+            const alpha = (1 - dist / minDistance) * (isDark ? 0.08 : 0.06);
+            ctx.beginPath();
+            ctx.moveTo(n1.x, n1.y);
+            ctx.lineTo(n2.x, n2.y);
+            ctx.strokeStyle = `${lineColor}${alpha})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+    };
+
+    const draw = () => {
+      if (!ctx || !canvas) return;
+
+      if (prefersReducedMotion) {
+        drawStatic();
+        return;
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const isDark = document.documentElement.dataset.theme === "dark";
+      const lineColor = isDark ? "rgba(6, 182, 212," : "rgba(14, 165, 233,";
+      const dotColor = isDark ? "rgba(139, 92, 246, 0.45)" : "rgba(99, 102, 241, 0.35)";
+
       for (let i = 0; i < nodes.length; i++) {
         const node = nodes[i];
         if (!node) continue;
 
-        if (!prefersReducedMotion) {
-          node.x += node.vx;
-          node.y += node.vy;
+        node.x += node.vx;
+        node.y += node.vy;
 
-          // Bounce off edges
-          if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-          if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
 
-          // Mouse interaction (gentle attraction)
-          const dx = mouse.x - node.x;
-          const dy = mouse.y - node.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          
-          if (dist < mouse.radius) {
-            const force = (mouse.radius - dist) / mouse.radius;
-            node.x -= (dx / dist) * force * 0.45;
-            node.y -= (dy / dist) * force * 0.45;
-          }
+        const dx = mouse.x - node.x;
+        const dy = mouse.y - node.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
 
-          // Gentle pulsing
-          node.pulseTimer += node.pulseSpeed;
-          node.radius = node.baseRadius + Math.sin(node.pulseTimer) * 0.6;
+        if (dist < mouse.radius && dist > 0) {
+          const force = (mouse.radius - dist) / mouse.radius;
+          node.x -= (dx / dist) * force * 0.45;
+          node.y -= (dy / dist) * force * 0.45;
         }
 
-        // Draw node
+        node.pulseTimer += node.pulseSpeed;
+        node.radius = node.baseRadius + Math.sin(node.pulseTimer) * 0.6;
+
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `${dotColor}${isDark ? "0.45" : "0.35"})`;
+        ctx.fillStyle = dotColor;
         ctx.fill();
       }
 
-      // Draw connection lines
       for (let i = 0; i < nodes.length; i++) {
         const n1 = nodes[i];
         if (!n1) continue;
@@ -130,17 +171,13 @@ export const InteractiveCanvas = () => {
         }
       }
 
-      // Draw connection to mouse
       if (mouse.x > 0 && mouse.y > 0) {
-        for (let i = 0; i < nodes.length; i++) {
-          const node = nodes[i];
-          if (!node) continue;
-
+        for (const node of nodes) {
           const dx = mouse.x - node.x;
           const dy = mouse.y - node.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < mouse.radius) {
+          if (dist < mouse.radius && dist > 0) {
             const alpha = (1 - dist / mouse.radius) * (isDark ? 0.12 : 0.09);
             ctx.beginPath();
             ctx.moveTo(mouse.x, mouse.y);
@@ -155,8 +192,8 @@ export const InteractiveCanvas = () => {
       animationId = requestAnimationFrame(draw);
     };
 
-    // Event listeners
     const handleMouseMove = (e: MouseEvent) => {
+      if (prefersReducedMotion) return;
       const rect = canvas.getBoundingClientRect();
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
@@ -167,13 +204,29 @@ export const InteractiveCanvas = () => {
       mouse.y = -1000;
     };
 
-    // Check visibility to save resources
+    const handleMotionChange = () => {
+      prefersReducedMotion = motionMedia.matches;
+      cancelAnimationFrame(animationId);
+      initNodes();
+      if (prefersReducedMotion) {
+        drawStatic();
+      } else {
+        animationId = requestAnimationFrame(draw);
+      }
+    };
+
     let observer: IntersectionObserver | null = null;
     const handleVisibility = (entries: IntersectionObserverEntry[]) => {
       const [entry] = entries;
-      if (entry && entry.isIntersecting) {
+      if (!entry) return;
+
+      if (entry.isIntersecting) {
         cancelAnimationFrame(animationId);
-        animationId = requestAnimationFrame(draw);
+        if (prefersReducedMotion) {
+          drawStatic();
+        } else {
+          animationId = requestAnimationFrame(draw);
+        }
       } else {
         cancelAnimationFrame(animationId);
       }
@@ -183,19 +236,23 @@ export const InteractiveCanvas = () => {
     window.addEventListener("resize", resizeCanvas);
     window.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseleave", handleMouseLeave);
+    motionMedia.addEventListener("change", handleMotionChange);
 
-    // Dynamic theme changes listener
-    const observerConfig = { attributes: true, attributeFilter: ["data-theme"] };
     const themeObserver = new MutationObserver(() => {
-      // Re-draw immediately on theme change to prevent visual jumps
-      draw();
+      if (prefersReducedMotion) {
+        drawStatic();
+      }
     });
-    themeObserver.observe(document.documentElement, observerConfig);
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
 
-    // Pause on offscreen
     if ("IntersectionObserver" in window) {
       observer = new IntersectionObserver(handleVisibility, { threshold: 0.1 });
       observer.observe(canvas);
+    } else if (prefersReducedMotion) {
+      drawStatic();
     } else {
       animationId = requestAnimationFrame(draw);
     }
@@ -204,8 +261,9 @@ export const InteractiveCanvas = () => {
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      motionMedia.removeEventListener("change", handleMotionChange);
       themeObserver.disconnect();
-      if (observer) observer.disconnect();
+      observer?.disconnect();
       cancelAnimationFrame(animationId);
     };
   }, []);
