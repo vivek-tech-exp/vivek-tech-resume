@@ -79,11 +79,11 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
             </h3>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 font-mono text-[0.58rem] tracking-wider uppercase font-semibold select-none">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Active Dev
+              {"Active Dev"}
             </span>
           </div>
           <p className="font-mono text-xs text-[var(--accent-violet)] uppercase tracking-widest font-semibold">
-            {project.period} — Flagship Project
+            {project.period} {"— Flagship Project"}
           </p>
         </div>
 
@@ -97,7 +97,7 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
               rel="noreferrer"
               className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-[var(--text-soft)] hover:text-[var(--accent-cyan)] transition-colors duration-300 flex items-center gap-1 font-bold"
             >
-              {link.label} <span>↗</span>
+              {link.label} <span>{"↗"}</span>
             </a>
           ))}
         </div>
@@ -109,7 +109,7 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
         <div className="lg:col-span-5 space-y-6">
           <div className="space-y-2">
             <h4 className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-cyan)] font-bold">
-              ✦ The Spark (Why)
+              {"✦ The Spark (Why)"}
             </h4>
             <p className="text-xs leading-relaxed text-[var(--text-muted)] font-medium whitespace-pre-line sm:text-sm">
               {project.why}
@@ -118,7 +118,7 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
 
           <div className="space-y-2">
             <h4 className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-cyan)] font-bold">
-              ✦ Product Value (What it does)
+              {"✦ Product Value (What it does)"}
             </h4>
             <p className="text-xs leading-relaxed text-[var(--text-muted)] font-medium whitespace-pre-line sm:text-sm">
               {project.whatItDoes}
@@ -131,7 +131,7 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
           <div className="space-y-4">
             <div className="space-y-2">
               <h4 className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-cyan)] font-bold">
-                ✦ Platform Architecture (How it is done)
+                {"✦ Platform Architecture (How it is done)"}
               </h4>
               <p className="text-xs leading-relaxed text-[var(--text-muted)] font-medium whitespace-pre-line sm:text-sm">
                 {project.howItIsDone}
@@ -155,7 +155,7 @@ const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
           <div className="border border-[var(--accent-violet)]/20 bg-[var(--accent-violet)]/5 p-5 relative overflow-hidden group/challenge mt-4 shadow-inner">
             <div className="absolute top-0 right-0 w-[120px] h-[120px] bg-[var(--glow-violet)] rounded-full blur-[40px] pointer-events-none opacity-40" />
             <span className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-violet)] font-bold block mb-2">
-              ⚡ Hardest Technical Challenge
+              {"⚡ Hardest Technical Challenge"}
             </span>
             <p className="text-xs leading-relaxed text-[var(--text-soft)] font-medium">
               {project.challenge}
@@ -226,7 +226,7 @@ const SubordinateProjectCard = ({ project }: { project: PersonalProject }) => {
               <p className="whitespace-pre-line">{project.howItIsDone}</p>
               <div className="border-l-2 border-amber-500/50 bg-amber-500/5 pl-3 py-1.5 pr-2">
                 <span className="font-mono text-[0.55rem] uppercase tracking-widest text-amber-500 font-bold block mb-1">
-                  ⚠ Hardest Challenge
+                  {"⚠ Hardest Challenge"}
                 </span>
                 <p className="text-[0.68rem] leading-normal text-[var(--text-soft)]">
                   {project.challenge}
@@ -247,7 +247,7 @@ const SubordinateProjectCard = ({ project }: { project: PersonalProject }) => {
             rel="noreferrer"
             className="font-mono text-[0.62rem] uppercase tracking-[0.15em] text-[var(--text-soft)] hover:text-[var(--accent-cyan)] transition-colors duration-300 flex items-center gap-1 font-semibold"
           >
-            {link.label} <span>↗</span>
+            {link.label} <span>{"↗"}</span>
           </a>
         ))}
       </div>
@@ -268,26 +268,26 @@ export const HomePage = () => {
       <div className="fixed inset-0 cyber-grid pointer-events-none z-0 opacity-15" />
 
       <a className={pageStyles.skipLink} href="#main-content">
-        Skip to content
+        {resumeData.uiStrings.skipToContent}
       </a>
       
       <header className={pageStyles.chrome}>
         <div className={pageStyles.topBar}>
           <nav aria-label="Section navigation" className={pageStyles.topBarNav}>
             <a className={pageStyles.topBarLink} href="#projects">
-              Projects
+              {resumeData.uiStrings.navProjects}
             </a>
             <a className={pageStyles.topBarLink} href="#experience">
-              Experience
+              {resumeData.uiStrings.navExperience}
             </a>
             <a className={pageStyles.topBarLink} href="#stack">
-              Stack
+              {resumeData.uiStrings.navStack}
             </a>
             <a className={pageStyles.topBarLink} href="#case-studies">
-              Case Studies
+              {resumeData.uiStrings.navCaseStudies}
             </a>
             <a className={pageStyles.topBarLink} href="#contact">
-              Contact
+              {resumeData.uiStrings.navContact}
             </a>
           </nav>
           <ThemeToggle />
@@ -301,7 +301,7 @@ export const HomePage = () => {
             <p className={pageStyles.eyebrow}>{resumeData.basics.title}</p>
             <h1 className={pageStyles.heroTitle}>{resumeData.basics.name}</h1>
             <p className={pageStyles.heroSpecialization}>
-              Distributed Systems • Backend Infrastructure • Modern Web & Mobile • High-Scale Reliability
+              {"Distributed Systems • Backend Infrastructure • Modern Web & Mobile • High-Scale Reliability"}
             </p>
             <p className={pageStyles.heroSummary}>{resumeData.positioningLine}</p>
           </div>
@@ -319,16 +319,16 @@ export const HomePage = () => {
           aria-labelledby="projects-heading"
         >
           <div className={pageStyles.sectionHeading}>
-            <p className={pageStyles.sectionKicker}>Personal Projects</p>
+            <p className={pageStyles.sectionKicker}>{resumeData.uiStrings.projectsKicker}</p>
             <h2 className={pageStyles.sectionTitle} id="projects-heading">
-              Independent builds demonstrating product vision and technical leadership.
+              {resumeData.uiStrings.projectsTitle}
             </h2>
           </div>
 
           <div className="space-y-12">
             {/* Overview paragraph */}
             <p className="text-sm leading-relaxed text-[var(--text-muted)] font-medium italic border-l-2 border-[var(--accent-cyan)] pl-3">
-              A curated showcase of selected projects, framing why each exists, what value it brings, and how it was designed and built from an engineering leadership perspective.
+              {resumeData.uiStrings.projectsSubtitle}
             </p>
 
             {/* Flagship Project Showcase */}
@@ -352,7 +352,7 @@ export const HomePage = () => {
               {showAllProjects && (
                 <div className="space-y-6 animate-reveal">
                   <h3 className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--text-subtle)] font-bold pb-2 border-b border-[var(--border)]">
-                    Other Selected Builds
+                    {resumeData.uiStrings.otherBuilds}
                   </h3>
                   <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
                     {resumeData.personalProjects
@@ -373,7 +373,7 @@ export const HomePage = () => {
           style={{ animationDelay: "300ms" }}
         >
           <div className={pageStyles.sectionHeading}>
-            <p className={pageStyles.sectionKicker}>Specialization</p>
+            <p className={pageStyles.sectionKicker}>{resumeData.uiStrings.specializationKicker}</p>
           </div>
           <div className="max-w-3xl">
             <p className={pageStyles.specializationText}>
@@ -390,9 +390,9 @@ export const HomePage = () => {
           aria-labelledby="experience-heading"
         >
           <div className={pageStyles.sectionHeading}>
-            <p className={pageStyles.sectionKicker}>Experience Snapshot</p>
+            <p className={pageStyles.sectionKicker}>{resumeData.uiStrings.experienceKicker}</p>
             <h2 className={pageStyles.sectionTitle} id="experience-heading">
-              Seven years across backend, platform, and delivery.
+              {resumeData.uiStrings.experienceTitle}
             </h2>
           </div>
           
@@ -454,9 +454,9 @@ export const HomePage = () => {
           aria-labelledby="stack-heading"
         >
           <div className={pageStyles.sectionHeading}>
-            <p className={pageStyles.sectionKicker}>Core Stack</p>
+            <p className={pageStyles.sectionKicker}>{resumeData.uiStrings.stackKicker}</p>
             <h2 className={pageStyles.sectionTitle} id="stack-heading">
-              Core runtime, workflow, and platform tools.
+              {resumeData.uiStrings.stackTitle}
             </h2>
           </div>
           <div className={pageStyles.capabilityGrid}>
@@ -486,9 +486,9 @@ export const HomePage = () => {
           aria-labelledby="systems-heading"
         >
           <div className={pageStyles.sectionHeading}>
-            <p className={pageStyles.sectionKicker}>Selected Case Studies</p>
+            <p className={pageStyles.sectionKicker}>{resumeData.uiStrings.caseStudiesKicker}</p>
             <h2 className={pageStyles.sectionTitle} id="systems-heading">
-              A few case studies where the engineering work is concrete.
+              {resumeData.uiStrings.caseStudiesTitle}
             </h2>
           </div>
           <div className={pageStyles.systemsGrid}>
@@ -516,7 +516,7 @@ export const HomePage = () => {
                       >
                         <span>{study.title}</span>
                         <span className="text-xl opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                          ↗
+                          {"↗"}
                         </span>
                       </a>
                     </h3>
@@ -544,7 +544,7 @@ export const HomePage = () => {
                     rel="noreferrer"
                     target="_blank"
                   >
-                    View engineering case study
+                    {resumeData.uiStrings.viewCaseStudy}
                   </a>
                 </article>
               );
@@ -560,9 +560,9 @@ export const HomePage = () => {
           aria-labelledby="links-heading"
         >
           <div className={pageStyles.sectionHeading}>
-            <p className={pageStyles.sectionKicker}>Resume & Contact</p>
+            <p className={pageStyles.sectionKicker}>{resumeData.uiStrings.contactKicker}</p>
             <h2 className={pageStyles.sectionTitle} id="links-heading">
-              LinkedIn, GitHub, and direct contact.
+              {resumeData.uiStrings.contactTitle}
             </h2>
           </div>
           <div className={pageStyles.linksPanel}>
@@ -582,7 +582,7 @@ export const HomePage = () => {
             <div className={pageStyles.linksMeta}>
               <p className={pageStyles.linksMetaItem}>
                 <span className="font-mono text-[0.55rem] uppercase tracking-[0.25em] text-[var(--text-subtle)] font-bold">
-                  Email
+                  {resumeData.uiStrings.emailLabel}
                 </span>
                 <a
                   className="text-sm font-semibold text-[var(--text-soft)] hover:text-[var(--accent-cyan)] transition-colors duration-300"
@@ -593,15 +593,14 @@ export const HomePage = () => {
               </p>
               <p className={pageStyles.linksMetaItem}>
                 <span className="font-mono text-[0.55rem] uppercase tracking-[0.25em] text-[var(--text-subtle)] font-bold">
-                  Education
+                  {resumeData.uiStrings.educationLabel}
                 </span>
                 <span className="text-sm leading-relaxed text-[var(--text-soft)] font-medium">
                   {resumeData.education.degree}, {resumeData.education.institution}
                 </span>
               </p>
               <p className={pageStyles.linksNote}>
-                The site and code stay public. Clear writing and clean
-                implementation both matter.
+                {resumeData.uiStrings.footerNote}
               </p>
             </div>
           </div>
