@@ -150,7 +150,7 @@ export const ThemeToggle = () => {
       >
         {isSystem ? <AutoIcon /> : resolved === "dark" ? <MoonIcon /> : <SunIcon />}
         <span className={pageStyles.themeToggleLabel}>
-          {isSystem ? "Auto" : resolved === "dark" ? "Dark" : "Light"}
+          {isSystem ? "Use system theme" : resolved === "dark" ? "Dark theme" : "Light theme"}
         </span>
       </button>
     </div>
