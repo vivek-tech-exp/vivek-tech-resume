@@ -5,7 +5,6 @@
 @layer reset {
   @theme inline {
     --font-sans: "Inter", "Geist", "Aptos", "Avenir Next", "Segoe UI", sans-serif;
-    --font-mono: "SF Mono", "IBM Plex Mono", "JetBrains Mono", "Consolas", monospace;
   }
 }
 
@@ -13,34 +12,20 @@
   :root {
     color-scheme: light dark;
 
-    --page: light-dark(#f8fafc, #030712);
-    --page-end: light-dark(#ffffff, #000000);
-    --surface: light-dark(#ffffff, #0b0f19);
-    --surface-hover: light-dark(#f1f5f9, #161b26);
-    --surface-raised: light-dark(rgba(255, 255, 255, 0.75), rgba(11, 15, 25, 0.7));
-    --border: light-dark(rgba(15, 23, 42, 0.08), rgba(255, 255, 255, 0.06));
-    --text: light-dark(#0f172a, #f9fafb);
-    --text-muted: light-dark(#334155, #d1d5db);
-    --text-soft: light-dark(#475569, #9ca3af);
-    --text-subtle: light-dark(#64748b, #6b7280);
-    --inverse-surface: light-dark(#0f172a, #f9fafb);
-    --inverse-text: light-dark(#ffffff, #030712);
-    --focus: light-dark(#0284c7, #06b6d4);
-    --selection: light-dark(rgba(14, 165, 233, 0.12), rgba(6, 182, 212, 0.16));
-    --glow: light-dark(rgba(14, 165, 233, 0.03), rgba(6, 182, 212, 0.04));
-    --accent: light-dark(#0f172a, #06b6d4);
-    --accent-cyan: light-dark(#0ea5e9, #06b6d4);
-    --accent-violet: light-dark(#6366f1, #8b5cf6);
-    --card-bg: light-dark(rgba(255, 255, 255, 0.7), rgba(11, 15, 25, 0.65));
-    --card-border: light-dark(rgba(15, 23, 42, 0.05), rgba(255, 255, 255, 0.05));
-    --glow-cyan: light-dark(rgba(14, 165, 233, 0.06), rgba(6, 182, 212, 0.12));
-    --glow-violet: light-dark(rgba(99, 102, 241, 0.06), rgba(139, 92, 246, 0.12));
-    --scrollbar-track: light-dark(#e2e8f0, #111827);
-    --scrollbar-thumb: light-dark(#94a3b8, #4b5563);
+    --page: light-dark(#fafaf9, #0a0a0a);
+    --surface: light-dark(#ffffff, #141414);
+    --border: light-dark(rgba(24, 24, 27, 0.08), rgba(255, 255, 255, 0.08));
+    --text: light-dark(#18181b, #fafafa);
+    --text-muted: light-dark(#3f3f46, #d4d4d8);
+    --text-soft: light-dark(#52525b, #a1a1aa);
+    --text-subtle: light-dark(#71717a, #71717a);
+    --inverse-surface: light-dark(#18181b, #fafafa);
+    --inverse-text: light-dark(#fafafa, #18181b);
+    --focus: light-dark(#2563eb, #60a5fa);
+    --selection: light-dark(rgba(37, 99, 235, 0.12), rgba(96, 165, 250, 0.16));
+    --accent: light-dark(#2563eb, #60a5fa);
 
-    accent-color: var(--accent-cyan);
-    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-    scrollbar-width: thin;
+    accent-color: var(--accent);
   }
 
   html[data-theme="light"] {
@@ -73,28 +58,17 @@
     margin: 0;
     min-height: 100dvh;
     background-color: var(--page);
-    background-image: radial-gradient(ellipse at 50% 0%, var(--glow) 0, transparent 55%);
     color: var(--text);
     font-family: var(--font-sans);
-    font-size: clamp(0.9375rem, 0.875rem + 0.25vw, 1rem);
+    font-size: 1rem;
     line-height: 1.6;
-    text-rendering: auto;
+    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
-    body {
-      background-image:
-        radial-gradient(at 0% 0%, var(--glow) 0, transparent 45%),
-        radial-gradient(at 100% 100%, var(--glow) 0, transparent 45%);
-    }
   }
 
   :where(a:any-link) {
-    text-underline-offset: 0.2em;
+    text-underline-offset: 0.18em;
   }
 
   ::selection {
@@ -104,14 +78,7 @@
 
   :where(a:any-link, button, summary):focus-visible {
     outline: 2px solid var(--focus);
-    outline-offset: 4px;
-  }
-
-  @media (pointer: coarse) {
-    :where(a:any-link, button, summary) {
-      min-block-size: 2.75rem;
-      min-inline-size: 2.75rem;
-    }
+    outline-offset: 3px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -130,153 +97,17 @@
     text-wrap: pretty;
   }
 
-  .prose-width {
-    max-width: 65ch;
-  }
-
-  .glassmorphic-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-    contain: layout style paint;
-  }
-
-  [data-theme="dark"] .glassmorphic-card {
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-  }
-
-  .cyber-grid {
-    background-size: 24px 24px;
-    background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
-    mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 100%);
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
-    .cyber-grid {
-      display: none;
-    }
-  }
-
-  [data-theme="dark"] .cyber-grid {
-    opacity: 0.65;
-  }
-
-  @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
-    .status-dot {
-      animation: status-pulse 2.4s ease-in-out infinite;
-    }
-  }
-
-  @keyframes status-pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.45;
-    }
-  }
-
-  .project-detail {
-    border: 1px solid var(--border);
-    background: color-mix(in oklab, var(--card-bg) 88%, transparent);
-    padding: 0.5rem 0.75rem;
-  }
-
-  .project-detail-summary {
-    cursor: pointer;
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    list-style: none;
-    text-transform: uppercase;
-  }
-
-  .project-detail-summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .project-detail[open] .project-detail-summary {
-    color: var(--accent-cyan);
-    margin-bottom: 0.25rem;
-  }
-
-  .caret-blink::after {
-    content: "█" / "";
-    margin-inline-start: 2px;
-    color: var(--accent-cyan);
-    animation: caret-blink-anim 1s infinite steps(2, start);
-  }
-
-  @keyframes caret-blink-anim {
-    to {
-      visibility: hidden;
-    }
-  }
-
   .defer-section {
     content-visibility: auto;
-    contain-intrinsic-block-size: auto 720px;
-  }
-
-  .canvas-layer {
-    content-visibility: auto;
-    contain: strict;
-    contain-intrinsic-size: 100dvh 100vw;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    @supports ((animation-timeline: view()) and (animation-range: entry)) {
-      @keyframes scroll-reveal-in {
-        from {
-          opacity: 0;
-          transform: translateY(1rem);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .scroll-reveal-below {
-        animation: scroll-reveal-in auto linear backwards;
-        animation-timeline: view();
-        animation-range: entry 10% entry 28%;
-      }
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-reveal-below,
-    .caret-blink::after,
-    .status-dot {
-      animation: none !important;
-    }
-
-    .scroll-reveal-below {
-      opacity: 1;
-      transform: none;
-    }
+    contain-intrinsic-block-size: auto 480px;
   }
 
   .details-expand summary {
-    list-style: none;
     cursor: pointer;
+    list-style: none;
   }
 
   .details-expand summary::-webkit-details-marker {
     display: none;
-  }
-
-  .details-expand[open] summary .details-chevron {
-    transform: rotate(180deg);
-  }
-
-  .details-chevron {
-    transition: transform 0.2s ease;
   }
 }

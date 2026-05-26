@@ -34,25 +34,3 @@ export const buildExternalLinks = (): ExternalLink[] => {
 
   return links;
 };
-
-export const formatYearOnly = (period: string) => {
-  const years = period.match(/\b\d{4}\b/g);
-  if (!years) return period;
-  if (years.length === 1) return years[0];
-  if (years[0] === years[1]) return years[0];
-  return `${years[0]} – ${years[1]}`;
-};
-
-export const getCaseStudyTags = (title: string): string[] => {
-  const t = title.toLowerCase();
-  if (t.includes("cloud") || t.includes("provisioning")) {
-    return ["Terraform", "AWS", "IaC", "Telemetry"];
-  }
-  if (t.includes("health") || t.includes("workflow")) {
-    return ["Camunda", "BPMN", "DMN", "Microservices"];
-  }
-  if (t.includes("finchmoney") || t.includes("investing")) {
-    return ["FIX 2.0", "Brokerage", "GraphQL", "Java"];
-  }
-  return ["Backend", "Cloud"];
-};

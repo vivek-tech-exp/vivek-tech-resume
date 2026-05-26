@@ -5,22 +5,19 @@ import { pageStyles } from "@/lib/page-styles";
 import { resumeData } from "@/lib/resume-data";
 
 export const HomeHeader = () => (
-  <header className={pageStyles.chrome}>
-    <div className={pageStyles.topBar}>
-      <nav aria-label="Section navigation" className={pageStyles.topBarNav}>
-        <a className={pageStyles.topBarLink} href="#projects">
-          {resumeData.uiStrings.navProjects}
+  <header className={pageStyles.header}>
+    <div className={pageStyles.headerInner}>
+      <a className={pageStyles.brand} href="#top">
+        {resumeData.basics.name}
+      </a>
+      <nav aria-label="Page sections" className={pageStyles.nav}>
+        <a className={pageStyles.navLink} href="#work">
+          {resumeData.uiStrings.navWork}
         </a>
-        <a className={pageStyles.topBarLink} href="#experience">
+        <a className={pageStyles.navLink} href="#experience">
           {resumeData.uiStrings.navExperience}
         </a>
-        <a className={pageStyles.topBarLink} href="#stack">
-          {resumeData.uiStrings.navStack}
-        </a>
-        <a className={pageStyles.topBarLink} href="#case-studies">
-          {resumeData.uiStrings.navCaseStudies}
-        </a>
-        <a className={pageStyles.topBarLink} href="#contact">
+        <a className={pageStyles.navLink} href="#contact">
           {resumeData.uiStrings.navContact}
         </a>
       </nav>

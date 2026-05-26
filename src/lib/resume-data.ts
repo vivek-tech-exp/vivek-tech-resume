@@ -38,6 +38,7 @@ export type PersonalProject = {
   title: string;
   featured: boolean;
   period: string;
+  teaser: string;
   links: readonly ProjectLink[];
   why: string;
   whatItDoes: string;
@@ -48,9 +49,9 @@ export type PersonalProject = {
 
 export const resumeData = {
   positioningLine:
-    "I design and engineer robust backend systems, distributed architectures, and modern full-stack web/mobile platforms where reliability and performance are critical.",
+    "I build backend systems and full-stack products that stay reliable under real load.",
   specializationSummary:
-    "Senior Individual Contributor specializing in distributed systems, high-throughput backend infrastructure, and modern mobile/web applications.",
+    "Seven years across backend infrastructure, workflow platforms, and product delivery.",
   basics: {
     name: "Vivek Mankonda",
     title: "Senior Software Engineer",
@@ -59,44 +60,33 @@ export const resumeData = {
   },
   uiStrings: {
     skipToContent: "Skip to content",
-    navProjects: "Projects",
+    siteLabel: "Resume & selected work",
+    navWork: "Work",
     navExperience: "Experience",
-    navStack: "Stack",
-    navCaseStudies: "Case Studies",
     navContact: "Contact",
-    projectsKicker: "Personal Projects",
-    projectsTitle: "Independent builds demonstrating product vision and technical leadership.",
-    projectsSubtitle: "A curated showcase of selected projects, framing why each exists, what value it brings, and how it was designed and built from an engineering leadership perspective.",
-    otherBuilds: "Other Selected Builds",
-    specializationKicker: "Specialization",
-    experienceKicker: "Experience Snapshot",
-    experienceTitle: "Seven years across backend, platform, and delivery.",
-    stackKicker: "Core Stack",
-    stackTitle: "Core runtime, workflow, and platform tools.",
-    caseStudiesKicker: "Selected Case Studies",
-    caseStudiesTitle: "A few case studies where the engineering work is concrete.",
-    viewCaseStudy: "View engineering case study",
-    contactKicker: "Resume & Contact",
-    contactTitle: "LinkedIn, GitHub, and direct contact.",
+    heroRoleLine: "Senior Software Engineer · 7 years",
+    heroAvailability: "Open to senior IC roles · India & remote",
+    proofHeading: "Recent impact",
+    workTitle: "What I'm building",
+    workIntro: "Side projects and products I ship end to end.",
+    otherProjects: "More projects",
+    showAllProjects: "Show all projects",
+    hideProjects: "Show less",
+    experienceTitle: "Where I've worked",
+    experienceIntro: "Backend, platform, and delivery roles across fintech, insurance, and observability.",
+    impactTitle: "Deeper write-ups",
+    impactIntro: "Longer case studies for people who want the full story.",
+    toolsTitle: "Tools I reach for",
+    contactTitle: "Get in touch",
+    contactIntro: "Best reached on LinkedIn or by email.",
     emailLabel: "Email",
     educationLabel: "Education",
-    footerNote: "The site and code stay public. Clear writing and clean implementation both matter.",
-    heroSpecialization:
-      "Distributed Systems • Backend Infrastructure • Modern Web & Mobile • High-Scale Reliability",
-    activeDevBadge: "Active Dev",
-    flagshipLabel: "Flagship Project",
-    expandProjectsShow: "Explore 4 More Recent Builds",
-    expandProjectsHide: "Show Fewer Personal Builds",
-    tabWhy: "Why",
-    tabWhat: "What",
-    tabHow: "How & Challenge",
-    sparkLabel: "The Spark (Why)",
-    productValueLabel: "Product Value (What it does)",
-    architectureLabel: "Platform Architecture (How it is done)",
-    challengeLabel: "Hardest Technical Challenge",
-    challengeShortLabel: "Hardest Challenge",
+    footerNote: "This site and its code are public.",
+    readMore: "Read more",
+    readCaseStudy: "Read case study",
     externalLinkSuffix: "opens in new tab",
-    telemetryLabel: "Systems dashboard with live metrics",
+    liveLink: "Live",
+    codeLink: "Code",
   },
   summary: [
     "Software Engineer with 7 years of experience creating high-performance backend systems and distributed architectures.",
@@ -268,7 +258,9 @@ export const resumeData = {
     {
       title: "Footsteps App",
       featured: true,
-      period: "May 2025 – Present",
+      period: "Jun 2025 – Present",
+      teaser:
+        "A mobile app that turns trips into structured travel stories with maps, photos, and sync.",
       links: [
         { label: "Backend Repo", href: "https://github.com/vivek-tech-exp/footsteps-backend/blob/main/README.md" },
         { label: "Native Repo", href: "https://github.com/vivek-tech-exp/footsteps-native/blob/main/README.md" },
@@ -285,7 +277,9 @@ export const resumeData = {
     {
       title: "Emu Event Assistant",
       featured: false,
-      period: "2025",
+      period: "2026",
+      teaser:
+        "A lightweight assistant for small hosts to track guests, payments, and expenses.",
       links: [
         { label: "GitHub Repo", href: "https://github.com/vivek-tech-exp/event-assistant/blob/master/README.md" },
         { label: "Live App", href: "https://event-assistant-beta.vercel.app" },
@@ -299,7 +293,9 @@ export const resumeData = {
     {
       title: "gh-ruleset-sync",
       featured: false,
-      period: "2024",
+      period: "2026",
+      teaser:
+        "A GitHub CLI tool to apply and audit repository rulesets across many repos.",
       links: [
         { label: "GitHub Repo", href: "https://github.com/vivek-tech-exp/gh-ruleset-sync/blob/master/README.md" },
       ],
@@ -312,7 +308,9 @@ export const resumeData = {
     {
       title: "Borderless Buy / One Day Baby",
       featured: false,
-      period: "2024",
+      period: "2026",
+      teaser:
+        "Helps shoppers compare local vs abroad prices with landed-cost context.",
       links: [
         { label: "GitHub Repo", href: "https://github.com/vivek-tech-exp/borderless-buy/blob/master/README.md" },
         { label: "Live App", href: "https://oneday-baby-phi.vercel.app" },
@@ -326,7 +324,9 @@ export const resumeData = {
     {
       title: "my-fi",
       featured: false,
-      period: "2024",
+      period: "2026",
+      teaser:
+        "A local-first app that turns bank CSV exports into a searchable ledger.",
       links: [
         { label: "GitHub Repo", href: "https://github.com/vivek-tech-exp/my-fi/blob/master/README.md" },
       ],
