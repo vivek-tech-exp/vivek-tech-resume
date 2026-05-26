@@ -5,6 +5,8 @@ export type ResumeLink = {
 
 export type ResumeProofPoint = {
   statement: string;
+  href: string;
+  caseStudyTitle: string;
 };
 
 export type ResumeExperience = {
@@ -63,7 +65,9 @@ export const resumeData = {
     proofHeading: "Recent impact",
     workTitle: "What I'm building",
     workIntro: "Side projects and products I ship end to end.",
+    hideProjects: "Show less",
     showAllProjects: "Show all projects",
+    heroAtmosphereLabel: "Backend · Platform · Product",
     experienceTitle: "Where I've worked",
     experienceIntro: "Backend, platform, and delivery roles across fintech, insurance, and observability.",
     impactTitle: "Deeper write-ups",
@@ -80,12 +84,18 @@ export const resumeData = {
   proofPoints: [
     {
       statement: "Automated customer onboarding with Terraform.",
+      caseStudyTitle: "Cloud Onboarding & Provisioning Automation",
+      href: "https://www.notion.so/Cloud-Onboarding-Provisioning-Automation-33dc3c09806980b9870ec3404a0813db?source=copy_link",
     },
     {
       statement: "Cut medical checkup wait time from 17 days to 3.",
+      caseStudyTitle: "Health Insurance Workflow Automation Platform",
+      href: "https://www.notion.so/Health-Insurance-Workflow-Automation-Platform-33dc3c09806980339d41c979d47d9232?source=copy_link",
     },
     {
       statement: "Built a fintech backend with FIX 2.0 integrations.",
+      caseStudyTitle: "FinchMoney: Automated Consumer Investing Platform",
+      href: "https://www.notion.so/FinchMoney-Building-the-Backend-for-an-Automated-Consumer-Investing-Platform-33dc3c098069809697a5de26144c0272?source=copy_link",
     },
   ] satisfies readonly ResumeProofPoint[],
   links: {

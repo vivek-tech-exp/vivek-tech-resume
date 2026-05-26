@@ -11,7 +11,7 @@ export const pageStyles = {
   nav: "hidden items-center gap-5 sm:flex",
   navLink:
     "text-sm text-[var(--text-soft)] no-underline hover:text-[var(--text)]",
-  hero: "space-y-6 border-b border-[var(--border)] pb-12 sm:pb-16",
+  hero: "relative space-y-6 border-b border-[var(--border)] pb-12 sm:pb-16",
   siteLabel: "text-sm text-[var(--text-subtle)]",
   heroTitle:
     "text-balance text-[clamp(2.5rem,2rem+2.5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-[var(--text)]",
@@ -21,7 +21,9 @@ export const pageStyles = {
   heroMeta: "text-sm text-[var(--text-soft)]",
   proofList: "m-0 grid list-none gap-2.5 p-0",
   proofItem:
-    "text-pretty ps-0 text-base leading-relaxed text-[var(--text-muted)] before:me-2 before:text-[var(--accent)] before:content-['•']",
+    "flex items-start gap-2 text-pretty text-base leading-relaxed text-[var(--text-muted)] before:shrink-0 before:text-[var(--accent)] before:content-['•']",
+  proofLink:
+    "text-[var(--text-muted)] no-underline hover:text-[var(--accent)] hover:underline",
   heroActions: "flex flex-wrap items-center gap-3 pt-1",
   buttonPrimary:
     "inline-flex min-h-11 items-center rounded-full bg-[var(--text)] px-5 py-2.5 text-sm font-medium text-[var(--page)] no-underline hover:opacity-90",

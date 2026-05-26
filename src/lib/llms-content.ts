@@ -53,7 +53,7 @@ ${projects}
 
 ## Proof points
 
-${resumeData.proofPoints.map((point) => `- ${point.statement}`).join("\n")}
+${resumeData.proofPoints.map((point) => `- ${point.statement} (${point.href})`).join("\n")}
 
 ## Indexable sections on the site
 
