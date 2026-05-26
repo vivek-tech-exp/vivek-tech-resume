@@ -3,13 +3,11 @@ import { resumeData, type PersonalProject } from "@/lib/resume-data";
 
 const { uiStrings } = resumeData;
 
-const isLiveLink = (label: string) => /live|site|app/i.test(label);
-const isCodeLink = (label: string) =>
-  /repo|github|code|backend|native/i.test(label);
-
-const pickLinks = (project: PersonalProject) => {
-  const live = project.links.find((link) => isLiveLink(link.label));
-  const code = project.links.find((link) => isCodeLink(link.label));
+const pickProjectLinks = (project: PersonalProject) => {
+  const live = project.links.find((link) => /live|site|app/i.test(link.label));
+  const code = project.links.find((link) =>
+    /repo|github|code|backend|native/i.test(link.label),
+  );
 
   if (live && code && live.href !== code.href) {
     return [live, code];
@@ -28,7 +26,7 @@ const pickLinks = (project: PersonalProject) => {
 
 const ProjectLinks = ({ project }: { project: PersonalProject }) => (
   <div className={pageStyles.projectLinks}>
-    {pickLinks(project).map((link) => (
+    {pickProjectLinks(project).map((link) => (
       <a
         aria-label={`${project.title} ${link.label} (${uiStrings.externalLinkSuffix})`}
         className={pageStyles.textLink}

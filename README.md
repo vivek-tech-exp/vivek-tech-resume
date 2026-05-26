@@ -2,33 +2,43 @@
 
 Public Next.js codebase for a personal resume website.
 
-## Status
+Live site: [vivek-tech-resume.vercel.app](https://vivek-tech-resume.vercel.app)
 
-Foundation scaffold in place.
+## What this is
+
+A single-page resume site with:
+
+- a clear hero and proof points
+- selected side projects and case-study links
+- work history, tools, and contact links
+- SEO metadata, sitemap, robots.txt, JSON-LD, and `/llms.txt`
 
 Project docs:
 
 - [docs/implementation-plan.md](docs/implementation-plan.md)
 - [docs/coding-standards.md](docs/coding-standards.md)
 
-## Scope
-
-- landing page
-- Notion-backed project content on the landing page
-- GitHub repo link or selected repository links
-- LinkedIn link
-- responsive layout
-- WCAG 2.1 AA accessibility
-- strong performance with minimal client-side JavaScript
-
-## Tech Direction
+## Stack
 
 - Next.js App Router
-- TypeScript in strict mode
+- TypeScript strict mode
+- Tailwind CSS
 - Server Components by default
-- static-first rendering with controlled revalidation for external content
+- static generation for the landing page
 
-## Getting Started
+## Project layout
+
+```text
+src/
+  app/                 routes, metadata, robots, sitemap, llms.txt
+  components/          shared UI such as theme toggle and structured data
+  features/home/       landing page sections and project cards
+  lib/                 resume content, site config, theme, SEO helpers
+```
+
+Resume content lives in `src/lib/resume-data.ts`.
+
+## Getting started
 
 ```bash
 npm install
@@ -47,19 +57,31 @@ Open `http://localhost:3000`.
 
 ## Environment
 
-Use [.env.example](/Users/vivekmankonda/Documents/GitHub/vivek-tech-resume/.env.example) as the reference.
+Use [.env.example](.env.example) as the reference.
 
-- `NEXT_PUBLIC_SITE_URL`
-- `NEXT_PUBLIC_GITHUB_URL`
-- `NEXT_PUBLIC_LINKEDIN_URL`
-- `NOTION_TOKEN`
-- `NOTION_PROJECTS_DATABASE_ID`
+Optional variables:
 
-## Public Repo Rules
+- `NEXT_PUBLIC_SITE_URL` — canonical production URL for SEO metadata
+- `NEXT_PUBLIC_GITHUB_URL` — override GitHub profile/repo link
+- `NEXT_PUBLIC_LINKEDIN_URL` — override LinkedIn profile link
+
+If `NEXT_PUBLIC_SITE_URL` is unset on Vercel, the deployment URL is used automatically.
+
+## Deployment
+
+Deploy with Vercel or any Next.js-compatible host.
+
+Example:
+
+```bash
+vercel link
+vercel --prod
+```
+
+## Public repo rules
 
 - never commit secrets
 - only document environment variable names, never values
-- do not commit private Notion IDs or private content
 - keep personal data in docs limited to what is intentionally public
 
 ## Notes

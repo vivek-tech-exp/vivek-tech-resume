@@ -11,14 +11,14 @@ export const buildLlmsTxt = (): string => {
   const experience = resumeData.experience
     .map(
       (role) =>
-        `- ${role.role} at ${role.company} (${role.period}, ${role.location}): ${role.summary}`,
+        `- ${role.role} at ${role.company} (${role.period}, ${role.location}): ${role.highlight}`,
     )
     .join("\n");
 
   const projects = resumeData.personalProjects
     .map(
       (project) =>
-        `- ${project.title} (${project.period}): ${project.whatItDoes} Links: ${project.links.map((link) => link.href).join(", ")}`,
+        `- ${project.title} (${project.period}): ${project.teaser} Links: ${project.links.map((link) => link.href).join(", ")}`,
     )
     .join("\n");
 
@@ -35,7 +35,7 @@ Locations: ${resumeData.basics.locations.join(", ")}
 
 ## Summary
 
-${resumeData.summary.join(" ")}
+${resumeData.positioningLine}
 
 ${resumeData.specializationSummary}
 
@@ -57,10 +57,10 @@ ${resumeData.proofPoints.map((point) => `- ${point.statement}`).join("\n")}
 
 ## Indexable sections on the site
 
-- /#projects
+- /#work
 - /#experience
-- /#stack
-- /#case-studies
+- /#impact
+- /#tools
 - /#contact
 `;
 };

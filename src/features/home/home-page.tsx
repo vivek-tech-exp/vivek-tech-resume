@@ -137,7 +137,7 @@ export const HomePage = () => {
                   <span className={pageStyles.experiencePeriod}>{item.period}</span>
                 </div>
                 <p className={pageStyles.experienceHighlight}>
-                  {item.points[0] ?? item.summary}
+                  {item.highlight}
                 </p>
               </li>
             ))}
