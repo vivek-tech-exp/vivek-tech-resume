@@ -1,10 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { InteractiveCanvas } from "@/components/interactive-canvas";
 import { TelemetryDashboard } from "@/components/telemetry-dashboard";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { pageStyles } from "@/lib/page-styles";
-import { resumeData } from "@/lib/resume-data";
+import { resumeData, PersonalProject } from "@/lib/resume-data";
 import { siteConfig } from "@/lib/site-config";
 
 type ExternalLink = {
@@ -63,8 +64,200 @@ const getCaseStudyTags = (title: string): string[] => {
   return ["Backend", "Cloud"];
 };
 
+const FootstepsShowcase = ({ project }: { project: PersonalProject }) => {
+  return (
+    <article className="grid gap-6 glassmorphic-card p-6 border border-[var(--border)] transition-all duration-400 hover:shadow-2xl sm:p-8 lg:p-10 relative overflow-hidden group">
+      {/* Visual Accent Layer */}
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[var(--glow-cyan)] rounded-full blur-[80px] pointer-events-none opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
+      
+      {/* Header with Active Pulse */}
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[var(--border)] relative z-10">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2.5">
+            <h3 className="text-2xl font-bold tracking-tight text-[var(--text)] group-hover:text-[var(--accent-cyan)] transition-colors duration-300 sm:text-3xl">
+              {project.title}
+            </h3>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 font-mono text-[0.58rem] tracking-wider uppercase font-semibold select-none">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Active Dev
+            </span>
+          </div>
+          <p className="font-mono text-xs text-[var(--accent-violet)] uppercase tracking-widest font-semibold">
+            {project.period} — Flagship Project
+          </p>
+        </div>
+
+        {/* Project Links */}
+        <div className="flex flex-wrap gap-x-4 gap-y-2">
+          {project.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-[var(--text-soft)] hover:text-[var(--accent-cyan)] transition-colors duration-300 flex items-center gap-1 font-bold"
+            >
+              {link.label} <span>↗</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Flagship Body Structure */}
+      <div className="grid gap-8 lg:grid-cols-12 relative z-10 mt-2">
+        {/* Left Side: Product Context (Why & What) */}
+        <div className="lg:col-span-5 space-y-6">
+          <div className="space-y-2">
+            <h4 className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-cyan)] font-bold">
+              ✦ The Spark (Why)
+            </h4>
+            <p className="text-xs leading-relaxed text-[var(--text-muted)] font-medium whitespace-pre-line sm:text-sm">
+              {project.why}
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <h4 className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-cyan)] font-bold">
+              ✦ Product Value (What it does)
+            </h4>
+            <p className="text-xs leading-relaxed text-[var(--text-muted)] font-medium whitespace-pre-line sm:text-sm">
+              {project.whatItDoes}
+            </p>
+          </div>
+        </div>
+
+        {/* Right Side: Engineering Context (How & Hardest Challenge) */}
+        <div className="lg:col-span-7 space-y-6 flex flex-col justify-between">
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <h4 className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-cyan)] font-bold">
+                ✦ Platform Architecture (How it is done)
+              </h4>
+              <p className="text-xs leading-relaxed text-[var(--text-muted)] font-medium whitespace-pre-line sm:text-sm">
+                {project.howItIsDone}
+              </p>
+            </div>
+
+            {/* Custom Tech Badges */}
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-2.5 py-0.5 text-[0.62rem] font-semibold font-mono tracking-wider border border-[var(--border)] bg-black/20 text-[var(--text-soft)] hover:border-[var(--accent-cyan)] hover:text-[var(--accent-cyan)] hover:bg-[var(--accent-cyan)]/5 transition-all duration-300"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Hardest Challenge callout */}
+          <div className="border border-[var(--accent-violet)]/20 bg-[var(--accent-violet)]/5 p-5 relative overflow-hidden group/challenge mt-4 shadow-inner">
+            <div className="absolute top-0 right-0 w-[120px] h-[120px] bg-[var(--glow-violet)] rounded-full blur-[40px] pointer-events-none opacity-40" />
+            <span className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent-violet)] font-bold block mb-2">
+              ⚡ Hardest Technical Challenge
+            </span>
+            <p className="text-xs leading-relaxed text-[var(--text-soft)] font-medium">
+              {project.challenge}
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+};
+
+const SubordinateProjectCard = ({ project }: { project: PersonalProject }) => {
+  const [activeTab, setActiveTab] = useState<"why" | "what" | "how">("why");
+
+  return (
+    <article className="grid gap-4 glassmorphic-card p-6 border border-[var(--border)] glow-card-container flex flex-col justify-between h-full relative group">
+      <div>
+        <div className="flex justify-between items-start mb-3 pb-2 border-b border-[var(--border)]/60">
+          <h3 className="text-lg font-bold tracking-tight text-[var(--text)] group-hover:text-[var(--accent-cyan)] transition-colors duration-300">
+            {project.title}
+          </h3>
+          <span className="font-mono text-[0.65rem] tracking-wider text-[var(--text-subtle)] font-bold pt-0.5">
+            {project.period}
+          </span>
+        </div>
+
+        {/* Tech Badges */}
+        <div className="flex flex-wrap gap-1 mb-4">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[0.55rem] font-semibold font-mono tracking-wider text-[var(--text-subtle)] border border-[var(--border)] bg-black/10 px-1.5 py-0.5"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Compact Tabs Selector */}
+        <div className="flex border-b border-[var(--border)]/60 mb-4" role="tablist" aria-label={`Project details for ${project.title}`}>
+          {(["why", "what", "how"] as const).map((tab) => (
+            <button
+              key={tab}
+              role="tab"
+              aria-selected={activeTab === tab}
+              onClick={() => setActiveTab(tab)}
+              className={`flex-1 pb-1.5 font-mono text-[0.62rem] uppercase tracking-wider text-center border-b-2 transition-all duration-200 cursor-pointer ${
+                activeTab === tab
+                  ? "border-[var(--accent-cyan)] text-[var(--accent-cyan)] font-bold"
+                  : "border-transparent text-[var(--text-subtle)] hover:text-[var(--text)]"
+              }`}
+            >
+              {tab === "how" ? "How & Challenge" : tab}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab Panel */}
+        <div className="min-h-[160px] text-xs leading-relaxed text-[var(--text-muted)] font-medium">
+          {activeTab === "why" && (
+            <p className="whitespace-pre-line">{project.why}</p>
+          )}
+          {activeTab === "what" && (
+            <p className="whitespace-pre-line">{project.whatItDoes}</p>
+          )}
+          {activeTab === "how" && (
+            <div className="space-y-3">
+              <p className="whitespace-pre-line">{project.howItIsDone}</p>
+              <div className="border-l-2 border-amber-500/50 bg-amber-500/5 pl-3 py-1.5 pr-2">
+                <span className="font-mono text-[0.55rem] uppercase tracking-widest text-amber-500 font-bold block mb-1">
+                  ⚠ Hardest Challenge
+                </span>
+                <p className="text-[0.68rem] leading-normal text-[var(--text-soft)]">
+                  {project.challenge}
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* External Links */}
+      <div className="flex flex-wrap gap-3 mt-6 pt-4 border-t border-[var(--border)]/60">
+        {project.links.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            target="_blank"
+            rel="noreferrer"
+            className="font-mono text-[0.62rem] uppercase tracking-[0.15em] text-[var(--text-soft)] hover:text-[var(--accent-cyan)] transition-colors duration-300 flex items-center gap-1 font-semibold"
+          >
+            {link.label} <span>↗</span>
+          </a>
+        ))}
+      </div>
+    </article>
+  );
+};
+
 export const HomePage = () => {
   const externalLinks = buildExternalLinks();
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
@@ -81,8 +274,8 @@ export const HomePage = () => {
       <header className={pageStyles.chrome}>
         <div className={pageStyles.topBar}>
           <nav aria-label="Section navigation" className={pageStyles.topBarNav}>
-            <a className={pageStyles.topBarLink} href="#impact">
-              Impact
+            <a className={pageStyles.topBarLink} href="#projects">
+              Projects
             </a>
             <a className={pageStyles.topBarLink} href="#experience">
               Experience
@@ -108,7 +301,7 @@ export const HomePage = () => {
             <p className={pageStyles.eyebrow}>{resumeData.basics.title}</p>
             <h1 className={pageStyles.heroTitle}>{resumeData.basics.name}</h1>
             <p className={pageStyles.heroSpecialization}>
-              Distributed Systems • Workflow Automation • Reliability • Cloud Infrastructure
+              Distributed Systems • Backend Infrastructure • Modern Web & Mobile • High-Scale Reliability
             </p>
             <p className={pageStyles.heroSummary}>{resumeData.positioningLine}</p>
           </div>
@@ -118,52 +311,66 @@ export const HomePage = () => {
           </aside>
         </section>
 
-        {/* SELECTED IMPACT */}
+        {/* PERSONAL PROJECTS */}
         <section
           className={`${pageStyles.section}`}
-          id="impact"
+          id="projects"
           style={{ animationDelay: "150ms" }}
-          aria-labelledby="impact-heading"
+          aria-labelledby="projects-heading"
         >
           <div className={pageStyles.sectionHeading}>
-            <p className={pageStyles.sectionKicker}>Selected Impact</p>
-            <h2 className={pageStyles.sectionTitle} id="impact-heading">
-              Concrete outcomes, not broad claims.
+            <p className={pageStyles.sectionKicker}>Personal Projects</p>
+            <h2 className={pageStyles.sectionTitle} id="projects-heading">
+              Independent builds demonstrating product vision and technical leadership.
             </h2>
           </div>
-          <ul className={pageStyles.proofList} aria-label="Selected proof points">
-            {resumeData.proofPoints.map((item, index) => {
-              let keyword = "IAC";
-              let metric = "⚡";
-              if (index === 1) {
-                keyword = "OPS LATENCY";
-                metric = "82%";
-              }
-              if (index === 2) {
-                keyword = "PROTOCOL";
-                metric = "FIX";
-              }
-              return (
-                <li className={pageStyles.proofChip} key={item.statement}>
-                  <div className="flex justify-between items-start mb-4 relative z-10 border-b border-[var(--border)] pb-2">
-                    <span className="font-mono text-[0.6rem] uppercase tracking-[0.25em] text-[var(--text-subtle)] font-bold">
-                      {keyword}
-                    </span>
-                    <span className="text-[var(--accent-cyan)] font-mono font-bold text-sm tracking-widest">
-                      {metric}
-                    </span>
+
+          <div className="space-y-12">
+            {/* Overview paragraph */}
+            <p className="text-sm leading-relaxed text-[var(--text-muted)] font-medium italic border-l-2 border-[var(--accent-cyan)] pl-3">
+              A curated showcase of selected projects, framing why each exists, what value it brings, and how it was designed and built from an engineering leadership perspective.
+            </p>
+
+            {/* Flagship Project Showcase */}
+            {resumeData.personalProjects
+              .filter((p) => p.featured)
+              .map((project) => (
+                <FootstepsShowcase key={project.title} project={project} />
+              ))}
+
+            {/* Expandable Secondary Projects */}
+            <div className="space-y-8">
+              <div className="flex justify-center pt-2">
+                <button
+                  onClick={() => setShowAllProjects(!showAllProjects)}
+                  className="group flex items-center gap-2.5 px-6 py-3 border border-[var(--border)] bg-black/10 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-[var(--text-soft)] hover:text-[var(--accent-cyan)] hover:border-[var(--accent-cyan)] hover:bg-[var(--accent-cyan)]/5 transition-all duration-300 shadow-md cursor-pointer hover:shadow-[0_0_15px_-5px_var(--glow-cyan)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)] select-none font-bold"
+                >
+                  <span>{showAllProjects ? "Show Fewer Personal Builds ↑" : "Explore 4 More Recent Builds ↓"}</span>
+                </button>
+              </div>
+
+              {showAllProjects && (
+                <div className="space-y-6 animate-reveal">
+                  <h3 className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--text-subtle)] font-bold pb-2 border-b border-[var(--border)]">
+                    Other Selected Builds
+                  </h3>
+                  <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
+                    {resumeData.personalProjects
+                      .filter((p) => !p.featured)
+                      .map((project) => (
+                        <SubordinateProjectCard key={project.title} project={project} />
+                      ))}
                   </div>
-                  <p className={pageStyles.proofText}>{item.statement}</p>
-                </li>
-              );
-            })}
-          </ul>
+                </div>
+              )}
+            </div>
+          </div>
         </section>
-        
+
         {/* SPECIALIZATION */}
         <section
           className={`${pageStyles.specializationSection}`}
-          style={{ animationDelay: "225ms" }}
+          style={{ animationDelay: "300ms" }}
         >
           <div className={pageStyles.sectionHeading}>
             <p className={pageStyles.sectionKicker}>Specialization</p>
@@ -179,7 +386,7 @@ export const HomePage = () => {
         <section
           className={`${pageStyles.section}`}
           id="experience"
-          style={{ animationDelay: "300ms" }}
+          style={{ animationDelay: "375ms" }}
           aria-labelledby="experience-heading"
         >
           <div className={pageStyles.sectionHeading}>
