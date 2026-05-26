@@ -1,7 +1,7 @@
 import { resumeData } from "@/lib/resume-data";
 import { siteConfig } from "@/lib/site-config";
 
-export type ExternalLink = {
+type ExternalLink = {
   href: string;
   label: string;
 };

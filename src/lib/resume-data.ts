@@ -1,15 +1,15 @@
-export type ResumeLink = {
+type ResumeLink = {
   href: string;
   label: string;
 };
 
-export type ResumeProofPoint = {
+type ResumeProofPoint = {
   statement: string;
   href: string;
   caseStudyTitle: string;
 };
 
-export type ResumeExperience = {
+type ResumeExperience = {
   company: string;
   location: string;
   period: string;
@@ -17,12 +17,12 @@ export type ResumeExperience = {
   highlight: string;
 };
 
-export type ResumeStackGroup = {
+type ResumeStackGroup = {
   label: string;
   items: readonly string[];
 };
 
-export type ResumeCaseStudy = {
+type ResumeCaseStudy = {
   title: string;
   context: string;
   description: string;
@@ -30,7 +30,7 @@ export type ResumeCaseStudy = {
   href: string;
 };
 
-export type ProjectLink = {
+type ProjectLink = {
   label: string;
   href: string;
 };
@@ -65,9 +65,7 @@ export const resumeData = {
     proofHeading: "Recent impact",
     workTitle: "What I'm building",
     workIntro: "Side projects and products I ship end to end.",
-    hideProjects: "Show less",
     showAllProjects: "Show all projects",
-    heroAtmosphereLabel: "Backend · Platform · Product",
     experienceTitle: "Where I've worked",
     experienceIntro: "Backend, platform, and delivery roles across fintech, insurance, and observability.",
     impactTitle: "Deeper write-ups",
@@ -236,7 +234,7 @@ export const resumeData = {
   },
   personalProjects: [
     {
-      title: "Footsteps App",
+      title: "Footsteps Space",
       featured: true,
       period: "Jun 2025 – Present",
       teaser:
