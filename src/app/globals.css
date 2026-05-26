@@ -110,4 +110,52 @@
   .details-expand summary::-webkit-details-marker {
     display: none;
   }
+
+  .hero-scene {
+    isolation: isolate;
+  }
+
+  .hero-atmosphere-host {
+    z-index: 0;
+    opacity: 0.42;
+    mask-image: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 0.85),
+      rgb(0 0 0 / 0.15) 72%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 0.85),
+      rgb(0 0 0 / 0.15) 72%,
+      transparent
+    );
+  }
+
+  .hero-atmosphere-canvas {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  .hero-atmosphere-label {
+    align-items: center;
+    background: color-mix(in oklab, var(--surface) 88%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-soft);
+    display: inline-flex;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0.65rem 1.1rem;
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-atmosphere-host {
+      display: none;
+    }
+  }
 }
