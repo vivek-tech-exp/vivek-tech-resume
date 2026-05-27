@@ -33,7 +33,7 @@ const ProjectLinks = ({ project }: { project: PersonalProject }) => (
     {pickProjectLinks(project).map((link) => (
       <a
         aria-label={`${project.title} ${link.label}${externalLinkAriaSuffix(link.href, uiStrings.externalLinkSuffix)}`}
-        className={pageStyles.textLink}
+        className={pageStyles.linkPill}
         href={link.href}
         key={link.href}
         {...externalLinkProps(link.href)}

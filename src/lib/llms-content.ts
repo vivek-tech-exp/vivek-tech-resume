@@ -1,4 +1,3 @@
-import { caseStudyHref } from "@/lib/case-study-links";
 import { resumeData } from "@/lib/resume-data";
 import { siteConfig } from "@/lib/site-config";
 import { getSiteUrl, joinSitePath } from "@/lib/site-url";
@@ -53,17 +52,14 @@ ${experience}
 
 ${projects}
 
-## Proof points
-
-${resumeData.proofPoints
-    .map((point) => `- ${point.statement} (${path(point.href)})`)
-    .join("\n")}
-
 ## Case studies
 
-- Cloud onboarding automation (${path(caseStudyHref("cloud-onboarding"))})
-- Health insurance workflow platform (${path(caseStudyHref("health-insurance-workflow"))})
-- FinchMoney consumer investing backend (${path(caseStudyHref("finchmoney"))})
+${resumeData.caseStudies
+    .map(
+      (study) =>
+        `- ${study.metric} ${study.outcome} (${study.context}). ${path(study.href)}`,
+    )
+    .join("\n")}
 
 ## Resume download
 

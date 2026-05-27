@@ -27,8 +27,8 @@ June 2025 to Present
 
 Senior Software Engineer, New Relic, Bengaluru, India
 January 2025 to May 2025
-- Automated enterprise customer onboarding with Terraform Infrastructure-as-Code modules for thousands of AWS accounts.
-- Replaced manual cloud UI configuration with auditable, version-controlled telemetry pipelines at scale.
+- Automated enterprise customer onboarding with Terraform.
+- Implemented Infrastructure-as-Code modules for thousands of AWS accounts; replaced manual UI configuration with auditable telemetry pipelines at scale.
 - Reduced mean time to resolution by 37 percent.
 
 Software Development Engineer 3, Acko, Bengaluru, India
