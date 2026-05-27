@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "resume:sync": "cp docs/vivek-mankonda-resume.pdf docs/vivek-mankonda-resume.docx public/"
   },
   "dependencies": {
     "next": "^16.2.3",

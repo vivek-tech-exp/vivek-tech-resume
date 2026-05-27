@@ -1,0 +1,71 @@
+VIVEK MANKONDA
+Senior Software Engineer | 7 Years Experience
+Email: vivekmankonda.work@gmail.com
+LinkedIn: https://www.linkedin.com/in/vivekmankonda/
+GitHub: https://github.com/vivek-tech-exp
+Location: Hyderabad, Bengaluru, Pune, India (Remote)
+
+PROFESSIONAL SUMMARY
+Senior Software Engineer with seven years of experience designing and delivering backend systems, workflow platforms, and full-stack products for fintech, insurance, and observability companies. Proven results in Terraform-based cloud automation, Camunda workflow orchestration, high-traffic service optimization, and FIX 2.0 trading integrations. Comfortable owning services end to end across Java, Spring, AWS, Kafka, and modern APIs.
+
+CORE COMPETENCIES
+Java | Spring Framework | Spring Cloud | Camunda | BPMN | DMN | Apache Kafka | AWS | Terraform | FIX 2.0 | PostgreSQL | Kubernetes | GraphQL | Python | TypeScript | Fintech | Insurance
+
+TECHNICAL SKILLS
+Languages: Java, JavaScript, TypeScript, Python
+Backend and APIs: Spring Framework, Spring Cloud, ExpressJS, NestJS, REST, GraphQL, WebSockets, Webhooks, HTTP 2.0, FIX 2.0
+Workflows and Messaging: Camunda, BPMN, DMN, Kafka, Kafka Streams, RabbitMQ
+Cloud and Platform: AWS, Terraform, CloudFormation, Docker, Kubernetes
+Data and Observability: PostgreSQL, MongoDB, DynamoDB, Elasticsearch, Redis Cache, Grafana, New Relic, Logstash
+
+PROFESSIONAL EXPERIENCE
+
+Builder, Footsteps Space, Remote
+June 2025 to Present
+- Shipped end-to-end mobile product that turns trips into structured travel stories with maps, photos, and sync.
+- Built backend, native client, and public web presence for a consumer travel storytelling platform.
+
+Senior Software Engineer, New Relic, Bengaluru, India
+January 2025 to May 2025
+- Automated enterprise customer onboarding with Terraform Infrastructure-as-Code modules for thousands of AWS accounts.
+- Replaced manual cloud UI configuration with auditable, version-controlled telemetry pipelines at scale.
+- Reduced mean time to resolution by 37 percent.
+
+Software Development Engineer 3, Acko, Bengaluru, India
+March 2023 to July 2024
+- Architected workflow-first backend using Camunda, BPMN, and DMN for health insurance operations.
+- Modeled long-running business processes and automated critical state transitions.
+- Reduced medical checkup turnaround time from 17 days to 3 days.
+
+Senior Software Engineer, Gameskraft Technologies, Bengaluru, India
+April 2022 to March 2023
+- Optimized high-traffic backend architecture for reliability and performance under load.
+- Reduced AWS infrastructure costs by 38 percent.
+
+R&D Engineer Backend, Needle Innovision, Pune, India
+October 2018 to March 2022
+- Built FinchMoney fintech platform with pooled brokerage architecture and fractional share accounting.
+- Integrated FIX 2.0 trading protocols and reconciled real-time spending with asynchronous market settlements.
+- Delivered liquidity management and settlement workflows for consumer investing.
+
+Software Engineer, Thoughtclan Technologies, Hyderabad, India
+August 2017 to August 2018
+- Developed internal automation tools to improve operational efficiency.
+
+OTHER SIDE PROJECTS
+
+Emu Event Assistant, 2026
+- Built lightweight assistant for small hosts to track guests, payments, and expenses.
+
+gh-ruleset-sync, 2026
+- Built GitHub CLI tool to apply and audit repository rulesets across many repositories.
+
+Borderless Buy / One Day Baby, 2026
+- Built shopping comparison tool for local versus abroad prices with landed-cost context.
+
+my-fi, 2026
+- Built local-first application that turns bank CSV exports into a searchable personal finance ledger.
+
+EDUCATION
+Bachelor of Technology in Computer Science and Engineering
+Heritage Institute of Technology, Kolkata, India, 2013 to 2017

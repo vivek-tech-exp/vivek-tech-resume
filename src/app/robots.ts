@@ -6,10 +6,12 @@ export default function robots(): MetadataRoute.Robots {
   const origin = getSiteOrigin();
 
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+      },
+    ],
     sitemap: origin ? `${origin}/sitemap.xml` : undefined,
     host: origin,
   };

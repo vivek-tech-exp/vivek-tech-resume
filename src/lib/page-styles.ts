@@ -8,9 +8,19 @@ export const pageStyles = {
     "mx-auto flex max-w-3xl items-center justify-between gap-4 px-5 py-4 sm:px-8",
   brand:
     "text-sm font-medium text-[var(--text)] no-underline hover:text-[var(--accent)]",
-  nav: "hidden items-center gap-5 sm:flex",
+  nav: "hidden flex-1 items-center justify-center gap-5 sm:flex",
   navLink:
     "text-sm text-[var(--text-soft)] no-underline hover:text-[var(--text)]",
+  headerActions: "flex shrink-0 items-center gap-2 sm:gap-2.5",
+  headerButton:
+    "inline-flex min-h-9 cursor-pointer list-none items-center rounded-full bg-[var(--text)] px-3.5 py-2 text-xs font-medium text-[var(--page)] no-underline hover:opacity-90 sm:min-h-10 sm:px-4 sm:text-sm [&::-webkit-details-marker]:hidden",
+  downloadMenu: "relative",
+  downloadMenuPanel:
+    "absolute left-0 top-[calc(100%+0.5rem)] z-30 min-w-[11rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--page)] py-1 shadow-[0_12px_40px_color-mix(in_oklab,var(--text)_12%,transparent)]",
+  headerMenuPanel:
+    "absolute right-0 top-[calc(100%+0.5rem)] z-30 min-w-[11rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--page)] py-1 shadow-[0_12px_40px_color-mix(in_oklab,var(--text)_12%,transparent)]",
+  downloadMenuItem:
+    "block px-4 py-2.5 text-sm font-medium text-[var(--text)] no-underline hover:bg-[var(--surface)]",
   hero: "space-y-6 border-b border-[var(--border)] pb-12 sm:pb-16",
   siteLabel: "text-sm text-[var(--text-subtle)]",
   heroTitle:
