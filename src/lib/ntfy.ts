@@ -1,3 +1,7 @@
+import {
+  formatDownloadOrigin,
+  getDownloadOrigin,
+} from "@/lib/download-origin";
 import type { ResumeDownloadFormat } from "@/lib/resume-downloads";
 
 const trimEnv = (value: string | undefined) => value?.trim() || undefined;
@@ -15,13 +19,30 @@ const ntfyConfig = () => {
   };
 };
 
-export const notifyResumeDownload = async (format: ResumeDownloadFormat) => {
+const buildNotifyBody = (
+  format: ResumeDownloadFormat,
+  request: Request,
+) => {
+  const label = format === "pdf" ? "PDF" : "Word";
+  const location = formatDownloadOrigin(getDownloadOrigin(request));
+  const lines = [`Format: ${label}`];
+
+  if (location) {
+    lines.push(`Approx. location: ${location}`);
+  }
+
+  return lines.join("\n");
+};
+
+export const notifyResumeDownload = async (
+  format: ResumeDownloadFormat,
+  request: Request,
+) => {
   const config = ntfyConfig();
   if (!config) {
     return;
   }
 
-  const label = format === "pdf" ? "PDF" : "Word";
   const url = `${config.baseUrl.replace(/\/$/, "")}/${config.topic}`;
 
   try {
@@ -32,7 +53,7 @@ export const notifyResumeDownload = async (format: ResumeDownloadFormat) => {
         Tags: `resume,${format}`,
         ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
       },
-      body: `Someone downloaded your resume (${label}).`,
+      body: buildNotifyBody(format, request),
       signal: AbortSignal.timeout(5000),
     });
   } catch {

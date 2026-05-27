@@ -11,7 +11,10 @@ export type ResumeDownloadFormat = keyof typeof resumeData.resumeDownloads.forma
 export const getResumeDownloadAsset = (format: ResumeDownloadFormat) =>
   resumeData.resumeDownloads.formats[format];
 
-export const buildResumeFileResponse = async (format: ResumeDownloadFormat) => {
+export const buildResumeFileResponse = async (
+  format: ResumeDownloadFormat,
+  request: Request,
+) => {
   const asset = getResumeDownloadAsset(format);
 
   try {
@@ -20,7 +23,7 @@ export const buildResumeFileResponse = async (format: ResumeDownloadFormat) => {
     );
 
     // Must await: serverless exits when the response is sent; fire-and-forget never runs.
-    await notifyResumeDownload(format);
+    await notifyResumeDownload(format, request);
 
     return new NextResponse(body, {
       headers: {
