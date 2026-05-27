@@ -55,7 +55,6 @@ export const resumeData = {
     name: "Vivek Mankonda",
     title: "Senior Software Engineer",
     locations: ["Hyderabad", "Bengaluru", "Pune", "India (Remote)"],
-    email: "vivekmankonda.work@gmail.com",
   },
   uiStrings: {
     skipToContent: "Skip to content",
@@ -75,21 +74,20 @@ export const resumeData = {
     proofHeading: "Recent impact",
     workTitle: "Current work",
     workIntro:
-      "Footsteps Space — a travel storytelling product I am building end to end.",
+      "Footsteps Space, a travel storytelling product I am building end to end.",
     sideProjectsTitle: "Other projects",
     sideProjectsIntro:
       "Additional products built alongside full-time engineering roles.",
     showAllProjects: "Show all projects",
     experienceTitle: "Experience",
     experienceIntro:
-      "Seven years across backend, platform, and product delivery — including fintech, insurance, and observability.",
+      "Seven years across backend, platform, and product delivery, including fintech, insurance, and observability.",
     impactTitle: "Case studies",
     impactIntro:
       "Deeper notes on platform work, automation, and systems shipped in production.",
     toolsTitle: "Technical stack",
     contactTitle: "Contact",
-    contactIntro: "Reach out on LinkedIn or by email — I reply within a few days.",
-    emailLabel: "Email",
+    contactIntro: "Message me on LinkedIn. Same-day replies when I can.",
     educationLabel: "Education",
     readCaseStudy: "View case study",
     externalLinkSuffix: "opens in new tab",
@@ -149,7 +147,7 @@ export const resumeData = {
       period: "Jun 2025 – Present",
       role: "Builder",
       highlight:
-        "Building a travel storytelling product end to end — mobile app, backend, and public web.",
+        "Building a travel storytelling product end to end: mobile app, backend, and public web.",
     },
     {
       company: "New Relic",

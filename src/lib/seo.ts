@@ -11,11 +11,11 @@ const truncate = (text: string, max = MAX_DESCRIPTION_LENGTH) =>
 
 export const seoCopy = {
   homeTitle:
-    "Vivek Mankonda | Senior Software Engineer — Backend, AWS, Fintech",
+    "Vivek Mankonda | Senior Software Engineer · Backend, AWS, Fintech",
   homeDescription: truncate(
     "Vivek Mankonda is a Senior Software Engineer with 7 years building backend systems, workflow platforms, and cloud infrastructure at New Relic, Acko, and fintech teams. India and remote.",
   ),
-  resumeTitle: "Download Resume — PDF & Word",
+  resumeTitle: "Download Resume · PDF & Word",
   resumeDescription: truncate(
     `Download ${resumeData.basics.name}'s resume as PDF or Word. Senior Software Engineer focused on backend systems, AWS, and product delivery.`,
   ),
