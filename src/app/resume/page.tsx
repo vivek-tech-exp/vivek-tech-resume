@@ -1,19 +1,20 @@
 import Link from "next/link";
 
+import { StructuredData } from "@/components/structured-data";
 import { pageStyles } from "@/lib/page-styles";
 import { resumeData } from "@/lib/resume-data";
+import { buildResumeMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
-export const metadata = {
-  title: "Download Resume",
-  description: `Download ${resumeData.basics.name}'s resume as PDF or Word.`,
-};
+export const metadata = buildResumeMetadata();
 
 export default function ResumeDownloadPage() {
   const { formats, menuLabel } = resumeData.resumeDownloads;
 
   return (
-    <main className={`${pageStyles.shell} pt-16`} id="main-content">
+    <>
+      <StructuredData page="resume" />
+      <main className={`${pageStyles.shell} pt-16`} id="main-content">
       <div className="mx-auto max-w-lg space-y-6">
         <div className="space-y-2">
           <p className={pageStyles.siteLabel}>{resumeData.basics.name}</p>
@@ -40,5 +41,6 @@ export default function ResumeDownloadPage() {
         </p>
       </div>
     </main>
+    </>
   );
 }

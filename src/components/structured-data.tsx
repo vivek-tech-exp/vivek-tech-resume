@@ -1,10 +1,22 @@
-import { buildStructuredData } from "@/lib/structured-data";
+import {
+  buildResumeStructuredData,
+  buildStructuredData,
+} from "@/lib/structured-data";
 
-export const StructuredData = () => (
-  <script
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify(buildStructuredData()),
-    }}
-    type="application/ld+json"
-  />
-);
+type StructuredDataProps = {
+  page?: "home" | "resume";
+};
+
+export const StructuredData = ({ page = "home" }: StructuredDataProps) => {
+  const payload =
+    page === "resume" ? buildResumeStructuredData() : buildStructuredData();
+
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(payload),
+      }}
+      type="application/ld+json"
+    />
+  );
+};

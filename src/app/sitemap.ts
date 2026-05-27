@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { indexableRoutes } from "@/lib/seo-routes";
 import { getSiteOrigin } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,18 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return [];
   }
 
-  return [
-    {
-      url: origin,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${origin}/resume`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-  ];
+  const lastModified = new Date();
+
+  return indexableRoutes.map((route) => ({
+    url: `${origin}${route.path}`,
+    lastModified,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
+  }));
 }
