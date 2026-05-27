@@ -59,6 +59,7 @@ ${resumeData.proofPoints.map((point) => `- ${point.statement} (${point.href})`).
 
 - /#work
 - /#experience
+- /#side-projects
 - /#impact
 - /#tools
 - /#contact
