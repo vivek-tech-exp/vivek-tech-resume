@@ -51,7 +51,7 @@ export const HomePage = () => {
               {resumeData.proofPoints.map((point) => (
                 <li className={pageStyles.proofItem} key={point.statement}>
                   <a
-                    aria-label={`${point.statement} — ${uiStrings.readCaseStudy}: ${point.caseStudyTitle}${externalLinkAriaSuffix(point.href, uiStrings.externalLinkSuffix)}`}
+                    aria-label={`${point.statement}. ${uiStrings.readCaseStudy}: ${point.caseStudyTitle}${externalLinkAriaSuffix(point.href, uiStrings.externalLinkSuffix)}`}
                     className={pageStyles.proofLink}
                     href={point.href}
                     {...externalLinkProps(point.href)}
@@ -73,12 +73,6 @@ export const HomePage = () => {
               target="_blank"
             >
               {resumeData.links.linkedin.label}
-            </a>
-            <a
-              className={pageStyles.buttonSecondary}
-              href={`mailto:${resumeData.basics.email}`}
-            >
-              {uiStrings.emailLabel}
             </a>
             <a
               aria-label={`${resumeData.links.github.label} (${uiStrings.externalLinkSuffix})`}
@@ -256,12 +250,6 @@ export const HomePage = () => {
                   {link.label}
                 </a>
               ))}
-              <a
-                className={pageStyles.buttonSecondary}
-                href={`mailto:${resumeData.basics.email}`}
-              >
-                {uiStrings.emailLabel}
-              </a>
             </div>
 
             <div className={pageStyles.contactMeta}>
@@ -279,17 +267,6 @@ export const HomePage = () => {
                   </a>
                 </p>
               ) : null}
-              <p>
-                <span className="font-medium text-[var(--text)]">
-                  {uiStrings.emailLabel}:{" "}
-                </span>
-                <a
-                  className={pageStyles.textLink}
-                  href={`mailto:${resumeData.basics.email}`}
-                >
-                  {resumeData.basics.email}
-                </a>
-              </p>
               <p>
                 <span className="font-medium text-[var(--text)]">
                   {uiStrings.educationLabel}:{" "}
