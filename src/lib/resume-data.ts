@@ -60,6 +60,10 @@ export const resumeData = {
     navWork: "Work",
     navExperience: "Experience",
     navContact: "Contact",
+    resumeShareLabel: "Resume download link",
+    resumeMenuLabel: "Choose a resume format",
+    downloadPdfLabel: "PDF",
+    downloadDocxLabel: "Word (.docx)",
     heroRoleLine: "Senior Software Engineer · 7 years",
     heroAvailability: "Open to senior IC roles · India & remote",
     proofHeading: "Recent impact",
@@ -102,12 +106,33 @@ export const resumeData = {
     linkedin: {
       href: "https://www.linkedin.com/in/vivekmankonda/",
       label: "LinkedIn",
-    },
+    } satisfies ResumeLink,
     github: {
       href: "https://github.com/vivek-tech-exp/vivek-tech-resume",
       label: "GitHub",
+    } satisfies ResumeLink,
+  },
+  resumeDownloads: {
+    menuLabel: "Download Resume",
+    sharePath: "/resume",
+    formats: {
+      pdf: {
+        href: "/resume/pdf",
+        menuLabel: "PDF",
+        fileName: "Vivek-Mankonda-Resume.pdf",
+        publicFile: "vivek-mankonda-resume.pdf",
+        mimeType: "application/pdf",
+      },
+      docx: {
+        href: "/resume/docx",
+        menuLabel: "Word (.docx)",
+        fileName: "Vivek-Mankonda-Resume.docx",
+        publicFile: "vivek-mankonda-resume.docx",
+        mimeType:
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      },
     },
-  } satisfies Record<string, ResumeLink>,
+  },
   experience: [
     {
       company: "New Relic",

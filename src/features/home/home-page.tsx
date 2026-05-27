@@ -3,9 +3,11 @@ import {
   FeaturedProject,
   ProjectRow,
 } from "@/features/home/project-cards";
+import { ResumeDownloadMenu } from "@/features/home/resume-download-menu";
 import { buildExternalLinks } from "@/features/home/home-utils";
 import { pageStyles } from "@/lib/page-styles";
 import { resumeData } from "@/lib/resume-data";
+import { siteConfig } from "@/lib/site-config";
 
 export const HomePage = () => {
   const externalLinks = buildExternalLinks();
@@ -59,9 +61,10 @@ export const HomePage = () => {
           </div>
 
           <div className={pageStyles.heroActions}>
+            <ResumeDownloadMenu variant="primary" />
             <a
               aria-label={`${resumeData.links.linkedin.label} (${uiStrings.externalLinkSuffix})`}
-              className={pageStyles.buttonPrimary}
+              className={pageStyles.buttonSecondary}
               href={externalLinks[0]?.href}
               rel="noreferrer noopener"
               target="_blank"
@@ -238,6 +241,7 @@ export const HomePage = () => {
 
           <div className={pageStyles.contactPanel}>
             <div className={pageStyles.contactActions}>
+              <ResumeDownloadMenu variant="primary" />
               {externalLinks.map((link) => (
                 <a
                   aria-label={`${link.label} (${uiStrings.externalLinkSuffix})`}
@@ -251,7 +255,7 @@ export const HomePage = () => {
                 </a>
               ))}
               <a
-                className={pageStyles.buttonPrimary}
+                className={pageStyles.buttonSecondary}
                 href={`mailto:${resumeData.basics.email}`}
               >
                 {uiStrings.emailLabel}
@@ -259,6 +263,20 @@ export const HomePage = () => {
             </div>
 
             <div className={pageStyles.contactMeta}>
+              {siteConfig.siteUrl ? (
+                <p>
+                  <span className="font-medium text-[var(--text)]">
+                    {uiStrings.resumeShareLabel}:{" "}
+                  </span>
+                  <a
+                    className={pageStyles.textLink}
+                    href={`${siteConfig.siteUrl}${resumeData.resumeDownloads.sharePath}`}
+                  >
+                    {siteConfig.siteUrl.replace(/^https?:\/\//, "")}
+                    {resumeData.resumeDownloads.sharePath}
+                  </a>
+                </p>
+              ) : null}
               <p>
                 <span className="font-medium text-[var(--text)]">
                   {uiStrings.emailLabel}:{" "}

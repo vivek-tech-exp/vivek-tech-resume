@@ -55,6 +55,12 @@ ${projects}
 
 ${resumeData.proofPoints.map((point) => `- ${point.statement} (${point.href})`).join("\n")}
 
+## Resume download
+
+- ${siteUrl}/resume (PDF or Word download page)
+- ${siteUrl}/resume/pdf
+- ${siteUrl}/resume/docx
+
 ## Indexable sections on the site
 
 - /#work

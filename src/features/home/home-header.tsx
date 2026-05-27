@@ -1,6 +1,7 @@
 "use client";
 
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { ResumeDownloadMenu } from "@/features/home/resume-download-menu";
 import { pageStyles } from "@/lib/page-styles";
 import { resumeData } from "@/lib/resume-data";
 
@@ -21,7 +22,10 @@ export const HomeHeader = () => (
           {resumeData.uiStrings.navContact}
         </a>
       </nav>
-      <ThemeToggle />
+      <div className={pageStyles.headerActions}>
+        <ResumeDownloadMenu variant="header" />
+        <ThemeToggle />
+      </div>
     </div>
   </header>
 );
