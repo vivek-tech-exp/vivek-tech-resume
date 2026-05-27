@@ -24,6 +24,7 @@ export default function RootLayout({
     <html lang="en-IN" suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="light dark" />
+        <meta name="format-detection" content="telephone=no,email=no,address=no" />
         <link href={siteConfig.linkedinUrl} rel="me" />
         <link href={siteConfig.githubUrl} rel="me" />
         <link

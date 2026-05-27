@@ -1,3 +1,7 @@
+import {
+  externalLinkAriaSuffix,
+  externalLinkProps,
+} from "@/lib/link-behavior";
 import { pageStyles } from "@/lib/page-styles";
 import { resumeData, type PersonalProject } from "@/lib/resume-data";
 
@@ -28,12 +32,11 @@ const ProjectLinks = ({ project }: { project: PersonalProject }) => (
   <div className={pageStyles.projectLinks}>
     {pickProjectLinks(project).map((link) => (
       <a
-        aria-label={`${project.title} ${link.label} (${uiStrings.externalLinkSuffix})`}
+        aria-label={`${project.title} ${link.label}${externalLinkAriaSuffix(link.href, uiStrings.externalLinkSuffix)}`}
         className={pageStyles.textLink}
         href={link.href}
         key={link.href}
-        rel="noreferrer noopener"
-        target="_blank"
+        {...externalLinkProps(link.href)}
       >
         {link.label}
       </a>

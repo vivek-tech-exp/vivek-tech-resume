@@ -66,7 +66,6 @@ export const buildStructuredData = () => {
         jobTitle: resumeData.basics.title,
         description: resumeData.specializationSummary,
         ...(siteUrl ? { url: siteUrl } : {}),
-        email: `mailto:${resumeData.basics.email}`,
         sameAs,
         knowsAbout,
         workLocation: resumeData.basics.locations.map((location) => ({

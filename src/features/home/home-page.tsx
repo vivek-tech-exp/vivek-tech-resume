@@ -5,6 +5,10 @@ import {
 } from "@/features/home/project-cards";
 import { ResumeDownloadMenu } from "@/features/home/resume-download-menu";
 import { buildExternalLinks } from "@/features/home/home-utils";
+import {
+  externalLinkAriaSuffix,
+  externalLinkProps,
+} from "@/lib/link-behavior";
 import { pageStyles } from "@/lib/page-styles";
 import { resumeData } from "@/lib/resume-data";
 import { siteConfig } from "@/lib/site-config";
@@ -47,11 +51,10 @@ export const HomePage = () => {
               {resumeData.proofPoints.map((point) => (
                 <li className={pageStyles.proofItem} key={point.statement}>
                   <a
-                    aria-label={`${point.statement} ${uiStrings.readCaseStudy}: ${point.caseStudyTitle} (${uiStrings.externalLinkSuffix})`}
+                    aria-label={`${point.statement} — ${uiStrings.readCaseStudy}: ${point.caseStudyTitle}${externalLinkAriaSuffix(point.href, uiStrings.externalLinkSuffix)}`}
                     className={pageStyles.proofLink}
                     href={point.href}
-                    rel="noreferrer noopener"
-                    target="_blank"
+                    {...externalLinkProps(point.href)}
                   >
                     {point.statement}
                   </a>
@@ -193,11 +196,10 @@ export const HomePage = () => {
                 </p>
                 <p className={pageStyles.impactText}>{study.description}</p>
                 <a
-                  aria-label={`${uiStrings.readCaseStudy}: ${study.title} (${uiStrings.externalLinkSuffix})`}
+                  aria-label={`${uiStrings.readCaseStudy}: ${study.title}${externalLinkAriaSuffix(study.href, uiStrings.externalLinkSuffix)}`}
                   className={`${pageStyles.textLink} mt-4 inline-flex`}
                   href={study.href}
-                  rel="noreferrer noopener"
-                  target="_blank"
+                  {...externalLinkProps(study.href)}
                 >
                   {uiStrings.readCaseStudy}
                 </a>
@@ -270,9 +272,9 @@ export const HomePage = () => {
                   </span>
                   <a
                     className={pageStyles.textLink}
-                    href={`${siteConfig.siteUrl}${resumeData.resumeDownloads.sharePath}`}
+                    href={`${siteConfig.siteUrl?.replace(/\/$/, "") ?? ""}${resumeData.resumeDownloads.sharePath}`}
                   >
-                    {siteConfig.siteUrl.replace(/^https?:\/\//, "")}
+                    {(siteConfig.siteUrl ?? "").replace(/^https?:\/\//, "").replace(/\/$/, "")}
                     {resumeData.resumeDownloads.sharePath}
                   </a>
                 </p>
@@ -299,7 +301,6 @@ export const HomePage = () => {
             </div>
           </div>
 
-          <p className={pageStyles.footerNote}>{uiStrings.footerNote}</p>
         </section>
       </main>
     </div>
