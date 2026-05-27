@@ -6,12 +6,6 @@ type ResumeLink = {
   label: string;
 };
 
-type ResumeProofPoint = {
-  statement: string;
-  href: string;
-  caseStudyTitle: string;
-};
-
 type ResumeExperience = {
   company: string;
   location: string;
@@ -29,6 +23,8 @@ type ResumeCaseStudy = {
   title: string;
   context: string;
   description: string;
+  /** Punchy one-liner for the hero (not linked; full write-up is in Case studies). */
+  metric: string;
   outcome: string;
   href: string;
 };
@@ -58,10 +54,12 @@ export const resumeData = {
   },
   uiStrings: {
     skipToContent: "Skip to content",
-    siteLabel: "Senior Software Engineer · Portfolio",
+    navMenuLabel: "Menu",
     navWork: "Work",
     navExperience: "Experience",
+    navImpact: "Case studies",
     navContact: "Contact",
+    linkedinCtaLabel: "Message on LinkedIn",
     resumeShareLabel: "Resume link",
     resumeMenuLabel: "Choose a format",
     resumePageIntro:
@@ -71,7 +69,8 @@ export const resumeData = {
     downloadDocxLabel: "Word",
     heroRoleLine: "Senior Software Engineer · 7 years",
     heroAvailability: "Open to senior IC roles · India & remote",
-    proofHeading: "Recent impact",
+    heroImpactLabel: "Recent impact",
+    heroImpactJump: "Read case studies",
     workTitle: "Current work",
     workIntro:
       "Footsteps Space, a travel storytelling product I am building end to end.",
@@ -92,23 +91,6 @@ export const resumeData = {
     readCaseStudy: "View case study",
     externalLinkSuffix: "opens in new tab",
   },
-  proofPoints: [
-    {
-      statement: "Automated customer onboarding with Terraform.",
-      caseStudyTitle: "Cloud Onboarding & Provisioning Automation",
-      href: caseStudyHref("cloud-onboarding"),
-    },
-    {
-      statement: "Cut medical checkup wait time from 17 days to 3.",
-      caseStudyTitle: "Health Insurance Workflow Automation Platform",
-      href: caseStudyHref("health-insurance-workflow"),
-    },
-    {
-      statement: "Built a fintech backend with FIX 2.0 integrations.",
-      caseStudyTitle: "FinchMoney: Automated Consumer Investing Platform",
-      href: caseStudyHref("finchmoney"),
-    },
-  ] satisfies readonly ResumeProofPoint[],
   links: {
     linkedin: {
       href: "https://www.linkedin.com/in/vivekmankonda/",
@@ -121,6 +103,7 @@ export const resumeData = {
   },
   resumeDownloads: {
     menuLabel: "Download Resume",
+    headerMenuLabel: "Resume",
     sharePath: "/resume",
     formats: {
       pdf: {
@@ -155,7 +138,7 @@ export const resumeData = {
       period: "Jan 2025 – May 2025",
       role: "Senior Software Engineer",
       highlight:
-        "Automated customer onboarding with Terraform and reduced mean time to resolution by 37%.",
+        "Automated enterprise customer onboarding with Terraform and reduced mean time to resolution by 37%.",
     },
     {
       company: "Acko",
@@ -247,6 +230,7 @@ export const resumeData = {
     {
       title: "Cloud Onboarding & Provisioning Automation",
       context: "New Relic",
+      metric: "Automated enterprise customer onboarding with Terraform.",
       description:
         "Implemented version-controlled Infrastructure-as-Code modules using Terraform to automate the onboarding of thousands of enterprise AWS accounts, replacing manual UI configurations with auditable, high-scale telemetry pipelines.",
       outcome: "Standardized enterprise cloud provisioning at scale",
@@ -255,6 +239,7 @@ export const resumeData = {
     {
       title: "Health Insurance Workflow Automation Platform",
       context: "Acko",
+      metric: "Cut medical checkup wait time from 17 days to 3.",
       description:
         "Architected a workflow-first backend using Camunda, BPMN, and DMN to orchestrate complex insurance operations, explicitly modeling long-running business processes and automating critical state transitions.",
       outcome: "Reduced medical checkup turnaround from 17 days to 3",
@@ -263,6 +248,7 @@ export const resumeData = {
     {
       title: "FinchMoney: Automated Consumer Investing Platform",
       context: "Needle Innovision",
+      metric: "Built a fintech backend with FIX 2.0 integrations.",
       description:
         "Engineered a pooled brokerage architecture and fractional share accounting system to reconcile real-time consumer spending with asynchronous market settlements, integrating complex liquidity management and FIX-based trading protocols.",
       outcome: "Aligned user spending power with real-market settlements",

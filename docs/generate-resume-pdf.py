@@ -16,6 +16,28 @@ NAME_SIZE = 14
 LINE_HEIGHT = 5.2
 BULLET_INDENT_MM = 5
 
+CONTACT_PREFIXES = ("Email:", "LinkedIn:", "GitHub:", "Location:")
+PRIVATE_CONTACT_PREFIXES = (
+    "Phone:",
+    "Mobile:",
+    "Tel:",
+    "Cell:",
+    "Fax:",
+    "WhatsApp:",
+)
+
+
+def should_omit_line(line: str) -> bool:
+    stripped = line.strip()
+    if not stripped:
+        return False
+    lower = stripped.lower()
+    if lower.startswith(PRIVATE_CONTACT_PREFIXES):
+        return True
+    if lower.startswith("phone ") or lower.startswith("mobile "):
+        return True
+    return False
+
 
 class ResumePDF(FPDF):
     def footer(self) -> None:
@@ -69,7 +91,11 @@ def write_block(pdf: ResumePDF, text: str, *, style: str = "", size: float = BOD
 
 
 def build_pdf() -> None:
-    lines = SOURCE.read_text(encoding="utf-8").splitlines()
+    lines = [
+        line
+        for line in SOURCE.read_text(encoding="utf-8").splitlines()
+        if not should_omit_line(line)
+    ]
 
     pdf = ResumePDF(unit="mm", format="Letter")
     pdf.alias_nb_pages()
@@ -88,7 +114,7 @@ def build_pdf() -> None:
             write_block(pdf, line, style="B", size=NAME_SIZE, gap=0.5)
             continue
 
-        if index == 1 or line.startswith(("Email:", "LinkedIn:", "GitHub:", "Location:")):
+        if index == 1 or line.startswith(CONTACT_PREFIXES):
             pdf.set_text_color(30, 30, 30)
             write_block(pdf, line)
             pdf.set_text_color(0, 0, 0)

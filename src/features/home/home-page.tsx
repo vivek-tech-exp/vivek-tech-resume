@@ -1,14 +1,14 @@
 import { HomeHeader } from "@/features/home/home-header";
 import {
+  HeroImpactTeaser,
+  ImpactCaseStudyList,
+} from "@/features/home/impact-case-study-list";
+import {
   FeaturedProject,
   ProjectRow,
 } from "@/features/home/project-cards";
 import { ResumeDownloadMenu } from "@/features/home/resume-download-menu";
 import { buildExternalLinks } from "@/features/home/home-utils";
-import {
-  externalLinkAriaSuffix,
-  externalLinkProps,
-} from "@/lib/link-behavior";
 import { pageStyles } from "@/lib/page-styles";
 import { resumeData } from "@/lib/resume-data";
 import { siteConfig } from "@/lib/site-config";
@@ -34,8 +34,10 @@ export const HomePage = () => {
       <HomeHeader />
 
       <main className={pageStyles.shell} id="main-content" tabIndex={-1}>
-        <section aria-labelledby="hero-heading" className={pageStyles.hero}>
-          <p className={pageStyles.siteLabel}>{uiStrings.siteLabel}</p>
+        <section
+          aria-labelledby="hero-heading"
+          className={`${pageStyles.hero} scroll-mt-[calc(4.75rem+env(safe-area-inset-top))]`}
+        >
           <div className="space-y-3">
             <h1 className={pageStyles.heroTitle} id="hero-heading">
               {resumeData.basics.name}
@@ -45,44 +47,31 @@ export const HomePage = () => {
           <p className={pageStyles.heroPitch}>{resumeData.positioningLine}</p>
           <p className={pageStyles.heroMeta}>{uiStrings.heroAvailability}</p>
 
-          <div className="space-y-3">
-            <h2 className="sr-only">{uiStrings.proofHeading}</h2>
-            <ul className={pageStyles.proofList}>
-              {resumeData.proofPoints.map((point) => (
-                <li className={pageStyles.proofItem} key={point.statement}>
-                  <a
-                    aria-label={`${point.statement}. ${uiStrings.readCaseStudy}: ${point.caseStudyTitle}${externalLinkAriaSuffix(point.href, uiStrings.externalLinkSuffix)}`}
-                    className={pageStyles.proofLink}
-                    href={point.href}
-                    {...externalLinkProps(point.href)}
-                  >
-                    {point.statement}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <HeroImpactTeaser />
 
           <div className={pageStyles.heroActions}>
             <ResumeDownloadMenu variant="primary" />
-            <a
-              aria-label={`${resumeData.links.linkedin.label} (${uiStrings.externalLinkSuffix})`}
-              className={pageStyles.buttonSecondary}
-              href={externalLinks[0]?.href}
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              {resumeData.links.linkedin.label}
-            </a>
-            <a
-              aria-label={`${resumeData.links.github.label} (${uiStrings.externalLinkSuffix})`}
-              className={pageStyles.buttonSecondary}
-              href={externalLinks[1]?.href}
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              {resumeData.links.github.label}
-            </a>
+            <div className={pageStyles.heroActionsRow}>
+              <a
+                aria-label={`${uiStrings.linkedinCtaLabel} (${uiStrings.externalLinkSuffix})`}
+                className={pageStyles.buttonLinkedIn}
+                href={externalLinks[0]?.href}
+                rel="noreferrer noopener"
+                target="_blank"
+              >
+                <span className="sm:hidden">{resumeData.links.linkedin.label}</span>
+                <span className="hidden sm:inline">{uiStrings.linkedinCtaLabel}</span>
+              </a>
+              <a
+                aria-label={`${resumeData.links.github.label} (${uiStrings.externalLinkSuffix})`}
+                className={pageStyles.buttonSecondary}
+                href={externalLinks[1]?.href}
+                rel="noreferrer noopener"
+                target="_blank"
+              >
+                {resumeData.links.github.label}
+              </a>
+            </div>
           </div>
         </section>
 
@@ -181,25 +170,7 @@ export const HomePage = () => {
             <p className={pageStyles.sectionIntro}>{uiStrings.impactIntro}</p>
           </div>
 
-          <ul className={pageStyles.impactList}>
-            {resumeData.caseStudies.map((study) => (
-              <li className={pageStyles.impactItem} key={study.title}>
-                <p className={pageStyles.impactOutcome}>{study.outcome}</p>
-                <p className={pageStyles.impactMeta}>
-                  {study.context} · {study.title}
-                </p>
-                <p className={pageStyles.impactText}>{study.description}</p>
-                <a
-                  aria-label={`${uiStrings.readCaseStudy}: ${study.title}${externalLinkAriaSuffix(study.href, uiStrings.externalLinkSuffix)}`}
-                  className={`${pageStyles.textLink} mt-4 inline-flex`}
-                  href={study.href}
-                  {...externalLinkProps(study.href)}
-                >
-                  {uiStrings.readCaseStudy}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <ImpactCaseStudyList />
         </section>
 
         <section
@@ -237,19 +208,25 @@ export const HomePage = () => {
 
           <div className={pageStyles.contactPanel}>
             <div className={pageStyles.contactActions}>
-              <ResumeDownloadMenu variant="primary" />
-              {externalLinks.map((link) => (
-                <a
-                  aria-label={`${link.label} (${uiStrings.externalLinkSuffix})`}
-                  className={pageStyles.buttonSecondary}
-                  href={link.href}
-                  key={link.label}
-                  rel="noreferrer noopener"
-                  target="_blank"
-                >
-                  {link.label}
-                </a>
-              ))}
+              <a
+                aria-label={`${uiStrings.linkedinCtaLabel} (${uiStrings.externalLinkSuffix})`}
+                className={pageStyles.buttonPrimary}
+                href={externalLinks[0]?.href}
+                rel="noreferrer noopener"
+                target="_blank"
+              >
+                {uiStrings.linkedinCtaLabel}
+              </a>
+              <a
+                aria-label={`${resumeData.links.github.label} (${uiStrings.externalLinkSuffix})`}
+                className={pageStyles.buttonSecondary}
+                href={externalLinks[1]?.href}
+                rel="noreferrer noopener"
+                target="_blank"
+              >
+                {resumeData.links.github.label}
+              </a>
+              <ResumeDownloadMenu variant="secondary" />
             </div>
 
             <div className={pageStyles.contactMeta}>
@@ -259,7 +236,7 @@ export const HomePage = () => {
                     {uiStrings.resumeShareLabel}:{" "}
                   </span>
                   <a
-                    className={pageStyles.textLink}
+                    className={`${pageStyles.textLink} ${pageStyles.contactMetaLink}`}
                     href={`${siteConfig.siteUrl?.replace(/\/$/, "") ?? ""}${resumeData.resumeDownloads.sharePath}`}
                   >
                     {(siteConfig.siteUrl ?? "").replace(/^https?:\/\//, "").replace(/\/$/, "")}

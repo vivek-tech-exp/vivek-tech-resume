@@ -24,7 +24,7 @@ export default function ResumeDownloadPage() {
             <p className={pageStyles.sectionIntro}>{resumePageIntro}</p>
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">
             <a
               className={pageStyles.buttonPrimary}
               download={formats.pdf.fileName}
