@@ -19,13 +19,15 @@ export const buildResumeFileResponse = async (format: ResumeDownloadFormat) => {
       path.join(process.cwd(), "public", asset.publicFile),
     );
 
-    void notifyResumeDownload(format);
+    // Must await: serverless exits when the response is sent; fire-and-forget never runs.
+    await notifyResumeDownload(format);
 
     return new NextResponse(body, {
       headers: {
         "Content-Type": asset.mimeType,
         "Content-Disposition": `attachment; filename="${asset.fileName}"`,
-        "Cache-Control": "public, max-age=86400, immutable",
+        // No CDN cache — each download must hit the function so ntfy fires.
+        "Cache-Control": "private, no-store",
       },
     });
   } catch {
