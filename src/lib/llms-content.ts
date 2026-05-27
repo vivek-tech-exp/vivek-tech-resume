@@ -1,9 +1,11 @@
+import { caseStudyHref } from "@/lib/case-study-links";
 import { resumeData } from "@/lib/resume-data";
 import { siteConfig } from "@/lib/site-config";
-import { getSiteUrl } from "@/lib/site-url";
+import { getSiteUrl, joinSitePath } from "@/lib/site-url";
 
 export const buildLlmsTxt = (): string => {
   const siteUrl = getSiteUrl()?.href ?? "https://example.com";
+  const path = (route: string) => joinSitePath(siteUrl, route);
   const stack = resumeData.coreStack
     .map((group) => `- ${group.label}: ${group.items.join(", ")}`)
     .join("\n");
@@ -54,13 +56,21 @@ ${projects}
 
 ## Proof points
 
-${resumeData.proofPoints.map((point) => `- ${point.statement} (${point.href})`).join("\n")}
+${resumeData.proofPoints
+    .map((point) => `- ${point.statement} (${path(point.href)})`)
+    .join("\n")}
+
+## Case studies
+
+- Cloud onboarding automation (${path(caseStudyHref("cloud-onboarding"))})
+- Health insurance workflow platform (${path(caseStudyHref("health-insurance-workflow"))})
+- FinchMoney consumer investing backend (${path(caseStudyHref("finchmoney"))})
 
 ## Resume download
 
-- ${siteUrl}/resume (PDF or Word download page)
-- ${siteUrl}/resume/pdf
-- ${siteUrl}/resume/docx
+- ${path("/resume")} (PDF or Word)
+- ${path("/resume/pdf")}
+- ${path("/resume/docx")}
 
 ## Indexable sections on the site
 

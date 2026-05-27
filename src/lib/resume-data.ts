@@ -1,3 +1,5 @@
+import { caseStudyHref } from "@/lib/case-study-links";
+
 type ResumeLink = {
   href: string;
   label: string;
@@ -56,50 +58,56 @@ export const resumeData = {
   },
   uiStrings: {
     skipToContent: "Skip to content",
-    siteLabel: "Resume & selected work",
+    siteLabel: "Senior Software Engineer · Portfolio",
     navWork: "Work",
     navExperience: "Experience",
     navContact: "Contact",
-    resumeShareLabel: "Resume download link",
-    resumeMenuLabel: "Choose a resume format",
+    resumeShareLabel: "Resume link",
+    resumeMenuLabel: "Choose a format",
+    resumePageIntro:
+      "PDF and Word copies of my resume, with the same experience and projects as this site.",
+    resumePageBack: "View full profile",
     downloadPdfLabel: "PDF",
-    downloadDocxLabel: "Word (.docx)",
+    downloadDocxLabel: "Word",
     heroRoleLine: "Senior Software Engineer · 7 years",
     heroAvailability: "Open to senior IC roles · India & remote",
     proofHeading: "Recent impact",
-    workTitle: "What I'm building",
-    workIntro: "Footsteps Space — the product I'm actively shipping end to end.",
-    sideProjectsTitle: "Other side projects",
-    sideProjectsIntro: "Smaller tools and experiments from recent years.",
+    workTitle: "Current work",
+    workIntro:
+      "Footsteps Space — a travel storytelling product I am building end to end.",
+    sideProjectsTitle: "Other projects",
+    sideProjectsIntro:
+      "Additional products built alongside full-time engineering roles.",
     showAllProjects: "Show all projects",
-    experienceTitle: "Where I've worked",
-    experienceIntro: "Backend, platform, and delivery roles across fintech, insurance, and observability.",
-    impactTitle: "Deeper write-ups",
-    impactIntro: "Longer case studies for people who want the full story.",
-    toolsTitle: "Tools I reach for",
-    contactTitle: "Get in touch",
-    contactIntro: "Best reached on LinkedIn or by email.",
+    experienceTitle: "Experience",
+    experienceIntro:
+      "Seven years across backend, platform, and product delivery — including fintech, insurance, and observability.",
+    impactTitle: "Case studies",
+    impactIntro:
+      "Deeper notes on platform work, automation, and systems shipped in production.",
+    toolsTitle: "Technical stack",
+    contactTitle: "Contact",
+    contactIntro: "Reach out on LinkedIn or by email — I reply within a few days.",
     emailLabel: "Email",
     educationLabel: "Education",
-    footerNote: "This site and its code are public.",
-    readCaseStudy: "Read case study",
+    readCaseStudy: "View case study",
     externalLinkSuffix: "opens in new tab",
   },
   proofPoints: [
     {
       statement: "Automated customer onboarding with Terraform.",
       caseStudyTitle: "Cloud Onboarding & Provisioning Automation",
-      href: "https://www.notion.so/Cloud-Onboarding-Provisioning-Automation-33dc3c09806980b9870ec3404a0813db?source=copy_link",
+      href: caseStudyHref("cloud-onboarding"),
     },
     {
       statement: "Cut medical checkup wait time from 17 days to 3.",
       caseStudyTitle: "Health Insurance Workflow Automation Platform",
-      href: "https://www.notion.so/Health-Insurance-Workflow-Automation-Platform-33dc3c09806980339d41c979d47d9232?source=copy_link",
+      href: caseStudyHref("health-insurance-workflow"),
     },
     {
       statement: "Built a fintech backend with FIX 2.0 integrations.",
       caseStudyTitle: "FinchMoney: Automated Consumer Investing Platform",
-      href: "https://www.notion.so/FinchMoney-Building-the-Backend-for-an-Automated-Consumer-Investing-Platform-33dc3c098069809697a5de26144c0272?source=copy_link",
+      href: caseStudyHref("finchmoney"),
     },
   ] satisfies readonly ResumeProofPoint[],
   links: {
@@ -108,7 +116,7 @@ export const resumeData = {
       label: "LinkedIn",
     } satisfies ResumeLink,
     github: {
-      href: "https://github.com/vivek-tech-exp/vivek-tech-resume",
+      href: "https://github.com/vivek-tech-exp",
       label: "GitHub",
     } satisfies ResumeLink,
   },
@@ -125,7 +133,7 @@ export const resumeData = {
       },
       docx: {
         href: "/resume/docx",
-        menuLabel: "Word (.docx)",
+        menuLabel: "Word",
         fileName: "Vivek-Mankonda-Resume.docx",
         publicFile: "vivek-mankonda-resume.docx",
         mimeType:
@@ -134,6 +142,14 @@ export const resumeData = {
     },
   },
   experience: [
+    {
+      company: "Footsteps Space",
+      location: "Remote",
+      period: "Jun 2025 – Present",
+      role: "Builder",
+      highlight:
+        "Building a travel storytelling product end to end — mobile app, backend, and public web.",
+    },
     {
       company: "New Relic",
       location: "Bengaluru",
@@ -235,7 +251,7 @@ export const resumeData = {
       description:
         "Implemented version-controlled Infrastructure-as-Code modules using Terraform to automate the onboarding of thousands of enterprise AWS accounts, replacing manual UI configurations with auditable, high-scale telemetry pipelines.",
       outcome: "Standardized enterprise cloud provisioning at scale",
-      href: "https://www.notion.so/Cloud-Onboarding-Provisioning-Automation-33dc3c09806980b9870ec3404a0813db?source=copy_link",
+      href: caseStudyHref("cloud-onboarding"),
     },
     {
       title: "Health Insurance Workflow Automation Platform",
@@ -243,7 +259,7 @@ export const resumeData = {
       description:
         "Architected a workflow-first backend using Camunda, BPMN, and DMN to orchestrate complex insurance operations, explicitly modeling long-running business processes and automating critical state transitions.",
       outcome: "Reduced medical checkup turnaround from 17 days to 3",
-      href: "https://www.notion.so/Health-Insurance-Workflow-Automation-Platform-33dc3c09806980339d41c979d47d9232?source=copy_link",
+      href: caseStudyHref("health-insurance-workflow"),
     },
     {
       title: "FinchMoney: Automated Consumer Investing Platform",
@@ -251,7 +267,7 @@ export const resumeData = {
       description:
         "Engineered a pooled brokerage architecture and fractional share accounting system to reconcile real-time consumer spending with asynchronous market settlements, integrating complex liquidity management and FIX-based trading protocols.",
       outcome: "Aligned user spending power with real-market settlements",
-      href: "https://www.notion.so/FinchMoney-Building-the-Backend-for-an-Automated-Consumer-Investing-Platform-33dc3c098069809697a5de26144c0272?source=copy_link",
+      href: caseStudyHref("finchmoney"),
     },
   ] satisfies readonly ResumeCaseStudy[],
   education: {
@@ -266,13 +282,7 @@ export const resumeData = {
       period: "Jun 2025 – Present",
       teaser:
         "A mobile app that turns trips into structured travel stories with maps, photos, and sync.",
-      links: [
-        { label: "Backend Repo", href: "https://github.com/vivek-tech-exp/footsteps-backend/blob/main/README.md" },
-        { label: "Native Repo", href: "https://github.com/vivek-tech-exp/footsteps-native/blob/main/README.md" },
-        { label: "Landing Repo", href: "https://github.com/vivek-tech-exp/footsteps-landing/blob/master/README.md" },
-        { label: "Live Site", href: "https://www.footsteps.space" },
-        { label: "Staging API", href: "https://footsteps-backend-staging.vercel.app" },
-      ],
+      links: [{ label: "Live Site", href: "https://www.footsteps.space" }],
     },
     {
       title: "Emu Event Assistant",

@@ -40,3 +40,10 @@ export const getSiteUrl = (): URL | undefined => {
 };
 
 export const getSiteOrigin = (): string | undefined => getSiteUrl()?.origin;
+
+export const joinSitePath = (siteUrl: string, path: string) => {
+  const base = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl;
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+
+  return `${base}${normalizedPath}`;
+};

@@ -17,7 +17,7 @@ export const seoCopy = {
   ),
   resumeTitle: "Download Resume — PDF & Word",
   resumeDescription: truncate(
-    `Download ${resumeData.basics.name}'s ATS-friendly resume as PDF or Word. Backend engineering, AWS, Camunda, Terraform, Java, and Kafka.`,
+    `Download ${resumeData.basics.name}'s resume as PDF or Word. Senior Software Engineer focused on backend systems, AWS, and product delivery.`,
   ),
 } as const;
 
@@ -84,9 +84,6 @@ export const buildBaseMetadata = (): Metadata => {
       email: false,
       address: false,
     },
-    other: {
-      "format-detection": "telephone=no",
-    },
   };
 };
 
@@ -126,7 +123,7 @@ export const buildResumeMetadata = (): Metadata => {
       ...buildSeoKeywords().slice(0, 12),
       "resume PDF",
       "resume download",
-      "ATS resume",
+      "resume Word",
     ],
     alternates: {
       canonical: resumeData.resumeDownloads.sharePath,
