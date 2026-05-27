@@ -29,11 +29,17 @@ export const ResumeDownloadMenu = ({
         className={panelClassName}
         role="menu"
       >
-        <a className={pageStyles.downloadMenuItem} href={formats.pdf.href} role="menuitem">
+        <a
+          className={pageStyles.downloadMenuItem}
+          download={formats.pdf.fileName}
+          href={formats.pdf.href}
+          role="menuitem"
+        >
           {formats.pdf.menuLabel}
         </a>
         <a
           className={pageStyles.downloadMenuItem}
+          download={formats.docx.fileName}
           href={formats.docx.href}
           role="menuitem"
         >

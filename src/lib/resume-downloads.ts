@@ -29,8 +29,12 @@ export const buildResumeFileResponse = async (
       headers: {
         "Content-Type": asset.mimeType,
         "Content-Disposition": `attachment; filename="${asset.fileName}"`,
-        // No CDN cache — each download must hit the function so ntfy fires.
-        "Cache-Control": "private, no-store",
+        // Bust browser + Vercel edge cache so every download runs this handler.
+        "Cache-Control": "private, no-cache, no-store, must-revalidate, max-age=0",
+        Pragma: "no-cache",
+        Expires: "0",
+        "CDN-Cache-Control": "no-store",
+        "Vercel-CDN-Cache-Control": "no-store",
       },
     });
   } catch {

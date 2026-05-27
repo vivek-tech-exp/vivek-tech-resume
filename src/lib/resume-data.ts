@@ -1,4 +1,5 @@
 import { caseStudyHref } from "@/lib/case-study-links";
+import { withResumeDownloadCacheBust } from "@/lib/resume-download-version";
 
 type ResumeLink = {
   href: string;
@@ -125,14 +126,14 @@ export const resumeData = {
     sharePath: "/resume",
     formats: {
       pdf: {
-        href: "/resume/pdf",
+        href: withResumeDownloadCacheBust("/resume/pdf"),
         menuLabel: "PDF",
         fileName: "Vivek-Mankonda-Resume.pdf",
         publicFile: "vivek-mankonda-resume.pdf",
         mimeType: "application/pdf",
       },
       docx: {
-        href: "/resume/docx",
+        href: withResumeDownloadCacheBust("/resume/docx"),
         menuLabel: "Word",
         fileName: "Vivek-Mankonda-Resume.docx",
         publicFile: "vivek-mankonda-resume.docx",

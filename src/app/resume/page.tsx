@@ -25,10 +25,18 @@ export default function ResumeDownloadPage() {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <a className={pageStyles.buttonPrimary} href={formats.pdf.href}>
+            <a
+              className={pageStyles.buttonPrimary}
+              download={formats.pdf.fileName}
+              href={formats.pdf.href}
+            >
               {formats.pdf.menuLabel}
             </a>
-            <a className={pageStyles.buttonSecondary} href={formats.docx.href}>
+            <a
+              className={pageStyles.buttonSecondary}
+              download={formats.docx.fileName}
+              href={formats.docx.href}
+            >
               {formats.docx.menuLabel}
             </a>
           </div>
