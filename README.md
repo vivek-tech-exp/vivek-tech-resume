@@ -15,8 +15,8 @@ A single-page resume site with:
 
 Project docs:
 
+- [AGENTS.md](AGENTS.md) — stack, architecture, and coding standards
 - [docs/implementation-plan.md](docs/implementation-plan.md)
-- [docs/coding-standards.md](docs/coding-standards.md)
 
 ## Stack
 
