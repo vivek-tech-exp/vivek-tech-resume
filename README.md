@@ -2,7 +2,7 @@
 
 Public Next.js codebase for a personal resume website.
 
-Live site: [vivek-tech-resume.vercel.app](https://vivek-tech-resume.vercel.app)
+Live site: [tech.footstepswithvivek.com](https://tech.footstepswithvivek.com)
 
 ## What this is
 
