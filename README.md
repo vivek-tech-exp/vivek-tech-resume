@@ -62,7 +62,7 @@ Use [.env.example](.env.example) as the reference.
 Optional variables:
 
 - `NEXT_PUBLIC_SITE_URL` — canonical production URL for SEO metadata
-- `NEXT_PUBLIC_GITHUB_URL` — override GitHub profile/repo link
+- `NEXT_PUBLIC_GITHUB_URL` — override GitHub profile URL (profile only, not a repo)
 - `NEXT_PUBLIC_LINKEDIN_URL` — override LinkedIn profile link
 
 If `NEXT_PUBLIC_SITE_URL` is unset on Vercel, the deployment URL is used automatically.
