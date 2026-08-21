@@ -24,53 +24,72 @@ export const HomePage = () => {
           aria-labelledby="hero-heading"
           className={`${pageStyles.hero} scroll-mt-[calc(4.75rem+env(safe-area-inset-top))]`}
         >
-          <div className="space-y-3">
-            <h1 className={pageStyles.heroTitle} id="hero-heading">
-              {resumeData.basics.name}
-            </h1>
-            <p className={pageStyles.heroRole}>{uiStrings.heroRoleLine}</p>
-          </div>
+          <div className={pageStyles.heroGrid}>
+            <div className={pageStyles.heroContent}>
+              <div className="space-y-2">
+                <h1 className={pageStyles.heroTitle} id="hero-heading">
+                  {resumeData.basics.name}
+                </h1>
+                <p className={pageStyles.heroRole}>{uiStrings.heroRoleLine}</p>
+              </div>
 
-          {resumeData.basics.image ? (
-            <div className={pageStyles.heroPortraitCard}>
-              <Image
-                alt={`${resumeData.basics.name} working remotely with mountains in the background`}
-                className={pageStyles.heroPortraitImage}
-                height={1525}
-                priority
-                quality={95}
-                sizes="(max-width: 768px) 100vw, 768px"
-                src={resumeData.basics.image}
-                width={704}
-              />
+              {resumeData.basics.image ? (
+                <div className={`${pageStyles.heroPortraitCard} sm:hidden`}>
+                  <Image
+                    alt={`${resumeData.basics.name} working remotely with mountains in the background`}
+                    className={pageStyles.heroPortraitImage}
+                    height={1525}
+                    priority
+                    quality={95}
+                    sizes="(max-width: 640px) 240px, 240px"
+                    src={resumeData.basics.image}
+                    width={704}
+                  />
+                </div>
+              ) : null}
+
+              <p className={pageStyles.heroPitch}>{resumeData.positioningLine}</p>
+              <p className={pageStyles.heroMeta}>{uiStrings.heroAvailability}</p>
+
+              <div className={pageStyles.heroActions}>
+                <ResumeDownloadMenu variant="primary" />
+                <div className={pageStyles.heroActionsRow}>
+                  <a
+                    aria-label={`${resumeData.links.linkedin.label} (${uiStrings.externalLinkSuffix})`}
+                    className={pageStyles.buttonLinkedIn}
+                    href={siteConfig.linkedinUrl}
+                    rel="noreferrer noopener"
+                    target="_blank"
+                  >
+                    {resumeData.links.linkedin.label}
+                  </a>
+                  <a
+                    aria-label={`${resumeData.links.github.label} (${uiStrings.externalLinkSuffix})`}
+                    className={pageStyles.buttonSecondary}
+                    href={siteConfig.githubUrl}
+                    rel="noreferrer noopener"
+                    target="_blank"
+                  >
+                    {resumeData.links.github.label}
+                  </a>
+                </div>
+              </div>
             </div>
-          ) : null}
 
-          <p className={pageStyles.heroPitch}>{resumeData.positioningLine}</p>
-          <p className={pageStyles.heroMeta}>{uiStrings.heroAvailability}</p>
-
-          <div className={pageStyles.heroActions}>
-            <ResumeDownloadMenu variant="primary" />
-            <div className={pageStyles.heroActionsRow}>
-              <a
-                aria-label={`${resumeData.links.linkedin.label} (${uiStrings.externalLinkSuffix})`}
-                className={pageStyles.buttonLinkedIn}
-                href={siteConfig.linkedinUrl}
-                rel="noreferrer noopener"
-                target="_blank"
-              >
-                {resumeData.links.linkedin.label}
-              </a>
-              <a
-                aria-label={`${resumeData.links.github.label} (${uiStrings.externalLinkSuffix})`}
-                className={pageStyles.buttonSecondary}
-                href={siteConfig.githubUrl}
-                rel="noreferrer noopener"
-                target="_blank"
-              >
-                {resumeData.links.github.label}
-              </a>
-            </div>
+            {resumeData.basics.image ? (
+              <div className={`${pageStyles.heroPortraitCard} hidden sm:block`}>
+                <Image
+                  alt={`${resumeData.basics.name} working remotely with mountains in the background`}
+                  className={pageStyles.heroPortraitImage}
+                  height={1525}
+                  priority
+                  quality={95}
+                  sizes="(max-width: 768px) 208px, 240px"
+                  src={resumeData.basics.image}
+                  width={704}
+                />
+              </div>
+            ) : null}
           </div>
         </section>
 

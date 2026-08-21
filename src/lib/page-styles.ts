@@ -36,17 +36,20 @@ export const pageStyles = {
     "overlay-menu-panel absolute right-0 top-[calc(100%+0.5rem)] z-40 min-w-[11rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--page)] py-1 shadow-[0_12px_40px_color-mix(in_oklab,var(--text)_12%,transparent)]",
   downloadMenuItem:
     "block min-h-11 px-4 py-3 text-sm font-medium text-[var(--text)] no-underline hover:bg-[var(--surface)]",
-  hero: "space-y-6 border-b border-[var(--border)] pb-10 sm:space-y-8 sm:pb-16",
+  hero: "border-b border-[var(--border)] pb-10 sm:pb-16",
+  heroGrid:
+    "flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8",
+  heroContent: "space-y-4 sm:space-y-5 sm:flex-1",
   heroPortraitCard:
-    "relative my-2 mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm sm:rounded-3xl",
+    "relative mx-auto w-full max-w-[15rem] shrink-0 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm sm:mx-0 sm:w-52 sm:max-w-none md:w-60 sm:rounded-3xl",
   heroPortraitImage:
     "h-auto w-full aspect-[704/1525] object-contain",
   siteLabel: "text-sm text-[var(--text-subtle)]",
   heroTitle:
-    "text-balance text-[clamp(2.125rem,1.75rem+3vw,3.75rem)] font-semibold leading-[1.08] tracking-tight text-[var(--text)]",
-  heroRole: "text-base text-[var(--text-muted)] sm:text-lg md:text-xl",
+    "text-balance text-[clamp(2rem,1.6rem+2.5vw,3.25rem)] font-semibold leading-[1.08] tracking-tight text-[var(--text)]",
+  heroRole: "text-base text-[var(--text-muted)] sm:text-lg",
   heroPitch:
-    "text-pretty max-w-2xl text-base leading-relaxed text-[var(--text-muted)] sm:text-lg sm:leading-relaxed md:text-[1.35rem]",
+    "text-pretty text-base leading-relaxed text-[var(--text-muted)] sm:text-lg sm:leading-relaxed",
   heroMeta: "text-sm leading-relaxed text-[var(--text-soft)]",
   heroImpact:
     "mt-2 space-y-4 border-t border-[var(--border)] pt-6 sm:mt-3 sm:pt-7",
