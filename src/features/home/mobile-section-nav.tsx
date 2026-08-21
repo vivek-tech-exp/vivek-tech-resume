@@ -17,7 +17,7 @@ const sectionLinks = [
   { href: "/#contact", label: uiStrings.navContact },
 ] as const;
 
-const closeMenu = (event: MouseEvent<HTMLAnchorElement>) => {
+const closeMenu = (event: MouseEvent<HTMLElement>) => {
   event.currentTarget.closest("details")?.removeAttribute("open");
 };
 
@@ -30,7 +30,11 @@ export const MobileSectionNav = () => (
     >
       {uiStrings.navMenuLabel}
     </summary>
-    <span aria-hidden className={pageStyles.overlayBackdrop} />
+    <span
+      aria-hidden
+      className={pageStyles.overlayBackdrop}
+      onClick={closeMenu}
+    />
     <nav aria-label="Page sections" className={pageStyles.mobileNavPanel}>
       {sectionLinks.map((link) => (
         <Link

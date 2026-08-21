@@ -44,7 +44,11 @@ export const ResumeDownloadMenu = ({
           menuLabel
         )}
       </summary>
-      <span aria-hidden className={pageStyles.overlayBackdrop} />
+      <span
+        aria-hidden
+        className={pageStyles.overlayBackdrop}
+        onClick={closeMenu}
+      />
       <div aria-label={resumeMenuLabel} className={panelClassName} role="menu">
         <a
           className={pageStyles.downloadMenuItem}
