@@ -71,9 +71,9 @@ export const resumeData = {
       context: "Medical-checkup turnaround at Acko",
     },
     {
-      metric: "0-to-1 Trading Platform",
+      metric: "0-to-1 Banking + Brokerage Platform",
       context:
-        "FIX execution, pooled investing, rebalancing, fractional allocation and settlement at FinchMoney",
+        "Built proprietary trading algorithms, fraud detection, and a unified ledger across banking and brokerage at FinchMoney.",
     },
     {
       metric: "37% lower MTTR",
