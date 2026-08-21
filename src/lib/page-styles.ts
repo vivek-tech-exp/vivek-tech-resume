@@ -36,13 +36,11 @@ export const pageStyles = {
     "overlay-menu-panel absolute right-0 top-[calc(100%+0.5rem)] z-40 min-w-[11rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--page)] py-1 shadow-[0_12px_40px_color-mix(in_oklab,var(--text)_12%,transparent)]",
   downloadMenuItem:
     "block min-h-11 px-4 py-3 text-sm font-medium text-[var(--text)] no-underline hover:bg-[var(--surface)]",
-  hero: "space-y-5 border-b border-[var(--border)] pb-10 sm:space-y-6 sm:pb-16",
-  heroTop: "flex items-center justify-between gap-4 sm:gap-6",
-  heroDetails: "min-w-0 flex-1 space-y-2 sm:space-y-3",
-  heroAvatarWrapper:
-    "relative shrink-0 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-xs",
-  heroAvatar:
-    "h-20 w-20 object-cover object-[center_38%] sm:h-28 sm:w-28 md:h-32 md:w-32",
+  hero: "space-y-6 border-b border-[var(--border)] pb-10 sm:space-y-8 sm:pb-16",
+  heroPortraitCard:
+    "relative my-2 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm sm:rounded-3xl",
+  heroPortraitImage:
+    "h-[420px] w-full object-cover object-[center_35%] sm:h-[540px] md:h-[620px]",
   siteLabel: "text-sm text-[var(--text-subtle)]",
   heroTitle:
     "text-balance text-[clamp(2.125rem,1.75rem+3vw,3.75rem)] font-semibold leading-[1.08] tracking-tight text-[var(--text)]",
