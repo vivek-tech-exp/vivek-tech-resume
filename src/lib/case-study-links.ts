@@ -1,5 +1,9 @@
 /** Notion targets live here so public HTML never embeds hex IDs that look like phone numbers. */
 export const caseStudyLinks = {
+  "high-scale-tournament-systems": {
+    notionUrl:
+      "https://www.notion.so/Gameskraft-High-Scale-Tournament-Systems-33dc3c09806980b9870ec3404a0813dc?source=copy_link",
+  },
   "cloud-onboarding": {
     notionUrl:
       "https://www.notion.so/Cloud-Onboarding-Provisioning-Automation-33dc3c09806980b9870ec3404a0813db?source=copy_link",

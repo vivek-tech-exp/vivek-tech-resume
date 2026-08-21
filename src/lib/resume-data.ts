@@ -24,6 +24,21 @@ type SelectedImpactItem = {
   context: string;
 };
 
+export type EngineeringWorkItem = {
+  id: string;
+  title: string;
+  context: string;
+  problemContext: string;
+  builtDesigned: string;
+  measurableResult: string;
+  tags: readonly string[];
+  link?: {
+    label: string;
+    href: string;
+    isExternal: boolean;
+  };
+};
+
 type ResumeCaseStudy = {
   title: string;
   context: string;
@@ -77,6 +92,93 @@ export const resumeData = {
       context: "Production reliability at New Relic",
     },
   ] satisfies readonly SelectedImpactItem[],
+  selectedEngineeringWork: [
+    {
+      id: "footsteps-space",
+      title: "Footsteps Space",
+      context: "0-to-1 Travel Platform",
+      problemContext:
+        "0-to-1 product built independently across Flutter mobile application, TypeScript / Express backend, PostgreSQL / Supabase, and Next.js web with maps, authentication, and deployment.",
+      builtDesigned:
+        "Engineered FOTA: offline-first, battery-aware geolocation engine with adaptive GPS sampling, local persistence, and deferred synchronization.",
+      measurableResult:
+        "Approximately 100 users, with 85%+ outside my personal network.",
+      tags: ["Flutter", "TypeScript", "Express", "PostgreSQL", "Supabase", "Next.js", "FOTA / Geolocation"],
+      link: {
+        label: "Live Platform",
+        href: "https://www.footsteps.space",
+        isExternal: true,
+      },
+    },
+    {
+      id: "gameskraft",
+      title: "Gameskraft: High-Scale Tournament Systems",
+      context: "Matchmaking & Core Backend Services",
+      problemContext:
+        "Matchmaking and core backend systems handling extreme concurrency and live tournament traffic.",
+      builtDesigned:
+        "Optimized cache and recovery paths, eliminated CPU and memory bottlenecks across services, and restructured AWS infrastructure.",
+      measurableResult:
+        "1M+ requests/min during 215K-participant Guinness World Record tournament; 38% lower AWS infrastructure cost.",
+      tags: ["Java", "Spring Cloud", "AWS", "High Concurrency", "Redis", "Distributed Systems"],
+      link: {
+        label: "Case Study",
+        href: caseStudyHref("high-scale-tournament-systems"),
+        isExternal: false,
+      },
+    },
+    {
+      id: "finchmoney",
+      title: "FinchMoney: Financial Systems & Trading",
+      context: "Fintech & Brokerage Architecture",
+      problemContext:
+        "US banking and investment platform built from 0-to-1 with KYC, pooled investing, rebalancing, and fractional allocation.",
+      builtDesigned:
+        "Integrated FIX / QuickFIX brokerage execution with transactional state, idempotent processing, retries, reconciliation, and card authorization separated from asynchronous investment recovery.",
+      measurableResult:
+        "Delivered real-time spending with asynchronous market settlements and fractional share accounting.",
+      tags: ["Java", "Spring", "FIX Protocol", "PostgreSQL", "Kafka", "Fintech", "Idempotency"],
+      link: {
+        label: "Case Study",
+        href: caseStudyHref("finchmoney"),
+        isExternal: false,
+      },
+    },
+    {
+      id: "acko",
+      title: "Acko: Workflow Orchestration",
+      context: "Distributed Business Process Platform",
+      problemContext:
+        "Long-running insurance workflows with multi-step vendor dependencies and complex state transitions.",
+      builtDesigned:
+        "Implemented Camunda with BPMN / DMN for persisted workflow state, retries, timeouts, exception handling, asynchronous vendor integrations, and New Relic / NRQL instrumentation.",
+      measurableResult:
+        "Medical-checkup turnaround reduced from 17 days to 3 days.",
+      tags: ["Camunda", "BPMN / DMN", "Java", "Spring Boot", "New Relic", "Distributed Workflows"],
+      link: {
+        label: "Case Study",
+        href: caseStudyHref("health-insurance-workflow"),
+        isExternal: false,
+      },
+    },
+    {
+      id: "new-relic",
+      title: "New Relic: Cloud Provisioning & Reliability",
+      context: "Cloud Automation & Observability",
+      problemContext:
+        "Enterprise customer telemetry onboarding across thousands of AWS accounts.",
+      builtDesigned:
+        "Built Terraform automation across thousands of customer AWS accounts for repeatable and auditable telemetry onboarding, with improved alert routing, dashboards, and runbooks.",
+      measurableResult:
+        "MTTR reduced by 37% and automated provisioning across thousands of customer AWS accounts.",
+      tags: ["Terraform", "AWS", "Infrastructure-as-Code", "New Relic", "Observability", "Reliability"],
+      link: {
+        label: "Case Study",
+        href: caseStudyHref("cloud-onboarding"),
+        isExternal: false,
+      },
+    },
+  ] satisfies readonly EngineeringWorkItem[],
   uiStrings: {
     skipToContent: "Skip to content",
     navMenuLabel: "Menu",
@@ -96,9 +198,12 @@ export const resumeData = {
     heroAvailability: "Based in India | Open to Relocation",
     heroImpactLabel: "Recent impact",
     heroImpactJump: "Read case studies",
-    workTitle: "Current work",
+    workTitle: "Selected Engineering Work",
     workIntro:
-      "Footsteps Space, a travel storytelling product I am building end to end.",
+      "Key systems, distributed architecture, and 0-to-1 products shipped in production.",
+    problemLabel: "Problem / Context",
+    builtLabel: "Built / Designed",
+    resultLabel: "Result",
     sideProjectsTitle: "Other projects",
     sideProjectsIntro:
       "Additional products built alongside full-time engineering roles.",

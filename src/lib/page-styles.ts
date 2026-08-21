@@ -75,6 +75,23 @@ export const pageStyles = {
   sectionTitle:
     "text-balance text-[1.65rem] font-semibold leading-tight tracking-tight text-[var(--text)] sm:text-2xl md:text-[1.75rem]",
   sectionIntro: "text-pretty max-w-2xl text-base leading-relaxed text-[var(--text-soft)]",
+  engineeringList: "space-y-6",
+  engineeringCard:
+    "space-y-4 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-7",
+  engineeringCardHeader: "space-y-1",
+  engineeringContext:
+    "text-xs font-semibold uppercase tracking-[0.12em] text-[var(--accent)]",
+  engineeringTitle:
+    "text-lg font-semibold leading-snug text-[var(--text)] sm:text-xl",
+  engineeringBody: "space-y-2.5 text-sm leading-relaxed text-[var(--text-muted)]",
+  engineeringField: "text-pretty",
+  engineeringFieldLabel: "font-medium text-[var(--text)]",
+  engineeringResultText: "font-medium text-[var(--text)]",
+  engineeringFooter:
+    "flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between",
+  engineeringTags: "flex flex-wrap gap-1.5",
+  engineeringTag:
+    "inline-flex items-center rounded-md border border-[var(--border)] bg-[color-mix(in_oklab,var(--text)_3%,var(--surface))] px-2 py-0.5 text-xs text-[var(--text-soft)]",
   featuredProject:
     "space-y-4 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-7",
   projectList: "m-0 grid list-none gap-0 divide-y divide-[var(--border)] border-y border-[var(--border)] p-0",

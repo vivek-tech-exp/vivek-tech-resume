@@ -23,6 +23,13 @@ export const buildLlmsTxt = (): string => {
     )
     .join("\n");
 
+  const engineeringWork = resumeData.selectedEngineeringWork
+    .map(
+      (work) =>
+        `- ${work.title} (${work.context}): ${work.problemContext} ${work.builtDesigned} Result: ${work.measurableResult} Stack: ${work.tags.join(", ")} ${work.link ? `Link: ${work.link.isExternal ? work.link.href : path(work.link.href)}` : ""}`,
+    )
+    .join("\n");
+
   return `# ${siteConfig.name}
 
 > ${siteConfig.summary}
@@ -41,6 +48,10 @@ ${resumeData.positioningLine}
 
 ${resumeData.specializationSummary}
 
+## Selected engineering work
+
+${engineeringWork}
+
 ## Core stack
 
 ${stack}
@@ -49,18 +60,9 @@ ${stack}
 
 ${experience}
 
-## Personal projects
+## Other personal projects
 
 ${projects}
-
-## Case studies
-
-${resumeData.caseStudies
-    .map(
-      (study) =>
-        `- ${study.metric} ${study.outcome} (${study.context}). ${path(study.href)}`,
-    )
-    .join("\n")}
 
 ## Resume download
 

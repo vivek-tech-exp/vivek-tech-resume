@@ -2,10 +2,8 @@ import Image from "next/image";
 
 import { HomeHeader } from "@/features/home/home-header";
 import { SelectedImpactSection } from "@/features/home/impact-case-study-list";
-import {
-  FeaturedProject,
-  ProjectRow,
-} from "@/features/home/project-cards";
+import { SelectedEngineeringWorkSection } from "@/features/home/selected-engineering-work";
+import { ProjectRow } from "@/features/home/project-cards";
 import { ResumeDownloadMenu } from "@/features/home/resume-download-menu";
 import { buildExternalLinks } from "@/features/home/home-utils";
 import { pageStyles } from "@/lib/page-styles";
@@ -15,9 +13,6 @@ import { siteConfig } from "@/lib/site-config";
 export const HomePage = () => {
   const externalLinks = buildExternalLinks();
   const { uiStrings } = resumeData;
-  const featuredProject = resumeData.personalProjects.find(
-    (project) => project.featured,
-  );
   const otherProjects = resumeData.personalProjects.filter(
     (project) => !project.featured,
   );
@@ -90,22 +85,7 @@ export const HomePage = () => {
 
         <SelectedImpactSection />
 
-        <section
-          aria-labelledby="work-heading"
-          className={pageStyles.section}
-          id="work"
-        >
-          <div className={pageStyles.sectionHeader}>
-            <h2 className={pageStyles.sectionTitle} id="work-heading">
-              {uiStrings.workTitle}
-            </h2>
-            <p className={pageStyles.sectionIntro}>{uiStrings.workIntro}</p>
-          </div>
-
-          {featuredProject ? (
-            <FeaturedProject project={featuredProject} />
-          ) : null}
-        </section>
+        <SelectedEngineeringWorkSection />
 
         <section
           aria-labelledby="experience-heading"
