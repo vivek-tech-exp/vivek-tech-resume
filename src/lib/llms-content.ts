@@ -70,10 +70,10 @@ ${resumeData.caseStudies
 
 ## Indexable sections on the site
 
+- /#impact
 - /#work
 - /#experience
 - /#side-projects
-- /#impact
 - /#tools
 - /#contact
 `;

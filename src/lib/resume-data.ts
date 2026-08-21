@@ -19,6 +19,11 @@ type ResumeStackGroup = {
   items: readonly string[];
 };
 
+type SelectedImpactItem = {
+  metric: string;
+  context: string;
+};
+
 type ResumeCaseStudy = {
   title: string;
   context: string;
@@ -54,12 +59,30 @@ export const resumeData = {
     locations: ["India (Remote)", "Open to Relocation", "Hyderabad", "Bengaluru", "Pune"],
     yearsOfExperience: "8+ years",
   },
+  selectedImpact: [
+    {
+      metric: "1M+ requests/min",
+      context: "Core backend systems at Gameskraft",
+    },
+    {
+      metric: "17 days to 3 days",
+      context: "Medical-checkup turnaround at Acko",
+    },
+    {
+      metric: "38% lower AWS cost",
+      context: "Infrastructure optimization at Gameskraft",
+    },
+    {
+      metric: "37% lower MTTR",
+      context: "Production reliability at New Relic",
+    },
+  ] satisfies readonly SelectedImpactItem[],
   uiStrings: {
     skipToContent: "Skip to content",
     navMenuLabel: "Menu",
     navWork: "Work",
     navExperience: "Experience",
-    navImpact: "Case studies",
+    navImpact: "Impact",
     navContact: "Contact",
     linkedinCtaLabel: "Message on LinkedIn",
     resumeShareLabel: "Resume link",
@@ -83,7 +106,7 @@ export const resumeData = {
     experienceTitle: "Experience",
     experienceIntro:
       "8+ years across distributed systems, high-scale backend services, fintech, workflow orchestration, and 0-to-1 product delivery.",
-    impactTitle: "Case studies",
+    impactTitle: "Selected Impact",
     impactIntro:
       "Deeper notes on platform architecture, workflow orchestration, and systems shipped in production.",
     toolsTitle: "Technical stack",

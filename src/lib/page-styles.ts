@@ -89,6 +89,13 @@ export const pageStyles = {
     "inline-flex min-h-11 items-center text-sm font-medium text-[var(--accent)] no-underline hover:underline",
   detailsButton:
     "inline-flex min-h-11 w-full items-center justify-center rounded-full border border-[var(--border)] px-4 text-sm font-medium text-[var(--text-soft)] no-underline hover:border-[var(--text-soft)] hover:bg-[var(--surface)] sm:w-auto sm:justify-start sm:rounded-none sm:border-0 sm:px-0",
+  impactGrid: "m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 sm:gap-4",
+  impactCard:
+    "space-y-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 sm:p-5",
+  impactMetric:
+    "text-balance text-2xl font-semibold tracking-tight text-[var(--text)] sm:text-3xl",
+  impactContext:
+    "text-pretty text-xs leading-relaxed text-[var(--text-muted)] sm:text-sm",
   impactList: "m-0 grid list-none gap-4 p-0",
   impactItem:
     "overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] transition-colors hover:border-[var(--text-soft)]",

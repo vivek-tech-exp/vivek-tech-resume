@@ -1,10 +1,7 @@
 import Image from "next/image";
 
 import { HomeHeader } from "@/features/home/home-header";
-import {
-  HeroImpactTeaser,
-  ImpactCaseStudyList,
-} from "@/features/home/impact-case-study-list";
+import { SelectedImpactSection } from "@/features/home/impact-case-study-list";
 import {
   FeaturedProject,
   ProjectRow,
@@ -65,8 +62,6 @@ export const HomePage = () => {
           <p className={pageStyles.heroPitch}>{resumeData.positioningLine}</p>
           <p className={pageStyles.heroMeta}>{uiStrings.heroAvailability}</p>
 
-          <HeroImpactTeaser />
-
           <div className={pageStyles.heroActions}>
             <ResumeDownloadMenu variant="primary" />
             <div className={pageStyles.heroActionsRow}>
@@ -92,6 +87,8 @@ export const HomePage = () => {
             </div>
           </div>
         </section>
+
+        <SelectedImpactSection />
 
         <section
           aria-labelledby="work-heading"
@@ -175,21 +172,6 @@ export const HomePage = () => {
             ) : null}
           </section>
         ) : null}
-
-        <section
-          aria-labelledby="impact-heading"
-          className={`${pageStyles.section} defer-section`}
-          id="impact"
-        >
-          <div className={pageStyles.sectionHeader}>
-            <h2 className={pageStyles.sectionTitle} id="impact-heading">
-              {uiStrings.impactTitle}
-            </h2>
-            <p className={pageStyles.sectionIntro}>{uiStrings.impactIntro}</p>
-          </div>
-
-          <ImpactCaseStudyList />
-        </section>
 
         <section
           aria-labelledby="tools-heading"

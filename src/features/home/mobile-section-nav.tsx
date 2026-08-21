@@ -11,9 +11,9 @@ import { siteConfig } from "@/lib/site-config";
 const { uiStrings, resumeDownloads, links } = resumeData;
 
 const sectionLinks = [
+  { href: "/#impact", label: uiStrings.navImpact },
   { href: "/#work", label: uiStrings.navWork },
   { href: "/#experience", label: uiStrings.navExperience },
-  { href: "/#impact", label: uiStrings.navImpact },
   { href: "/#contact", label: uiStrings.navContact },
 ] as const;
 

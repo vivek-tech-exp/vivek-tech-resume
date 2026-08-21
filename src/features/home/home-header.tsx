@@ -16,14 +16,14 @@ export const HomeHeader = () => (
       </Link>
 
       <nav aria-label="Page sections" className={pageStyles.nav}>
+        <Link className={pageStyles.navLink} href="/#impact">
+          {resumeData.uiStrings.navImpact}
+        </Link>
         <Link className={pageStyles.navLink} href="/#work">
           {resumeData.uiStrings.navWork}
         </Link>
         <Link className={pageStyles.navLink} href="/#experience">
           {resumeData.uiStrings.navExperience}
-        </Link>
-        <Link className={pageStyles.navLink} href="/#impact">
-          {resumeData.uiStrings.navImpact}
         </Link>
         <Link className={pageStyles.navLink} href="/#contact">
           {resumeData.uiStrings.navContact}
