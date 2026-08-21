@@ -38,9 +38,9 @@ export const pageStyles = {
     "block min-h-11 px-4 py-3 text-sm font-medium text-[var(--text)] no-underline hover:bg-[var(--surface)]",
   hero: "space-y-6 border-b border-[var(--border)] pb-10 sm:space-y-8 sm:pb-16",
   heroPortraitCard:
-    "relative my-2 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm sm:rounded-3xl",
+    "relative my-2 mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm sm:rounded-3xl",
   heroPortraitImage:
-    "h-[420px] w-full object-cover object-[center_35%] sm:h-[540px] md:h-[620px]",
+    "h-auto w-full aspect-[704/1525] object-contain",
   siteLabel: "text-sm text-[var(--text-subtle)]",
   heroTitle:
     "text-balance text-[clamp(2.125rem,1.75rem+3vw,3.75rem)] font-semibold leading-[1.08] tracking-tight text-[var(--text)]",
