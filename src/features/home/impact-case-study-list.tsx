@@ -15,10 +15,20 @@ export const SelectedImpactSection = () => (
 
     <div className={pageStyles.impactGrid}>
       {resumeData.selectedImpact.map((item) => (
-        <div className={pageStyles.impactCard} key={item.metric}>
-          <p className={pageStyles.impactMetric}>{item.metric}</p>
+        <a
+          aria-label={`${item.metric}: ${item.context}`}
+          className={pageStyles.impactCard}
+          href={`#${item.targetId}`}
+          key={item.metric}
+        >
+          <div className="flex items-start justify-between gap-2">
+            <p className={pageStyles.impactMetric}>{item.metric}</p>
+            <span aria-hidden className={pageStyles.impactArrow}>
+              ↓
+            </span>
+          </div>
           <p className={pageStyles.impactContext}>{item.context}</p>
-        </div>
+        </a>
       ))}
     </div>
   </section>

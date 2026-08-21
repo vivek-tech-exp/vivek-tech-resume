@@ -9,7 +9,10 @@ export const EngineeringWorkCard = ({ item }: { item: EngineeringWorkItem }) => 
   const { uiStrings } = resumeData;
 
   return (
-    <article className={pageStyles.engineeringCard}>
+    <article
+      className={`${pageStyles.engineeringCard} scroll-mt-[calc(5rem+env(safe-area-inset-top))]`}
+      id={`work-${item.id}`}
+    >
       <div className={pageStyles.engineeringCardHeader}>
         <span className={pageStyles.engineeringContext}>{item.context}</span>
         <h3 className={pageStyles.engineeringTitle}>{item.title}</h3>

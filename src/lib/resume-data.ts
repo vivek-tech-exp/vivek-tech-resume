@@ -22,6 +22,7 @@ type ResumeStackGroup = {
 type SelectedImpactItem = {
   metric: string;
   context: string;
+  targetId: string;
 };
 
 export type EngineeringWorkItem = {
@@ -65,19 +66,23 @@ export const resumeData = {
     {
       metric: "1M+ requests/min",
       context: "Core backend systems at Gameskraft",
+      targetId: "work-gameskraft",
     },
     {
       metric: "17 days to 3 days",
       context: "Medical-checkup turnaround at Acko",
+      targetId: "work-acko",
     },
     {
       metric: "0-to-1 Banking + Brokerage Platform",
       context:
         "Built proprietary trading algorithms, fraud detection, and a unified ledger across banking and brokerage at FinchMoney.",
+      targetId: "work-finchmoney",
     },
     {
       metric: "37% lower MTTR",
       context: "Production reliability at New Relic",
+      targetId: "work-new-relic",
     },
   ] satisfies readonly SelectedImpactItem[],
   selectedEngineeringWork: [

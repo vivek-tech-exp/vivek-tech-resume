@@ -101,11 +101,13 @@ export const pageStyles = {
     "inline-flex min-h-11 items-center text-sm font-medium text-[var(--accent)] no-underline hover:underline",
   impactGrid: "m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 sm:gap-4",
   impactCard:
-    "space-y-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 sm:p-5",
+    "group flex flex-col justify-between space-y-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 no-underline transition-[border-color,background-color,transform] hover:border-[var(--accent)] hover:bg-[color-mix(in_oklab,var(--surface)_90%,var(--accent)_10%)] active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-[var(--focus)] sm:p-5",
   impactMetric:
-    "text-balance text-xl font-semibold tracking-tight text-[var(--text)] sm:text-2xl",
+    "text-balance text-xl font-semibold tracking-tight text-[var(--text)] transition-colors group-hover:text-[var(--accent)] sm:text-2xl",
   impactContext:
     "text-pretty text-xs leading-relaxed text-[var(--text-muted)] sm:text-sm",
+  impactArrow:
+    "text-sm font-semibold text-[var(--text-subtle)] transition-[transform,color] group-hover:translate-y-0.5 group-hover:text-[var(--accent)]",
   impactList: "m-0 grid list-none gap-4 p-0",
   impactItem:
     "overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] transition-colors hover:border-[var(--text-soft)]",
