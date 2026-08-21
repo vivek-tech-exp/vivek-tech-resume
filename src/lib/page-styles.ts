@@ -103,7 +103,7 @@ export const pageStyles = {
   impactCard:
     "space-y-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 sm:p-5",
   impactMetric:
-    "text-balance text-2xl font-semibold tracking-tight text-[var(--text)] sm:text-3xl",
+    "text-balance text-xl font-semibold tracking-tight text-[var(--text)] sm:text-2xl",
   impactContext:
     "text-pretty text-xs leading-relaxed text-[var(--text-muted)] sm:text-sm",
   impactList: "m-0 grid list-none gap-4 p-0",

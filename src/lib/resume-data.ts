@@ -71,8 +71,8 @@ export const resumeData = {
       context: "Medical-checkup turnaround at Acko",
     },
     {
-      metric: "38% lower AWS cost",
-      context: "Infrastructure optimization at Gameskraft",
+      metric: "Trading Algorithms + FIX",
+      context: "Pooled investing, rebalancing and fractional allocation at FinchMoney",
     },
     {
       metric: "37% lower MTTR",
