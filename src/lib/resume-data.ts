@@ -58,7 +58,7 @@ export const resumeData = {
     title: "Senior Software Engineer",
     image: "/images/profile.png",
     location: "Based in India | Open to Relocation",
-    locations: ["India (Remote)", "Open to Relocation", "Hyderabad", "Bengaluru", "Pune"],
+    locations: ["India", "Open to Relocation"],
     yearsOfExperience: "8+ years",
   },
   selectedImpact: [
@@ -173,7 +173,8 @@ export const resumeData = {
     navExperience: "Experience",
     navImpact: "Impact",
     navContact: "Contact",
-    linkedinCtaLabel: "Message on LinkedIn",
+    linkedinCtaLabel: "LinkedIn",
+    emailCtaLabel: "Email",
     resumeShareLabel: "Resume link",
     resumeMenuLabel: "Choose a format",
     resumePageIntro:
@@ -199,12 +200,17 @@ export const resumeData = {
       "Deeper notes on platform architecture, workflow orchestration, and systems shipped in production.",
     toolsTitle: "Technical Profile",
     contactTitle: "Contact",
-    contactIntro: "Message me on LinkedIn. Same-day replies when I can.",
+    contactIntro:
+      "Open to senior software engineering opportunities. Based in India and open to relocation.",
     educationLabel: "Education",
     readCaseStudy: "View case study",
     externalLinkSuffix: "opens in new tab",
   },
   links: {
+    email: {
+      href: "mailto:vivekmankonda.work@gmail.com",
+      label: "Email",
+    } satisfies ResumeLink,
     linkedin: {
       href: "https://www.linkedin.com/in/vivekmankonda/",
       label: "LinkedIn",
@@ -384,7 +390,7 @@ export const resumeData = {
     },
   ] satisfies readonly ResumeCaseStudy[],
   education: {
-    degree: "B.Tech in Computer Science and Engineering",
+    degree: "B.Tech, Computer Science & Engineering",
     institution: "Heritage Institute of Technology, Kolkata",
     period: "2013 - 2017",
   },

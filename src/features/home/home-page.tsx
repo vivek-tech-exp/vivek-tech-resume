@@ -4,13 +4,11 @@ import { HomeHeader } from "@/features/home/home-header";
 import { SelectedImpactSection } from "@/features/home/impact-case-study-list";
 import { SelectedEngineeringWorkSection } from "@/features/home/selected-engineering-work";
 import { ResumeDownloadMenu } from "@/features/home/resume-download-menu";
-import { buildExternalLinks } from "@/features/home/home-utils";
 import { pageStyles } from "@/lib/page-styles";
 import { resumeData } from "@/lib/resume-data";
 import { siteConfig } from "@/lib/site-config";
 
 export const HomePage = () => {
-  const externalLinks = buildExternalLinks();
   const { uiStrings } = resumeData;
 
   return (
@@ -55,19 +53,18 @@ export const HomePage = () => {
             <ResumeDownloadMenu variant="primary" />
             <div className={pageStyles.heroActionsRow}>
               <a
-                aria-label={`${uiStrings.linkedinCtaLabel} (${uiStrings.externalLinkSuffix})`}
+                aria-label={`${resumeData.links.linkedin.label} (${uiStrings.externalLinkSuffix})`}
                 className={pageStyles.buttonLinkedIn}
-                href={externalLinks[0]?.href}
+                href={siteConfig.linkedinUrl}
                 rel="noreferrer noopener"
                 target="_blank"
               >
-                <span className="sm:hidden">{resumeData.links.linkedin.label}</span>
-                <span className="hidden sm:inline">{uiStrings.linkedinCtaLabel}</span>
+                {resumeData.links.linkedin.label}
               </a>
               <a
                 aria-label={`${resumeData.links.github.label} (${uiStrings.externalLinkSuffix})`}
                 className={pageStyles.buttonSecondary}
-                href={externalLinks[1]?.href}
+                href={siteConfig.githubUrl}
                 rel="noreferrer noopener"
                 target="_blank"
               >
@@ -161,18 +158,24 @@ export const HomePage = () => {
           <div className={pageStyles.contactPanel}>
             <div className={pageStyles.contactActions}>
               <a
-                aria-label={`${uiStrings.linkedinCtaLabel} (${uiStrings.externalLinkSuffix})`}
                 className={pageStyles.buttonPrimary}
-                href={externalLinks[0]?.href}
+                href={resumeData.links.email.href}
+              >
+                {uiStrings.emailCtaLabel}
+              </a>
+              <a
+                aria-label={`${resumeData.links.linkedin.label} (${uiStrings.externalLinkSuffix})`}
+                className={pageStyles.buttonSecondary}
+                href={siteConfig.linkedinUrl}
                 rel="noreferrer noopener"
                 target="_blank"
               >
-                {uiStrings.linkedinCtaLabel}
+                {resumeData.links.linkedin.label}
               </a>
               <a
                 aria-label={`${resumeData.links.github.label} (${uiStrings.externalLinkSuffix})`}
                 className={pageStyles.buttonSecondary}
-                href={externalLinks[1]?.href}
+                href={siteConfig.githubUrl}
                 rel="noreferrer noopener"
                 target="_blank"
               >
@@ -181,32 +184,18 @@ export const HomePage = () => {
               <ResumeDownloadMenu variant="secondary" />
             </div>
 
-            <div className={pageStyles.contactMeta}>
-              {siteConfig.siteUrl ? (
-                <p>
-                  <span className="font-medium text-[var(--text)]">
-                    {uiStrings.resumeShareLabel}:{" "}
-                  </span>
-                  <a
-                    className={`${pageStyles.textLink} ${pageStyles.contactMetaLink}`}
-                    href={`${siteConfig.siteUrl?.replace(/\/$/, "") ?? ""}${resumeData.resumeDownloads.sharePath}`}
-                  >
-                    {(siteConfig.siteUrl ?? "").replace(/^https?:\/\//, "").replace(/\/$/, "")}
-                    {resumeData.resumeDownloads.sharePath}
-                  </a>
-                </p>
-              ) : null}
-              <p>
-                <span className="font-medium text-[var(--text)]">
-                  {uiStrings.educationLabel}:{" "}
-                </span>
-                {resumeData.education.degree},{" "}
-                {resumeData.education.institution} ({resumeData.education.period})
+            <div className={pageStyles.contactEducation}>
+              <p className={pageStyles.educationDegree}>
+                {resumeData.education.degree}
               </p>
-              <p>{resumeData.basics.location}</p>
+              <p className={pageStyles.educationInstitution}>
+                {resumeData.education.institution}
+              </p>
+              <p className={pageStyles.educationPeriod}>
+                {resumeData.education.period}
+              </p>
             </div>
           </div>
-
         </section>
       </main>
     </div>
