@@ -101,13 +101,27 @@ export const HomePage = () => {
 
           <ol className={pageStyles.experienceList}>
             {resumeData.experience.map((item) => (
-              <li className={pageStyles.experienceItem} key={`${item.company}-${item.period}`}>
+              <li
+                className={pageStyles.experienceItem}
+                key={`${item.company}-${item.period}`}
+              >
                 <div className={pageStyles.experienceHeading}>
-                  <span className={pageStyles.experienceRole}>{item.role}</span>
-                  <span className={pageStyles.experienceCompany}>
-                    {item.company}
+                  {item.company === "Footsteps Space" ? (
+                    <span className={pageStyles.experienceRole}>{item.role}</span>
+                  ) : (
+                    <>
+                      <span className={pageStyles.experienceCompany}>
+                        {item.company}
+                      </span>
+                      <span aria-hidden className={pageStyles.experienceDivider}>
+                        |
+                      </span>
+                      <span className={pageStyles.experienceRole}>{item.role}</span>
+                    </>
+                  )}
+                  <span className={pageStyles.experiencePeriod}>
+                    {item.period} | {item.location}
                   </span>
-                  <span className={pageStyles.experiencePeriod}>{item.period}</span>
                 </div>
                 <p className={pageStyles.experienceHighlight}>
                   {item.highlight}

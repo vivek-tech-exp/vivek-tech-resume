@@ -258,17 +258,17 @@ export const resumeData = {
       company: "Footsteps Space",
       location: "Remote",
       period: "Jun 2025 - Present",
-      role: "Builder",
+      role: "Independent Software Engineer / Product Developer",
       highlight:
-        "Building a travel storytelling product end to end: mobile app, backend, and public web.",
+        "Built and launched Footsteps Space end to end across mobile, backend, data, maps, authentication and deployment.",
     },
     {
       company: "New Relic",
-      location: "Bengaluru",
+      location: "Hyderabad",
       period: "Jan 2025 - May 2025",
       role: "Senior Software Engineer",
       highlight:
-        "Automated enterprise customer onboarding with Terraform and reduced mean time to resolution by 37%.",
+        "Built Terraform-based enterprise AWS onboarding across thousands of customer accounts and improved production reliability, contributing to a 37% reduction in MTTR.",
     },
     {
       company: "Acko",
@@ -276,7 +276,7 @@ export const resumeData = {
       period: "Mar 2023 - Jul 2024",
       role: "Software Development Engineer 3",
       highlight:
-        "Built workflow automation with Camunda and cut medical checkup wait times from 17 days to 3.",
+        "Built long-running workflow systems with Camunda and reduced pre-policy medical-checkup turnaround from 17 days to 3 days.",
     },
     {
       company: "Gameskraft Technologies",
@@ -284,22 +284,23 @@ export const resumeData = {
       period: "Apr 2022 - Mar 2023",
       role: "Senior Software Engineer",
       highlight:
-        "Optimized high-traffic backend architecture and cut AWS costs by 38%.",
+        "Worked on matchmaking and core backend systems handling 1M+ requests/min during a 215K-participant Guinness World Record tournament while reducing AWS infrastructure spend by 38%.",
     },
     {
       company: "Needle Innovision",
-      location: "Pune",
+      location: "Bengaluru",
       period: "Oct 2018 - Mar 2022",
-      role: "R&D Engineer Backend",
+      role: "R&D Engineer, Backend",
       highlight:
-        "Built the FinchMoney fintech platform with FIX 2.0 trading integrations.",
+        "Built FinchMoney from 0-to-1, including banking, investment, FIX trading, allocation, settlement and reconciliation systems.",
     },
     {
-      company: "Thoughtclan Technologies",
-      location: "Hyderabad",
+      company: "ThoughtClan Technologies",
+      location: "Bengaluru",
       period: "Aug 2017 - Aug 2018",
       role: "Software Engineer",
-      highlight: "Developed internal automation tools for operational efficiency.",
+      highlight:
+        "Delivered enterprise applications across 21 international markets, with performance work contributing to a 30% improvement in site performance.",
     },
   ] satisfies readonly ResumeExperience[],
   coreStack: [

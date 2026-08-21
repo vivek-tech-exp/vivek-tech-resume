@@ -124,15 +124,17 @@ export const pageStyles = {
   impactText: "mt-3 text-pretty text-sm leading-relaxed text-[var(--text-muted)]",
   impactReadMore:
     "mt-4 inline-flex min-h-10 items-center text-sm font-medium text-[var(--accent)]",
-  experienceList: "m-0 grid list-none gap-7 p-0 sm:gap-8",
+  experienceList: "m-0 grid list-none gap-6 p-0 sm:gap-7",
   experienceItem:
-    "space-y-2 border-s-2 border-[var(--border)] ps-4 sm:border-0 sm:ps-0",
-  experienceHeading: "flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-2 sm:gap-y-1",
-  experienceRole: "text-base font-medium text-[var(--text)]",
-  experienceCompany: "text-base text-[var(--text-muted)]",
-  experiencePeriod: "text-sm text-[var(--text-subtle)] sm:ms-auto",
+    "space-y-1.5 border-s-2 border-[var(--border)] ps-4 sm:border-0 sm:ps-0",
+  experienceHeading:
+    "flex flex-col gap-0.5 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-2",
+  experienceRole: "text-sm font-medium text-[var(--text)] sm:text-base",
+  experienceCompany: "text-sm font-medium text-[var(--text)] sm:text-base",
+  experienceDivider: "hidden text-xs text-[var(--text-subtle)] sm:inline",
+  experiencePeriod: "text-xs text-[var(--text-subtle)] sm:ms-auto sm:text-sm",
   experienceHighlight:
-    "text-pretty ps-0 text-sm leading-relaxed text-[var(--text-muted)] before:me-2 before:text-[var(--accent)] before:content-['•']",
+    "text-pretty ps-0 text-sm leading-relaxed text-[var(--text-muted)]",
   toolsWrap: "space-y-4",
   toolsGroup: "space-y-2",
   toolsLabel: "text-sm font-medium text-[var(--text)]",
