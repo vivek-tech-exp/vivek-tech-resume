@@ -29,10 +29,11 @@ export const buildLlmsTxt = (): string => {
 
 Canonical URL: ${siteUrl}
 Role: ${siteConfig.role}
-Experience: 7 years · Senior Software Engineer · Backend · AWS · Camunda · Terraform · Fintech · Insurance · India (remote)
+Positioning: ${resumeData.positioningLine}
+Experience: 8+ years | Senior Software Engineer | Distributed Systems | Product Engineering | Backend | AWS | Kafka | Camunda | Terraform | Fintech | Observability | India | Open to Relocation
 LinkedIn: ${siteConfig.linkedinUrl}
 GitHub: ${siteConfig.githubUrl}
-Locations: ${resumeData.basics.locations.join(", ")}
+Location: ${resumeData.basics.location}
 
 ## Summary
 

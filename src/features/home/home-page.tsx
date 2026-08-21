@@ -269,7 +269,7 @@ export const HomePage = () => {
                 {resumeData.education.degree},{" "}
                 {resumeData.education.institution} ({resumeData.education.period})
               </p>
-              <p>{resumeData.basics.locations.join(" · ")}</p>
+              <p>{resumeData.basics.location}</p>
             </div>
           </div>
 

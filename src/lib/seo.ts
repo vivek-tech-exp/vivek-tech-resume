@@ -11,17 +11,17 @@ const truncate = (text: string, max = MAX_DESCRIPTION_LENGTH) =>
 
 export const seoCopy = {
   homeTitle:
-    "Vivek Mankonda | Senior Software Engineer · Backend, AWS, Fintech",
+    "Vivek Mankonda | Senior Software Engineer | Distributed Systems | Product Engineering",
   homeDescription: truncate(
-    "Vivek Mankonda is a Senior Software Engineer with 7 years building backend systems, workflow platforms, and cloud infrastructure at New Relic, Acko, and fintech teams. India and remote.",
+    "Vivek Mankonda is a Senior Software Engineer with 8+ years building distributed systems, high-scale services, and cloud infrastructure across fintech, observability, and 0-to-1 products. Based in India | Open to Relocation.",
   ),
-  resumeTitle: "Download Resume · PDF & Word",
+  resumeTitle: "Download Resume | PDF & Word",
   resumeDescription: truncate(
-    `Download ${resumeData.basics.name}'s resume as PDF or Word. Senior Software Engineer focused on backend systems, AWS, and product delivery.`,
+    `Download ${resumeData.basics.name}'s resume as PDF or Word. Senior Software Engineer focused on distributed systems, backend engineering, and cloud infrastructure.`,
   ),
 } as const;
 
-/** Curated terms for discoverability — not the full skills dump. */
+/** Curated terms for discoverability; not the full skills dump. */
 export const buildSeoKeywords = (): string[] => {
   const roleTerms = [
     resumeData.basics.name,
@@ -29,14 +29,19 @@ export const buildSeoKeywords = (): string[] => {
     "Software Engineer",
     "Backend Engineer",
     "Senior Software Engineer",
+    "Distributed Systems Engineer",
     "Platform Engineer",
   ];
   const domainTerms = [
+    "distributed systems",
+    "product engineering",
     "fintech",
     "insurance technology",
     "observability",
-    "workflow automation",
-    "India remote",
+    "workflow orchestration",
+    "high scale backend",
+    "cloud infrastructure",
+    resumeData.basics.location,
     ...resumeData.basics.locations,
   ];
   const stackTerms = resumeData.coreStack.flatMap((group) => group.items).slice(0, 24);

@@ -1,4 +1,4 @@
-/** Coarse geo from Vercel edge headers only — no IP, city, or client identifiers. */
+/** Coarse geo from Vercel edge headers only - no IP, city, or client identifiers. */
 export type DownloadOrigin = {
   countryCode: string;
   countryName: string;

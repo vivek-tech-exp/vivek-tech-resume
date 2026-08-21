@@ -43,15 +43,16 @@ export type PersonalProject = {
 };
 
 export const resumeData = {
-  positioningLine:
-    "I build backend systems and full-stack products that stay reliable under real load.",
+  positioningLine: "Distributed Systems | Product Engineering",
   specializationSummary:
-    "Seven years across backend infrastructure, workflow platforms, and product delivery.",
+    "Backend-heavy senior software engineer with 8+ years of experience across distributed systems, high-scale services, fintech, workflow orchestration, observability, cloud infrastructure, and 0-to-1 product development.",
   basics: {
     name: "Vivek Mankonda",
     title: "Senior Software Engineer",
     image: "/images/profile.png",
-    locations: ["Hyderabad", "Bengaluru", "Pune", "India (Remote)"],
+    location: "Based in India | Open to Relocation",
+    locations: ["India (Remote)", "Open to Relocation", "Hyderabad", "Bengaluru", "Pune"],
+    yearsOfExperience: "8+ years",
   },
   uiStrings: {
     skipToContent: "Skip to content",
@@ -68,8 +69,8 @@ export const resumeData = {
     resumePageBack: "View full profile",
     downloadPdfLabel: "PDF",
     downloadDocxLabel: "Word",
-    heroRoleLine: "Senior Software Engineer · 7 years",
-    heroAvailability: "Open to senior IC roles · India & remote",
+    heroRoleLine: "Senior Software Engineer | 8+ years",
+    heroAvailability: "Based in India | Open to Relocation",
     heroImpactLabel: "Recent impact",
     heroImpactJump: "Read case studies",
     workTitle: "Current work",
@@ -81,10 +82,10 @@ export const resumeData = {
     showAllProjects: "Show all projects",
     experienceTitle: "Experience",
     experienceIntro:
-      "Seven years across backend, platform, and product delivery, including fintech, insurance, and observability.",
+      "8+ years across distributed systems, high-scale backend services, fintech, workflow orchestration, and 0-to-1 product delivery.",
     impactTitle: "Case studies",
     impactIntro:
-      "Deeper notes on platform work, automation, and systems shipped in production.",
+      "Deeper notes on platform architecture, workflow orchestration, and systems shipped in production.",
     toolsTitle: "Technical stack",
     contactTitle: "Contact",
     contactIntro: "Message me on LinkedIn. Same-day replies when I can.",
@@ -128,7 +129,7 @@ export const resumeData = {
     {
       company: "Footsteps Space",
       location: "Remote",
-      period: "Jun 2025 – Present",
+      period: "Jun 2025 - Present",
       role: "Builder",
       highlight:
         "Building a travel storytelling product end to end: mobile app, backend, and public web.",
@@ -136,7 +137,7 @@ export const resumeData = {
     {
       company: "New Relic",
       location: "Bengaluru",
-      period: "Jan 2025 – May 2025",
+      period: "Jan 2025 - May 2025",
       role: "Senior Software Engineer",
       highlight:
         "Automated enterprise customer onboarding with Terraform and reduced mean time to resolution by 37%.",
@@ -144,7 +145,7 @@ export const resumeData = {
     {
       company: "Acko",
       location: "Bengaluru",
-      period: "Mar 2023 – Jul 2024",
+      period: "Mar 2023 - Jul 2024",
       role: "Software Development Engineer 3",
       highlight:
         "Built workflow automation with Camunda and cut medical checkup wait times from 17 days to 3.",
@@ -152,7 +153,7 @@ export const resumeData = {
     {
       company: "Gameskraft Technologies",
       location: "Bengaluru",
-      period: "Apr 2022 – Mar 2023",
+      period: "Apr 2022 - Mar 2023",
       role: "Senior Software Engineer",
       highlight:
         "Optimized high-traffic backend architecture and cut AWS costs by 38%.",
@@ -160,7 +161,7 @@ export const resumeData = {
     {
       company: "Needle Innovision",
       location: "Pune",
-      period: "Oct 2018 – Mar 2022",
+      period: "Oct 2018 - Mar 2022",
       role: "R&D Engineer Backend",
       highlight:
         "Built the FinchMoney fintech platform with FIX 2.0 trading integrations.",
@@ -168,7 +169,7 @@ export const resumeData = {
     {
       company: "Thoughtclan Technologies",
       location: "Hyderabad",
-      period: "Aug 2017 – Aug 2018",
+      period: "Aug 2017 - Aug 2018",
       role: "Software Engineer",
       highlight: "Developed internal automation tools for operational efficiency.",
     },
@@ -179,7 +180,7 @@ export const resumeData = {
       items: ["Java", "JavaScript", "TypeScript", "Python"],
     },
     {
-      label: "Backend",
+      label: "Backend & Systems",
       items: [
         "Spring Framework",
         "Spring Cloud",
@@ -190,23 +191,23 @@ export const resumeData = {
     {
       label: "Workflows & Messaging",
       items: [
+        "Apache Kafka",
+        "Kafka Streams",
+        "RabbitMQ",
         "Camunda",
         "BPMN",
         "DMN",
-        "Kafka",
-        "Kafka Streams",
-        "RabbitMQ",
       ],
     },
     {
-      label: "Cloud & Platform",
+      label: "Cloud & Infrastructure",
       items: ["AWS", "Terraform", "CloudFormation", "Docker", "Kubernetes"],
     },
     {
-      label: "Interfaces",
+      label: "Protocols & APIs",
       items: [
-        "GraphQL",
         "REST",
+        "GraphQL",
         "WebSockets",
         "Webhooks",
         "HTTP 2.0",
@@ -216,14 +217,14 @@ export const resumeData = {
     {
       label: "Observability & Data",
       items: [
-        "Grafana",
-        "New Relic",
-        "Logstash",
         "PostgreSQL",
         "MongoDB",
         "DynamoDB",
         "Elasticsearch",
-        "Redis Cache",
+        "Redis",
+        "Grafana",
+        "New Relic",
+        "Logstash",
       ],
     },
   ] satisfies readonly ResumeStackGroup[],
@@ -259,15 +260,15 @@ export const resumeData = {
   education: {
     degree: "B.Tech in Computer Science and Engineering",
     institution: "Heritage Institute of Technology, Kolkata",
-    period: "2013 – 2017",
+    period: "2013 - 2017",
   },
   personalProjects: [
     {
       title: "Footsteps Space",
       featured: true,
-      period: "Jun 2025 – Present",
+      period: "Jun 2025 - Present",
       teaser:
-        "A mobile app that turns trips into structured travel stories with maps, photos, and sync.",
+        "A travel storytelling product built end to end: mobile app, backend, and public web.",
       links: [{ label: "Live Site", href: "https://www.footsteps.space" }],
     },
     {
