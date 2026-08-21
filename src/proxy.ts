@@ -8,7 +8,7 @@ const publicFileRedirects: Record<string, string> = {
   "/vivek-mankonda-resume.docx": withResumeDownloadCacheBust("/resume/docx"),
 };
 
-export const middleware = (request: NextRequest) => {
+export const proxy = (request: NextRequest) => {
   const target = publicFileRedirects[request.nextUrl.pathname];
   if (!target) {
     return NextResponse.next();

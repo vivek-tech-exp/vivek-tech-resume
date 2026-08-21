@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { HomeHeader } from "@/features/home/home-header";
 import {
   HeroImpactTeaser,
@@ -38,11 +40,27 @@ export const HomePage = () => {
           aria-labelledby="hero-heading"
           className={`${pageStyles.hero} scroll-mt-[calc(4.75rem+env(safe-area-inset-top))]`}
         >
-          <div className="space-y-3">
-            <h1 className={pageStyles.heroTitle} id="hero-heading">
-              {resumeData.basics.name}
-            </h1>
-            <p className={pageStyles.heroRole}>{uiStrings.heroRoleLine}</p>
+          <div className={pageStyles.heroTop}>
+            <div className={pageStyles.heroDetails}>
+              <h1 className={pageStyles.heroTitle} id="hero-heading">
+                {resumeData.basics.name}
+              </h1>
+              <p className={pageStyles.heroRole}>{uiStrings.heroRoleLine}</p>
+            </div>
+            {resumeData.basics.image ? (
+              <div className={pageStyles.heroAvatarWrapper}>
+                <Image
+                  alt={resumeData.basics.name}
+                  className={pageStyles.heroAvatar}
+                  height={128}
+                  priority
+                  quality={90}
+                  sizes="(max-width: 640px) 80px, (max-width: 768px) 112px, 128px"
+                  src={resumeData.basics.image}
+                  width={128}
+                />
+              </div>
+            ) : null}
           </div>
           <p className={pageStyles.heroPitch}>{resumeData.positioningLine}</p>
           <p className={pageStyles.heroMeta}>{uiStrings.heroAvailability}</p>

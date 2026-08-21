@@ -66,6 +66,9 @@ export const buildStructuredData = () => {
         jobTitle: resumeData.basics.title,
         description: resumeData.specializationSummary,
         ...(siteUrl ? { url: siteUrl } : {}),
+        ...(siteUrl && resumeData.basics.image
+          ? { image: absoluteUrl(siteUrl, resumeData.basics.image) }
+          : {}),
         sameAs,
         knowsAbout,
         workLocation: resumeData.basics.locations.map((location) => ({

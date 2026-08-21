@@ -57,7 +57,7 @@ Resume content lives in `src/lib/resume-data.ts`. Keep domain types explicit the
 - Prefer progressive disclosure for secondary content.
 - Do not emit Pages Router code (`pages/`, `getServerSideProps`, `getStaticProps`).
 - Async Next.js APIs (`headers()`, `cookies()`, route `params`, `searchParams`) are Promises — **await** them when used.
-- Existing `src/middleware.ts` only redirects legacy resume file paths; do not expand middleware without a clear need.
+- Existing `src/proxy.ts` only redirects legacy resume file paths; do not expand proxy without a clear need.
 
 ### Content & SEO
 

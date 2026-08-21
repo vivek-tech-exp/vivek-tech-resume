@@ -50,6 +50,7 @@ export const resumeData = {
   basics: {
     name: "Vivek Mankonda",
     title: "Senior Software Engineer",
+    image: "/images/profile.png",
     locations: ["Hyderabad", "Bengaluru", "Pune", "India (Remote)"],
   },
   uiStrings: {
