@@ -3,7 +3,6 @@ import Image from "next/image";
 import { HomeHeader } from "@/features/home/home-header";
 import { SelectedImpactSection } from "@/features/home/impact-case-study-list";
 import { SelectedEngineeringWorkSection } from "@/features/home/selected-engineering-work";
-import { ProjectRow } from "@/features/home/project-cards";
 import { ResumeDownloadMenu } from "@/features/home/resume-download-menu";
 import { buildExternalLinks } from "@/features/home/home-utils";
 import { pageStyles } from "@/lib/page-styles";
@@ -13,11 +12,6 @@ import { siteConfig } from "@/lib/site-config";
 export const HomePage = () => {
   const externalLinks = buildExternalLinks();
   const { uiStrings } = resumeData;
-  const otherProjects = resumeData.personalProjects.filter(
-    (project) => !project.featured,
-  );
-  const previewProjects = otherProjects.slice(0, 2);
-  const hiddenProjects = otherProjects.slice(2);
 
   return (
     <div id="top">
@@ -130,42 +124,6 @@ export const HomePage = () => {
             ))}
           </ol>
         </section>
-
-        {otherProjects.length > 0 ? (
-          <section
-            aria-labelledby="side-projects-heading"
-            className={`${pageStyles.section} defer-section`}
-            id="side-projects"
-          >
-            <div className={pageStyles.sectionHeader}>
-              <h2 className={pageStyles.sectionTitle} id="side-projects-heading">
-                {uiStrings.sideProjectsTitle}
-              </h2>
-              <p className={pageStyles.sectionIntro}>
-                {uiStrings.sideProjectsIntro}
-              </p>
-            </div>
-
-            <ul className={pageStyles.projectList}>
-              {previewProjects.map((project) => (
-                <ProjectRow key={project.title} project={project} />
-              ))}
-            </ul>
-
-            {hiddenProjects.length > 0 ? (
-              <details className="details-expand">
-                <summary className={pageStyles.detailsButton}>
-                  {uiStrings.showAllProjects}
-                </summary>
-                <ul className={pageStyles.projectList}>
-                  {hiddenProjects.map((project) => (
-                    <ProjectRow key={project.title} project={project} />
-                  ))}
-                </ul>
-              </details>
-            ) : null}
-          </section>
-        ) : null}
 
         <section
           aria-labelledby="tools-heading"

@@ -16,13 +16,6 @@ export const buildLlmsTxt = (): string => {
     )
     .join("\n");
 
-  const projects = resumeData.personalProjects
-    .map(
-      (project) =>
-        `- ${project.title} (${project.period}): ${project.teaser} Links: ${project.links.map((link) => link.href).join(", ")}`,
-    )
-    .join("\n");
-
   const engineeringWork = resumeData.selectedEngineeringWork
     .map(
       (work) =>
@@ -60,10 +53,6 @@ ${stack}
 
 ${experience}
 
-## Other personal projects
-
-${projects}
-
 ## Resume download
 
 - ${path("/resume")} (PDF or Word)
@@ -75,7 +64,6 @@ ${projects}
 - /#impact
 - /#work
 - /#experience
-- /#side-projects
 - /#tools
 - /#contact
 `;

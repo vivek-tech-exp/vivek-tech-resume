@@ -92,20 +92,10 @@ export const pageStyles = {
   engineeringTags: "flex flex-wrap gap-1.5",
   engineeringTag:
     "inline-flex items-center rounded-md border border-[var(--border)] bg-[color-mix(in_oklab,var(--text)_3%,var(--surface))] px-2 py-0.5 text-xs text-[var(--text-soft)]",
-  featuredProject:
-    "space-y-4 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-7",
-  projectList: "m-0 grid list-none gap-0 divide-y divide-[var(--border)] border-y border-[var(--border)] p-0",
-  projectRow: "grid gap-4 py-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start sm:gap-6",
-  projectTitle: "text-lg font-medium leading-snug text-[var(--text)]",
-  projectMeta: "text-sm text-[var(--text-subtle)]",
-  projectTeaser: "text-pretty text-base leading-relaxed text-[var(--text-muted)]",
-  projectLinks: "flex flex-wrap gap-2 sm:justify-end sm:gap-x-4 sm:gap-y-3",
   linkPill:
     "inline-flex min-h-10 items-center rounded-full border border-[var(--border)] bg-[var(--page)] px-4 text-sm font-medium text-[var(--accent)] no-underline hover:border-[var(--text-soft)] hover:bg-[var(--surface)]",
   textLink:
     "inline-flex min-h-11 items-center text-sm font-medium text-[var(--accent)] no-underline hover:underline",
-  detailsButton:
-    "inline-flex min-h-11 w-full items-center justify-center rounded-full border border-[var(--border)] px-4 text-sm font-medium text-[var(--text-soft)] no-underline hover:border-[var(--text-soft)] hover:bg-[var(--surface)] sm:w-auto sm:justify-start sm:rounded-none sm:border-0 sm:px-0",
   impactGrid: "m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 sm:gap-4",
   impactCard:
     "space-y-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 sm:p-5",

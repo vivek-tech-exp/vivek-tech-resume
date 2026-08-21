@@ -49,19 +49,6 @@ type ResumeCaseStudy = {
   href: string;
 };
 
-type ProjectLink = {
-  label: string;
-  href: string;
-};
-
-export type PersonalProject = {
-  title: string;
-  featured: boolean;
-  period: string;
-  teaser: string;
-  links: readonly ProjectLink[];
-};
-
 export const resumeData = {
   positioningLine: "Distributed Systems | Product Engineering",
   specializationSummary:
@@ -204,10 +191,6 @@ export const resumeData = {
     problemLabel: "Problem / Context",
     builtLabel: "Built / Designed",
     resultLabel: "Result",
-    sideProjectsTitle: "Other projects",
-    sideProjectsIntro:
-      "Additional products built alongside full-time engineering roles.",
-    showAllProjects: "Show all projects",
     experienceTitle: "Experience",
     experienceIntro:
       "8+ years across distributed systems, high-scale backend services, fintech, workflow orchestration, and 0-to-1 product delivery.",
@@ -405,56 +388,4 @@ export const resumeData = {
     institution: "Heritage Institute of Technology, Kolkata",
     period: "2013 - 2017",
   },
-  personalProjects: [
-    {
-      title: "Footsteps Space",
-      featured: true,
-      period: "Jun 2025 - Present",
-      teaser:
-        "A travel storytelling product built end to end: mobile app, backend, and public web.",
-      links: [{ label: "Live Site", href: "https://www.footsteps.space" }],
-    },
-    {
-      title: "Emu Event Assistant",
-      featured: false,
-      period: "2026",
-      teaser:
-        "A lightweight assistant for small hosts to track guests, payments, and expenses.",
-      links: [
-        { label: "GitHub Repo", href: "https://github.com/vivek-tech-exp/event-assistant/blob/master/README.md" },
-        { label: "Live App", href: "https://event-assistant-beta.vercel.app" },
-      ],
-    },
-    {
-      title: "gh-ruleset-sync",
-      featured: false,
-      period: "2026",
-      teaser:
-        "A GitHub CLI tool to apply and audit repository rulesets across many repos.",
-      links: [
-        { label: "GitHub Repo", href: "https://github.com/vivek-tech-exp/gh-ruleset-sync/blob/master/README.md" },
-      ],
-    },
-    {
-      title: "Borderless Buy / One Day Baby",
-      featured: false,
-      period: "2026",
-      teaser:
-        "Helps shoppers compare local vs abroad prices with landed-cost context.",
-      links: [
-        { label: "GitHub Repo", href: "https://github.com/vivek-tech-exp/borderless-buy/blob/master/README.md" },
-        { label: "Live App", href: "https://oneday-baby-phi.vercel.app" },
-      ],
-    },
-    {
-      title: "my-fi",
-      featured: false,
-      period: "2026",
-      teaser:
-        "A local-first app that turns bank CSV exports into a searchable ledger.",
-      links: [
-        { label: "GitHub Repo", href: "https://github.com/vivek-tech-exp/my-fi/blob/master/README.md" },
-      ],
-    },
-  ] satisfies readonly PersonalProject[],
 } as const;
