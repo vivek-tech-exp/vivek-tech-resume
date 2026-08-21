@@ -13,41 +13,43 @@ export const seoCopy = {
   homeTitle:
     "Vivek Mankonda | Senior Software Engineer | Distributed Systems | Product Engineering",
   homeDescription: truncate(
-    "Vivek Mankonda is a Senior Software Engineer with 8+ years building distributed systems, high-scale services, and cloud infrastructure across fintech, observability, and 0-to-1 products. Based in India | Open to Relocation.",
+    "Senior Software Engineer with 8+ years across distributed systems, high-scale services, Java, Spring Boot, AWS, Kafka, fintech, workflow orchestration, observability, and 0-to-1 product engineering. Based in India | Open to Relocation.",
   ),
   resumeTitle: "Download Resume | PDF & Word",
   resumeDescription: truncate(
-    `Download ${resumeData.basics.name}'s resume as PDF or Word. Senior Software Engineer focused on distributed systems, backend engineering, and cloud infrastructure.`,
+    `Download ${resumeData.basics.name}'s resume as PDF or Word. Senior Software Engineer with 8+ years across distributed systems, Java, Spring Boot, AWS, and cloud infrastructure.`,
   ),
 } as const;
 
 /** Curated terms for discoverability; not the full skills dump. */
 export const buildSeoKeywords = (): string[] => {
-  const roleTerms = [
+  const primaryTerms = [
     resumeData.basics.name,
     resumeData.basics.title,
-    "Software Engineer",
-    "Backend Engineer",
     "Senior Software Engineer",
-    "Distributed Systems Engineer",
-    "Platform Engineer",
+    "Distributed Systems",
+    "Product Engineering",
+    "Java",
+    "Spring Boot",
+    "Spring Cloud",
+    "AWS",
+    "Kafka",
+    "Fintech",
+    "Workflow Orchestration",
+    "Camunda",
+    "Observability",
+    "New Relic",
+    "Terraform",
+    "TypeScript",
+    "Backend Engineer",
+    "High Scale Systems",
+    "System Design",
+    "Based in India",
+    "Open to Relocation",
   ];
-  const domainTerms = [
-    "distributed systems",
-    "product engineering",
-    "fintech",
-    "insurance technology",
-    "observability",
-    "workflow orchestration",
-    "high scale backend",
-    "cloud infrastructure",
-    resumeData.basics.location,
-    ...resumeData.basics.locations,
-  ];
-  const stackTerms = resumeData.coreStack.flatMap((group) => group.items).slice(0, 24);
   const employerTerms = resumeData.experience.map((role) => role.company);
 
-  return [...new Set([...roleTerms, ...domainTerms, ...stackTerms, ...employerTerms])];
+  return [...new Set([...primaryTerms, ...employerTerms])];
 };
 
 const sharedOpenGraph = (title: string, description: string, path: string) => {

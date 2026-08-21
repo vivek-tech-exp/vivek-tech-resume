@@ -1,71 +1,49 @@
 VIVEK MANKONDA
-Senior Software Engineer | 7 Years Experience
+Senior Software Engineer | Distributed Systems | Product Engineering
 Email: vivekmankonda.work@gmail.com
 LinkedIn: https://www.linkedin.com/in/vivekmankonda/
 GitHub: https://github.com/vivek-tech-exp
-Location: Hyderabad, Bengaluru, Pune, India (Remote)
+Location: Based in India | Open to Relocation
 
 PROFESSIONAL SUMMARY
-Senior Software Engineer with seven years of experience designing and delivering backend systems, workflow platforms, and full-stack products for fintech, insurance, and observability companies. Proven results in Terraform-based cloud automation, Camunda workflow orchestration, high-traffic service optimization, and FIX 2.0 trading integrations. Comfortable owning services end to end across Java, Spring, AWS, Kafka, and modern APIs.
+Backend-heavy senior software engineer with 8+ years of experience across distributed systems, high-scale services, fintech, workflow orchestration, observability, cloud infrastructure, and 0-to-1 product development. Proven track record in high-scale tournament systems, US banking and investment platforms, long-running insurance workflow orchestration with Camunda, and Terraform cloud automation.
 
-CORE COMPETENCIES
-Java | Spring Framework | Spring Cloud | Camunda | BPMN | DMN | Apache Kafka | AWS | Terraform | FIX 2.0 | PostgreSQL | Kubernetes | GraphQL | Python | TypeScript | Fintech | Insurance
+SPECIALIZATIONS
+Distributed Systems, Event-Driven Architecture, System Design, Microservices, Workflow Orchestration, Fault Tolerance, Concurrency, Idempotency, 0-to-1 / MVP Development, End-to-End Product Development
 
-TECHNICAL SKILLS
-Languages: Java, JavaScript, TypeScript, Python
-Backend and APIs: Spring Framework, Spring Cloud, ExpressJS, NestJS, REST, GraphQL, WebSockets, Webhooks, HTTP 2.0, FIX 2.0
-Workflows and Messaging: Camunda, BPMN, DMN, Kafka, Kafka Streams, RabbitMQ
-Cloud and Platform: AWS, Terraform, CloudFormation, Docker, Kubernetes
-Data and Observability: PostgreSQL, MongoDB, DynamoDB, Elasticsearch, Redis Cache, Grafana, New Relic, Logstash
+TECHNICAL PROFILE
+Languages & Frameworks: Java, TypeScript, Spring Boot / Spring Cloud, Express.js, Next.js, Flutter
+Messaging, APIs & Protocols: Kafka, REST, GraphQL, Webhooks, WebSockets, WebRTC, OAuth 2.0 / JWT, FIX / QuickFIX, Camunda (BPMN / DMN)
+Data & Infrastructure: PostgreSQL, MongoDB, DynamoDB, Redis, Elasticsearch, AWS, Docker, Kubernetes, Terraform
+Observability: New Relic / NRQL, Grafana, CloudWatch, Service Instrumentation, Metrics / Logs / Traces, Alerting, Production Debugging
 
 PROFESSIONAL EXPERIENCE
 
-Builder, Footsteps Space, Remote
+Independent Software Engineer / Product Developer, Footsteps Space, Remote
 June 2025 to Present
-- Shipped end-to-end mobile product that turns trips into structured travel stories with maps, photos, and sync.
-- Built backend, native client, and public web presence for a consumer travel storytelling platform.
+- Built and launched Footsteps Space end to end across mobile, backend, data, maps, authentication and deployment.
+- Engineered FOTA: offline-first, battery-aware geolocation engine with adaptive GPS sampling, local persistence, and deferred synchronization.
 
-Senior Software Engineer, New Relic, Bengaluru, India
+Senior Software Engineer, New Relic, Hyderabad, India
 January 2025 to May 2025
-- Automated enterprise customer onboarding with Terraform.
-- Implemented Infrastructure-as-Code modules for thousands of AWS accounts; replaced manual UI configuration with auditable telemetry pipelines at scale.
-- Reduced mean time to resolution by 37 percent.
+- Built Terraform-based enterprise AWS onboarding across thousands of customer accounts and improved production reliability, contributing to a 37% reduction in MTTR.
 
 Software Development Engineer 3, Acko, Bengaluru, India
 March 2023 to July 2024
-- Architected workflow-first backend using Camunda, BPMN, and DMN for health insurance operations.
-- Modeled long-running business processes and automated critical state transitions.
-- Reduced medical checkup turnaround time from 17 days to 3 days.
+- Built long-running workflow systems with Camunda and reduced pre-policy medical-checkup turnaround from 17 days to 3 days.
 
 Senior Software Engineer, Gameskraft Technologies, Bengaluru, India
 April 2022 to March 2023
-- Optimized high-traffic backend architecture for reliability and performance under load.
-- Reduced AWS infrastructure costs by 38 percent.
+- Worked on matchmaking and core backend systems handling 1M+ requests/min during a 215K-participant Guinness World Record tournament while reducing AWS infrastructure spend by 38%.
 
-R&D Engineer Backend, Needle Innovision, Pune, India
+R&D Engineer, Backend, Needle Innovision, Bengaluru, India
 October 2018 to March 2022
-- Built FinchMoney fintech platform with pooled brokerage architecture and fractional share accounting.
-- Integrated FIX 2.0 trading protocols and reconciled real-time spending with asynchronous market settlements.
-- Delivered liquidity management and settlement workflows for consumer investing.
+- Built FinchMoney from 0-to-1, including banking, investment, FIX trading, allocation, settlement and reconciliation systems.
 
-Software Engineer, Thoughtclan Technologies, Hyderabad, India
+Software Engineer, ThoughtClan Technologies, Bengaluru, India
 August 2017 to August 2018
-- Developed internal automation tools to improve operational efficiency.
-
-OTHER SIDE PROJECTS
-
-Emu Event Assistant, 2026
-- Built lightweight assistant for small hosts to track guests, payments, and expenses.
-
-gh-ruleset-sync, 2026
-- Built GitHub CLI tool to apply and audit repository rulesets across many repositories.
-
-Borderless Buy / One Day Baby, 2026
-- Built shopping comparison tool for local versus abroad prices with landed-cost context.
-
-my-fi, 2026
-- Built local-first application that turns bank CSV exports into a searchable personal finance ledger.
+- Delivered enterprise applications across 21 international markets, with performance work contributing to a 30% improvement in site performance.
 
 EDUCATION
-Bachelor of Technology in Computer Science and Engineering
-Heritage Institute of Technology, Kolkata, India, 2013 to 2017
+B.Tech, Computer Science & Engineering
+Heritage Institute of Technology, Kolkata, India (2013 - 2017)

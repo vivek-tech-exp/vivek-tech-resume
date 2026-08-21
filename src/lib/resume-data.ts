@@ -178,7 +178,7 @@ export const resumeData = {
     resumeShareLabel: "Resume link",
     resumeMenuLabel: "Choose a format",
     resumePageIntro:
-      "PDF and Word copies of my resume, with the same experience and projects as this site.",
+      "PDF and Word copies of my resume, reflecting 8+ years across distributed systems and backend engineering.",
     resumePageBack: "View full profile",
     downloadPdfLabel: "PDF",
     downloadDocxLabel: "Word",
