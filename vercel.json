@@ -1,0 +1,7 @@
+{
+  "git": {
+    "deploymentEnabled": {
+      "vivek-tex/resume-monitoring": false
+    }
+  }
+}
