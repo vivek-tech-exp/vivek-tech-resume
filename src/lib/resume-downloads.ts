@@ -17,27 +17,22 @@ export const buildResumeFileResponse = async (
 ) => {
   const asset = getResumeDownloadAsset(format);
 
-  try {
-    const body = await readFile(
-      path.join(process.cwd(), "public", asset.publicFile),
-    );
+  const body = await readFile(
+    path.join(process.cwd(), "public", asset.publicFile),
+  );
 
-    // Must await: serverless exits when the response is sent; fire-and-forget never runs.
-    await notifyResumeDownload(format, request);
+  await notifyResumeDownload(format, request);
 
-    return new NextResponse(body, {
-      headers: {
-        "Content-Type": asset.mimeType,
-        "Content-Disposition": `attachment; filename="${asset.fileName}"`,
-        // Bust browser + Vercel edge cache so every download runs this handler.
-        "Cache-Control": "private, no-cache, no-store, must-revalidate, max-age=0",
-        Pragma: "no-cache",
-        Expires: "0",
-        "CDN-Cache-Control": "no-store",
-        "Vercel-CDN-Cache-Control": "no-store",
-      },
-    });
-  } catch {
-    return new NextResponse("Resume not found.", { status: 404 });
-  }
+  return new NextResponse(body, {
+    headers: {
+      "Content-Type": asset.mimeType,
+      "Content-Disposition": `attachment; filename="${asset.fileName}"`,
+      // Bust browser + Vercel edge cache so every download runs this handler.
+      "Cache-Control": "private, no-cache, no-store, must-revalidate, max-age=0",
+      Pragma: "no-cache",
+      Expires: "0",
+      "CDN-Cache-Control": "no-store",
+      "Vercel-CDN-Cache-Control": "no-store",
+    },
+  });
 };

@@ -23,4 +23,4 @@ export type CaseStudySlug = keyof typeof caseStudyLinks;
 export const caseStudyHref = (slug: CaseStudySlug) => `/case-study/${slug}`;
 
 export const isCaseStudySlug = (value: string): value is CaseStudySlug =>
-  value in caseStudyLinks;
+  Object.hasOwn(caseStudyLinks, value);
